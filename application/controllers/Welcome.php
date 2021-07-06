@@ -20,6 +20,20 @@ class Welcome extends CI_Controller {
 	 */
 	public function index()
 	{
-		$this->load->view('welcome_message');
+		$this->load->view('inc_head.php'); //archivos cabecera
+		$this->load->view('welcome_message'); //contenido
+		$this->load->view('inc_footer.php'); //archivos del footer
+	}
+		public function vista2()
+	{
+		$this->load->view('inc_head.php'); //archivos cabecera
+		$this->load->view('formulario'); //contenido
+		$this->load->view('inc_footer.php'); //archivos del footer
+	}
+	public function pruebabd()
+	{
+		$query=$this->db->get('usuario');
+		$execonsulta=$query->result();
+		print_r($execonsulta);
 	}
 }
