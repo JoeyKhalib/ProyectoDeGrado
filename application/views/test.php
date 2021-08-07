@@ -47,14 +47,10 @@
                   <thead>
                   <tr>
                     <th>#</th>
-                    <th>Nombre</th>
-                    <th>Apellido Paterno</th>
-                    <th>Apellido Materno</th>
-                    <th>Carnet</th>
-                    <th>Liga</th>
-                    <th>Creado</th>
-                    <th>Eliminar</th>
-                    <th>Editar</th>
+                    <th>Nombre Completo</th>
+                    <th>Fecha de Nacimiento</th>
+                    <th>Email</th>
+                    <th>Rol</th>
                   </tr>
                   </thead>
                   <tbody>
@@ -67,17 +63,14 @@ foreach ($usuarios->result() as $row) {
 
                   <tr>
                     <td><?php echo $indice;?></td>
-                    <td><?php echo $row->nombre;?></td>
-                    <td><?php echo $row->ApellidoPaterno;?></td>
-                    <td><?php echo $row->ApellidoMaterno;?></td>
-                    <td><?php echo $row->carnet;?></td>
-                    <td><?php echo $row->liga;?></td>
-                    <td><?php echo formatearFecha($row->created_at);?></td>
+                    <td><?php echo $row->nombreCompleto;?></td>
+                    <td><?php echo formatearFecha($row->fechaNacimiento);?></td>
+                    <td><?php echo $row->email;?></td>
                     <td>
         <?php 
           echo form_open_multipart('usuario/modificar');
         ?>
-        <input type="hidden" name="idUsuario" value="<?php echo $row->idUsuario;?>">
+        <input type="hidden" name="idusuario" value="<?php echo $row->idusuario;?>">
         <button type="submit" class="btn btn-primary btn-xs">Modificar</button>
     <?php 
           echo form_close();
@@ -87,7 +80,7 @@ foreach ($usuarios->result() as $row) {
         <?php 
           echo form_open_multipart('usuario/eliminarbd');
         ?>
-        <input type="hidden" name="idUsuario" value="<?php echo $row->idUsuario;?>">
+        <input type="hidden" name="idusuario" value="<?php echo $row->idusuario;?>">
         <button type="submit" class="btn btn-danger btn-xs">Eliminar</button>
     <?php 
           echo form_close();
@@ -106,15 +99,11 @@ foreach ($usuarios->result() as $row) {
                   </tbody>
                   <tfoot>
                   <tr>
-                    <th>#</th>
-                    <th>Nombre</th>
-                    <th>Apellido Paterno</th>
-                    <th>Apellido Materno</th>
-                    <th>Carnet</th>
-                    <th>Liga</th>
-                    <th>Creado</th>
-                    <th>Eliminar</th>
-                    <th>Editar</th>
+                     <th>#</th>
+                    <th>Nombre Completo</th>
+                    <th>Fecha de Nacimiento</th>
+                    <th>Email</th>
+                    <th>Rol</th>
                   </tr>
                   </tfoot>
                 </table>

@@ -11,17 +11,17 @@ class Usuario_model extends CI_Model {
 		return $this->db->get();
 	}
 
-	public function recuperarUsuario($idUsuario)
+	public function recuperarUsuario($idusuario)
 	{
 		$this->db->select('*');
 		$this->db->from('usuario');
-		$this->db->where('idUsuario',$idUsuario);
+		$this->db->where('idusuario',$idusuario);
 		return $this->db->get();
 	}
-	public function modificarUsuario($idUsuario,$data)
+	public function modificarUsuario($idusuario,$data)
 	{
 		
-		$this->db->where('idUsuario',$idUsuario);
+		$this->db->where('idusuario',$idusuario);
 		$this->db->update('usuario',$data);
 	}
 
@@ -30,10 +30,26 @@ class Usuario_model extends CI_Model {
 		$this->db->insert('usuario',$data);
 	}
 	
-	public function eliminarUsuario($idUsuario)
+	public function eliminarUsuario($idusuario)
 	{
-		$this->db->where('idUsuario',$idUsuario);
+		$this->db->where('idusuario',$idusuario);
 		$this->db->delete('usuario');
 	}
+
+	public function validar($nombreUsuario,$password)
+	{
+		$this->db->select('*');
+		$this->db->from('usuario');
+		$this->db->where('nombreUsuario',$nombreUsuario);
+		$this->db->where('password',$password);
+		return $this->db->get();
+
+
+
+//		$query="SELECT * FROM personas WHERE login='".$login."' AND password='".$password."'"
+//		return $this->db->query($query);
+	}
+
+
 
 }

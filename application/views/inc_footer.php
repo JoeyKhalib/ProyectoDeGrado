@@ -54,6 +54,12 @@
       "responsive": true,
     });
   });
+
+
+$('#reservationdate').datetimepicker({
+        format: 'L'
+    });
+  
 </script>
 </body>
 </html>
