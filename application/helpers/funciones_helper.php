@@ -13,6 +13,22 @@ return $fechaformateada;
 }
 
 
+function generarUsuario($nombres)
+{
+$nuevoUsuario=$nombres;
 
+return $nuevoUsuario;
+}
 
+function generarContra($nombres,$apellidoPaterno,$apellidoMaterno,$ci)
+{
+	
+$nombresInicial=substr($nombres, 0,1);
+$apellidoPaternoInicial=substr($apellidoPaterno, 0,1);
+$apellidoMaternoInicial=substr($apellidoMaterno, 0,1);
+$cIncial=$ci;
+
+$conta=$nombresInicial.$apellidoPaternoInicial.$apellidoMaternoInicial.$cIncial;
+return $conta;
+}
  ?>

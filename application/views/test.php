@@ -29,6 +29,7 @@
                  una cancha de futbol</h3>
               </div>
 
+
         <?php 
           echo form_open_multipart('usuario/agregar');
         ?>
@@ -38,7 +39,17 @@
           echo form_close();
          ?>
         
-                
+  <?php 
+          echo form_open_multipart('usuario/logout');
+          ?>
+
+          <button type="submit" class="btn btn-primary btn-danger">Salir</button>
+        
+          <?php 
+          echo form_close();
+         ?>
+
+                 
 
 
               <!-- /.card-header -->
@@ -51,6 +62,10 @@
                     <th>Fecha de Nacimiento</th>
                     <th>Email</th>
                     <th>Rol</th>
+                    <th>Telefono</th>
+                    <th>Modificar</th>
+                    <th>Eliminar</th>
+                    <th>Habilitar</th>
                   </tr>
                   </thead>
                   <tbody>
@@ -63,15 +78,17 @@ foreach ($usuarios->result() as $row) {
 
                   <tr>
                     <td><?php echo $indice;?></td>
-                    <td><?php echo $row->nombreCompleto;?></td>
+                    <td><?php echo $row->nombres;?> <?php echo $row->apellidoPaterno;?> <?php echo $row->apellidoMaterno;?></td>
                     <td><?php echo formatearFecha($row->fechaNacimiento);?></td>
                     <td><?php echo $row->email;?></td>
+                    <td><?php echo $row->rol;?></td>
+                    <td><?php echo $row->telefono;?></td>
                     <td>
         <?php 
           echo form_open_multipart('usuario/modificar');
         ?>
         <input type="hidden" name="idusuario" value="<?php echo $row->idusuario;?>">
-        <button type="submit" class="btn btn-primary btn-xs">Modificar</button>
+        <button type="submit" class="btn btn-primary btn-xs">Modificar</button>         
     <?php 
           echo form_close();
          ?>
@@ -86,8 +103,28 @@ foreach ($usuarios->result() as $row) {
           echo form_close();
          ?>
       </td>
-                  </tr>
+                  <td>
+                       <?php     
+          echo form_open_multipart('usuario/habilitar');
+        ?>
+                    <input type="hidden" name="idusuario" value="<?php echo $row->idusuario;?>">
+                    <button type="submit" class="btn btn-primary btn-xs" >Habilitar</button>
+                  
+                <?php 
+                        echo form_close();
+                       ?>
 
+                       <?php     
+          echo form_open_multipart('usuario/desabilitar');
+        ?>
+                        <input type="hidden" name="idusuario" value="<?php echo $row->idusuario;?>">
+                        <button type="submit" class="btn btn-primary btn-xs" >Desabilitar</button>
+                        <?php 
+                        echo form_close();
+                       ?>
+                 </td>
+
+                  </tr>
 
 <?php
  $indice++;
@@ -95,15 +132,21 @@ foreach ($usuarios->result() as $row) {
  ?>
 
 
+
+
            
                   </tbody>
                   <tfoot>
                   <tr>
-                     <th>#</th>
+                    <th>#</th>
                     <th>Nombre Completo</th>
                     <th>Fecha de Nacimiento</th>
                     <th>Email</th>
                     <th>Rol</th>
+                    <th>Telefono</th>
+                    <th>Modificar</th>
+                    <th>Eliminar</th>
+                    <th>Habilitar</th>
                   </tr>
                   </tfoot>
                 </table>
@@ -120,8 +163,6 @@ foreach ($usuarios->result() as $row) {
     </section>
     <!-- /.content -->
   </div>
-
-
 
 
 

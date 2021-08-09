@@ -43,12 +43,16 @@ class Usuario_model extends CI_Model {
 		$this->db->where('nombreUsuario',$nombreUsuario);
 		$this->db->where('password',$password);
 		return $this->db->get();
-
-
+}
+public function eliminarUsuariol($idusuario)
+		{
+	    $this->db->where('idusuario',$idusuario);
+		$this->db->update('usuario',$data);
+		}
 
 //		$query="SELECT * FROM personas WHERE login='".$login."' AND password='".$password."'"
 //		return $this->db->query($query);
-	}
+	
 
 
 

@@ -8,7 +8,7 @@ foreach ($infousuario->result() as $row)
  	echo form_open_multipart('usuario/modificarbd');
  ?>
 
-<input type="hidden" name="idUsuario" value="<?php echo $row->idUsuario;?>">
+<input type="hidden" name="idusuario" value="<?php echo $row->idusuario;?>">
 
 
   <div class="mb-3">

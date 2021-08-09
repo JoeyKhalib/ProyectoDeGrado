@@ -1,3 +1,7 @@
+ <div class="container">
+  <div class="row">
+    <div class="col-md-12">
+
  <div class="card card-primary">
               <div class="card-header">
                 <h3 class="card-title">FORMULARIO DE REGISTRO DE USUARIOS</h3>
@@ -11,9 +15,23 @@
 
                 <div class="card-body">
                   <div class="form-group">
-                    <label for="">Nombre Completo</label>
-                    <input type="text" class="form-control" name="nombreCompleto" placeholder="Ingrese su nombre completo">
+                    <label for="">Nombres</label>
+                    <input type="text" class="form-control" name="nombres" placeholder="Ingrese su nombre">
                   </div>
+
+
+
+ <div class="form-row">
+    <div class="col">
+      <label for="">Apellido Paterno</label>
+      <input type="text" class="form-control" name="apellidoPaterno" placeholder="Primer Apellido">
+    </div>
+    <div class="col">
+       <label for="">Apellido Paterno</label>
+      <input type="text" class="form-control" name="apellidoMaterno" placeholder="Segundo Apellido">
+    </div>
+  </div>
+
 
   <div class="form-group">
     <label for="rol">Seleccione el Rol</label>
@@ -24,6 +42,18 @@
       <option>Padre</option>
     </select>
   </div>
+
+<div class="form-row">
+    <div class="col">
+      <label for="">Ingrese Carnet de Identidad</label>
+      <input type="number" class="form-control" name="ci" placeholder="Carnet de Identidad">
+    </div>
+    <div class="col">
+       <label for="">Telefono/Celular</label>
+      <input type="tel" class="form-control" name="telefono" placeholder="Numero de Referencia">
+    </div>
+  </div>
+
 
      <div class="form-check">
                     <label for="">Sexo:</label>
@@ -44,16 +74,7 @@
 
 
 
-  <div class="form-row">
-    <div class="col">
-      <label for="">Nombre Usuario</label>
-      <input type="text" class="form-control" name="nombreUsuario" placeholder="Usuario">
-    </div>
-    <div class="col">
-       <label for="">Contraseña</label>
-      <input type="password" class="form-control" name="password" placeholder="password">
-    </div>
-  </div>
+
 
 
               <div class="form-group">
@@ -62,12 +83,17 @@
                   </div>
 
 
+                  
+
                 <div class="card-footer">
                   <button type="submit" class="btn btn-primary">Registrar</button>
                 </div>
-
+ </div>
                 <?php 
 echo form_close();
 ?>
 
-            </div>
+      </div>
+  </div>
+</div>
+
