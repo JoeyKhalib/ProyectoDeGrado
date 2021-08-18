@@ -1,8 +1,9 @@
+<div class="content-wrapper">
  <div class="container">
   <div class="row">
     <div class="col-md-12">
 
- <div class="card card-primary">
+ <div class="card card-light">
               <div class="card-header">
                 <h3 class="card-title">FORMULARIO DE REGISTRO DE USUARIOS</h3>
               </div>
@@ -36,7 +37,7 @@
   <div class="form-group">
     <label for="rol">Seleccione el Rol</label>
     <select class="form-control" name="rol">
-      <option>Usuario</option>
+      <option>Invitado</option>
       <option>Administrador</option>
       <option>Entrenador</option>
       <option>Padre</option>
@@ -86,8 +87,10 @@
                   
 
                 <div class="card-footer">
-                  <button type="submit" class="btn btn-primary">Registrar</button>
+                  <button type="submit" class="btn btn-dark">Registrar</button>
                 </div>
+               
+                 
  </div>
                 <?php 
 echo form_close();
@@ -96,4 +99,4 @@ echo form_close();
       </div>
   </div>
 </div>
-
+</div>

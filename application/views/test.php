@@ -25,29 +25,10 @@
 
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Lista de usuarios que tienen acceso al sistema para poder realizar una reserva de
-                 una cancha de futbol</h3>
+                <h3 class="card-title">Modificaciones,Eliminacion de los usuarios</h3>
               </div>
 
 
-        <?php 
-          echo form_open_multipart('usuario/agregar');
-        ?>
-                <input type="hidden" name="idUsuario" >
-                 <button type="submit" class="btn btn-primary btn-xs">Ingresar Usuario</button>
-        <?php 
-          echo form_close();
-         ?>
-        
-  <?php 
-          echo form_open_multipart('usuario/logout');
-          ?>
-
-          <button type="submit" class="btn btn-primary btn-danger">Salir</button>
-        
-          <?php 
-          echo form_close();
-         ?>
 
                  
 
@@ -66,6 +47,8 @@
                     <th>Modificar</th>
                     <th>Eliminar</th>
                     <th>Habilitar</th>
+                    <th>Perfil</th>
+                    <th>Subir</th>
                   </tr>
                   </thead>
                   <tbody>
@@ -124,6 +107,40 @@ foreach ($usuarios->result() as $row) {
                        ?>
                  </td>
 
+                  <td>
+
+                    <?php
+                        $foto=$row->foto;
+                        if ($foto=="") {
+                          //mostrar una imagen por defecto
+                           ?> 
+                           <img width="100" src="<?php echo base_url(); ?>uploads/usuarios/perfil.jpg">
+                           <?php
+                        }
+                        else {
+                          //mostrar la foto del usuario
+                            ?> 
+                            <img width="100" src="<?php echo base_url(); ?>uploads/usuarios/<?php echo $foto; ?>">
+                            <?php
+                        }
+
+
+                      ?> 
+                    </td>
+
+
+                  <td>
+                      <?php 
+          echo form_open_multipart('usuario/subirfoto');
+        ?>
+        <input type="hidden" name="idusuario" value="<?php echo $row->idusuario;?>">
+        <button type="submit" class="btn btn-primary btn-xs">Subir</button>
+                      <?php 
+                        echo form_close();
+                       ?>
+
+                 </td>
+
                   </tr>
 
 <?php
@@ -147,6 +164,8 @@ foreach ($usuarios->result() as $row) {
                     <th>Modificar</th>
                     <th>Eliminar</th>
                     <th>Habilitar</th>
+                    <th>Perfil</th>
+                    <th>Subir</th>
                   </tr>
                   </tfoot>
                 </table>

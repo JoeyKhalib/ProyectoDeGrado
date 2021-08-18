@@ -13,11 +13,14 @@ return $fechaformateada;
 }
 
 
-function generarUsuario($nombres)
+function generarUsuario($nombres,$ci)
 {
 $nuevoUsuario=$nombres;
+$carnet=$ci;
 
-return $nuevoUsuario;
+$newuser=$nuevoUsuario.$carnet;
+
+return $newuser;
 }
 
 function generarContra($nombres,$apellidoPaterno,$apellidoMaterno,$ci)

@@ -8,7 +8,10 @@ class Usuario_model extends CI_Model {
 	{
 		$this->db->select('*');
 		$this->db->from('usuario');
+		$this->db->where('estado','1');
 		return $this->db->get();
+
+
 	}
 
 	public function recuperarUsuario($idusuario)
@@ -38,10 +41,13 @@ class Usuario_model extends CI_Model {
 
 	public function validar($nombreUsuario,$password)
 	{
+		
 		$this->db->select('*');
 		$this->db->from('usuario');
 		$this->db->where('nombreUsuario',$nombreUsuario);
 		$this->db->where('password',$password);
+
+
 		return $this->db->get();
 }
 public function eliminarUsuariol($idusuario)

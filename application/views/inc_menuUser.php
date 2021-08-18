@@ -1,4 +1,4 @@
- <nav class="main-header navbar navbar-expand  navbar-dark navbar-light" >
+ <nav class="main-header navbar navbar-expand  navbar-white navbar-light"  style="background:  #033FFF">
     <!-- Left navbar links -->
     <ul class="navbar-nav">
       <li class="nav-item">
@@ -100,7 +100,26 @@
           <i class="far fa-bell"></i>
           <span class="badge badge-warning navbar-badge">15</span>
         </a>
-    
+        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+          <span class="dropdown-item dropdown-header">15 Notifications</span>
+          <div class="dropdown-divider"></div>
+          <a href="#" class="dropdown-item">
+            <i class="fas fa-envelope mr-2"></i> 4 new messages
+            <span class="float-right text-muted text-sm">3 mins</span>
+          </a>
+          <div class="dropdown-divider"></div>
+          <a href="#" class="dropdown-item">
+            <i class="fas fa-users mr-2"></i> 8 friend requests
+            <span class="float-right text-muted text-sm">12 hours</span>
+          </a>
+          <div class="dropdown-divider"></div>
+          <a href="#" class="dropdown-item">
+            <i class="fas fa-file mr-2"></i> 3 new reports
+            <span class="float-right text-muted text-sm">2 days</span>
+          </a>
+          <div class="dropdown-divider"></div>
+          <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
+        </div>
       </li>
       <li class="nav-item">
         <a class="nav-link" data-widget="fullscreen" href="#" role="button">
@@ -117,7 +136,7 @@
   <!-- /.navbar -->
 
   <!-- Main Sidebar Container -->
-  <aside class="main-sidebar sidebar-dark-primary elevation-4" >
+  <aside class="main-sidebar sidebar-dark-primary elevation-4" style="background:  #033FFF">
     <!-- Logo del ADMINTEMPLATE -->
     <a href="../../index3.html" class="brand-link">
       <img src="<?php echo base_url();?>adminlte/dist/img/SpeedAndGOAL.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
@@ -132,7 +151,7 @@
           <img src="<?php echo base_url();?>adminlte/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Pablo Quintanilla</a>
+          <a href="#" class="d-block">Alexander Pierce</a>
         </div>
       </div>
 
@@ -151,55 +170,9 @@
       <!-- Sidebar Menu -->
       <nav class="mt-2 ">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-
-
- <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-user"></i>
-              <p>
-                Perfil
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <?php 
-                     echo form_open_multipart('usuario/test');
-                  ?>
-                  <button class="nav-link btn btn-primary-outline text-left">
-                     <i class="far fa-circle nav-icon"></i>
-                     <p>Visualizar</p>
-                  </button>
-                   <?php 
-                      echo form_close();
-                      ?>    
-              </li>
-              <li class="nav-item">
-                <?php 
-                     echo form_open_multipart('usuario/logout');
-                  ?>
-                  <button class="nav-link btn btn-primary-outline text-left">
-                     <i class="far fa-circle nav-icon"></i>
-                     <p>Salir</p>
-                  </button>
-                   <?php 
-                      echo form_close();
-                      ?>    
-              </li>
-
-
-</ul>
-          </li>
-
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-
           <li class="nav-item">
-
-
-
-
-
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-users"></i>
               <p>
@@ -239,7 +212,7 @@
               </li>
               <li class="nav-item">
                   <?php 
-                     echo form_open_multipart('usuario/imprimir');
+                     echo form_open_multipart('usuario/agregar');
                   ?>
                   <button class="nav-link btn btn-primary-outline text-left">
                      <i class="far fa-circle nav-icon"></i>
@@ -252,17 +225,13 @@
             </ul>
           </li>
 
-
-
-
-
-
           <li class="nav-item">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-file"></i>
+              <i class="nav-icon fas fa-copy"></i>
               <p>
-                Jugadores
+                Layout Options
                 <i class="fas fa-angle-left right"></i>
+                <span class="badge badge-info right">6</span>
               </p>
             </a>
             <ul class="nav nav-treeview">
@@ -296,16 +265,31 @@
                   <p>Fixed Sidebar <small>+ Custom Area</small></p>
                 </a>
               </li>
- 
-
-
+              <li class="nav-item">
+                <a href="../layout/fixed-topnav.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Fixed Navbar</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="../layout/fixed-footer.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Fixed Footer</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="../layout/collapsed-sidebar.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Collapsed Sidebar</p>
+                </a>
+              </li>
             </ul>
           </li>
           <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-chart-pie"></i>
               <p>
-                Material Deportivo
+                Charts
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
@@ -340,7 +324,7 @@
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-tree"></i>
               <p>
-               Canchas de Futbol
+                UI Elements
                 <i class="fas fa-angle-left right"></i>
               </p>
             </a>
@@ -357,14 +341,83 @@
                   <p>Icons</p>
                 </a>
               </li>
-
+              <li class="nav-item">
+                <a href="../UI/buttons.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Buttons</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="../UI/sliders.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Sliders</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="../UI/modals.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Modals & Alerts</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="../UI/navbar.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Navbar & Tabs</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="../UI/timeline.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Timeline</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="../UI/ribbons.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Ribbons</p>
+                </a>
+              </li>
+            </ul>
           </li>
-        
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-edit"></i>
+              <p>
+                Forms
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="../forms/general.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>General Elements</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="../forms/advanced.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Advanced Elements</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="../forms/editors.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Editors</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="../forms/validation.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Validation</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+
+
+
         </ul>
-
-
-
-
       </nav>
       <!-- /.sidebar-menu -->
     </div>

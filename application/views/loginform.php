@@ -2,29 +2,49 @@
 
 switch ($msg) {
   case '1':
-    $mensaje="Error de ingreso";
+    $mensaje="ERROR DE INGRESO";
     break;
    case '2':
-    $mensaje="Acceso no Valido";
+    $mensaje="ACCESO NO VALIDO";
     break;
      case '3':
-    $mensaje="Gracias Por usar el sistema";
+    $mensaje="GRACIAS POR USAR EL SISTEMA";
     break;
   default:
-    $mensaje="Ingrese sus datos";
+    $mensaje="INGRESE SUS DATOS";
     break;
 }
 
 
 ?>
-<div class="login-box">
-  <div class="login-logo">
-    <a href="../../index2.html"><b>Bienvenidos a Sistema Web de Futbol</b></a>
-  </div>
+
+
+
+  <body class="hold-transition login-page" style="background: url(<?php echo base_url();?>imagenes/football4.jpg) no-repeat; background-size: cover; background-attachment: fixed; background-color: #66999;" >
+
+
+
+
+<div class="login-box rounded " >
+  
   <!-- /.login-logo -->
-  <div class="card">
-    <div class="card-body login-card-body">
-      <p class="login-box-msg"> <?php echo $mensaje;?></p>
+  <div class="card bg-dark" >
+
+  <div class="login-logo" >
+    <a href="../../index2.html"><b class="font-weight-bold   text-light ">Bienvenidos a Sistema Web de Futbol</b></a>
+
+<br>
+    <img src="<?php echo base_url();?>imagenes/Nuevo.jpg"  class="img-circle img-fluid">
+
+
+
+   </div> 
+ 
+
+ 
+
+    <div class="card-body login-card-body"  >
+    <p class="login-box-msg text-dark font-weight-bold"> <?php echo $mensaje;?></p>
 
 
 <?php 
@@ -34,9 +54,8 @@ echo form_open_multipart('usuario/validarusuario');
 
 
 
-     
-        <div class="input-group mb-3">
-          <input type="text" name="nombreUsuario" class="form-control" placeholder="NombreUsuario">
+        <div class="input-group mb-3" >
+          <input type="text" name="nombreUsuario" class="form-control" placeholder="Nombre de Usuario">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-user"></span>
@@ -47,22 +66,22 @@ echo form_open_multipart('usuario/validarusuario');
           <input type="password" name="password" class="form-control" placeholder="Password">
           <div class="input-group-append">
             <div class="input-group-text">
-              <span class="fas fa-lock"></span>
+              <span class="fas fa-lock" ></span>
             </div>
           </div>
         </div>
-        <div class="row">
-          <div class="col-8">
+        <div class="row ">
+          <div class="col-8 ">
             <div class="icheck-primary">
               <input type="checkbox" id="remember">
               <label for="remember">
-                Remember Me
+                Validar Cuenta
               </label>
             </div>
           </div>
           <!-- /.col -->
           <div class="col-4">
-            <button type="submit" class="btn btn-primary btn-block">Ingresar</button>
+            <button type="submit" class="btn btn-dark btn-block ">Ingresar</button>
           </div>
           <!-- /.col -->
         </div>
@@ -74,25 +93,26 @@ echo form_close();
 
 
 
-      <div class="social-auth-links text-center mb-3">
-        <p>- OR -</p>
+      <!-- <div class="social-auth-links text-center mb-3">
+        <p>- Tambien -</p>
         <a href="#" class="btn btn-block btn-primary">
-          <i class="fab fa-facebook mr-2"></i> Sign in using Facebook
+          <i class="fab fa-facebook mr-2"></i> Ingresar con facebook
         </a>
         <a href="#" class="btn btn-block btn-danger">
-          <i class="fab fa-google-plus mr-2"></i> Sign in using Google+
+          <i class="fab fa-google-plus mr-2"></i> Ingresar con Google+
         </a>
-      </div>
+      </div> -->
       <!-- /.social-auth-links -->
 
-      <p class="mb-1">
-        <a href="forgot-password.html">I forgot my password</a>
+      <p class="mb-1 font-weight-bold">
+        <a href="forgot-password.html">¿Perdiste tu contraseña?</a>
       </p>
-      <p class="mb-0">
-        <a href="register.html" class="text-center">Register a new membership</a>
+      <p class="mb-0 font-weight-bold">
+        <a href="register.html" class="text-center">¿No tienes cuenta? Registrate</a>
       </p>
     </div>
     <!-- /.login-card-body -->
   </div>
 </div>
+
 <!-- /.login-box -->

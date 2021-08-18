@@ -8,6 +8,23 @@ class Usuario extends CI_Controller {
 public function test()
 	{
 		//en este caso test es nuestra ventana principal
+		
+		$lista=$this->usuario_model->lista();
+		$data['usuarios']=$lista;
+
+
+		$id=$_SESSION['idusuario'];
+		$data2['infousuario']=$this->usuario_model->recuperarUsuario($id);
+
+		$this->load->view('inc_head.php'); 
+		$this->load->view('inc_menu.php'); 
+		$this->load->view('est_perfil',$data2); //contenido
+		$this->load->view('inc_footer.php'); //archivos del footer
+	}
+
+	public function usuarios()
+	{
+		//en este caso test es nuestra ventana principal
 		$lista=$this->usuario_model->lista();
 		$data['usuarios']=$lista;
 
@@ -17,8 +34,30 @@ public function test()
 		$this->load->view('inc_footer.php'); //archivos del footer
 	}
 
+/*
+public function perfil()
+	{
 
+		$idusuario=$_POST['idusuario'];
+		$data['infousuario']=$this->usuario_model->recuperarUsuario($idusuario);
 
+		$this->load->view('inc_head.php'); 
+		$this->load->view('inc_menu.php'); 
+		$this->load->view('est_perfil',); //contenido
+		$this->load->view('inc_footer.php'); //archivos del footer
+	}
+*/
+public function imprimir()
+	{
+
+	$lista=$this->usuario_model->lista();
+	$data['usuarios']=$lista;
+
+		$this->load->view('inc_head.php'); 
+		$this->load->view('inc_menu.php'); 
+		$this->load->view('est_mostrar',$data); //contenido
+		$this->load->view('inc_footer.php'); //archivos del footer
+	}
 
 
 	public function index2()
@@ -56,6 +95,20 @@ public function test()
 		$lista=$this->usuario_model->modificarUsuario($idusuario,$data);
 		redirect('','refresh');
 	}
+
+	public function modificarUsuariobd()
+	{
+		$idusuario=$_POST['idusuario'];
+		$data['nombres']=$_POST['nombres'];
+		$data['apellidoPaterno']=$_POST['apellidoPaterno'];
+		$data['apellidoMaterno']=$_POST['apellidoMaterno'];
+		$data['ci']=$_POST['ci'];
+		$data['telefono']=$_POST['telefono'];
+		$data['fechaNacimiento']=$_POST['fechaNacimiento'];
+		$data['email']=$_POST['email'];
+		$lista=$this->usuario_model->modificarUsuario($idusuario,$data);
+		redirect('','refresh');
+	}
 	
 	public function desabilitar()
 	{
@@ -82,14 +135,15 @@ public function test()
 
 	public function agregar()
 	{
-		$this->load->view('inc_head.php'); //archivos cabecera
+		$this->load->view('inc_head.php');//archivos cabecera
+		$this->load->view('inc_menu.php');
 		$this->load->view('est_registrar'); //contenido
 		$this->load->view('inc_footer.php'); //archivos del footer
 	}
 
 	public function agregarbd()
 	{
-		$user=generarUsuario($_POST['nombres']);
+		$user=generarUsuario($_POST['nombres'],$_POST['ci']);
 		$contra=generarContra($_POST['nombres'],$_POST['apellidoPaterno'],$_POST['apellidoMaterno'],$_POST['ci']);
 		$data['nombres']=$_POST['nombres'];
 		$data['apellidoPaterno']=$_POST['apellidoPaterno'];
@@ -119,9 +173,9 @@ public function test()
 		else
 		{
 			//cargar un login form
-		$this->load->view('inc_head.php'); //archivos cabecera
+		$this->load->view('inc_headlogin.php'); //archivos cabecera
 		$this->load->view('loginform',$data); //login
-		$this->load->view('inc_footer.php'); //archivos del footer
+		$this->load->view('inc_footerlogin.php'); //archivos del footer
 		}
 
 	}
@@ -141,7 +195,7 @@ public function test()
 				//crear las variables de session
 				$this->session->set_userdata('idusuario',$row->idusuario);
 				$this->session->set_userdata('nombreUsuario',$row->nombreUsuario);
-				//$this->session->set_userdata('tipo',$row->tipo);
+				$this->session->set_userdata('rol',$row->rol);
 				redirect('usuario/panel','refresh');
 
 			}
@@ -165,34 +219,79 @@ public function modificarbdDoH()
 
 	public function panel()
 	{
-		if ($this->session->userdata('nombreUsuario')) 
-		{
-			redirect('usuario/test','refresh');
 
-			/*
-			if($this->session->userdata('tipo')=='Administrador')
-			{
-				//menu admin
-				//panel admin
-			}
-			else
-			{
-				//menu inv
-				//panel inv
-			}
-			*/
+	switch ($this->session->userdata('rol')) {
+    case 'Administrador':
+      redirect('usuario/test','refresh');
+        break;
+    case 'Usuario':
+     redirect('usuarioComun/test','refresh');
+        break;
+    case 'Entrenador':
+      redirect('entrenador/test','refresh');
+        break;
+    case 'Padre':
+       redirect('padre/test','refresh');
+        break;
 
-		}
-		else
-		{
-			redirect('usuario/index/2','refresh');
-		}
-	}
+}
+
+}
+
+	
 
 	public function logout()
 	{
 		$this->session->sess_destroy();
 		redirect('usuario/index/3','refresh');
 	}
+
+
+	public function subirfoto()
+	{
+		$data['idusuario']=$_POST['idusuario'];
+
+
+		$this->load->view('inc_head.php'); //archivos cabecera
+		$this->load->view('subirform',$data); //contenido
+		$this->load->view('inc_footer.php'); //archivos del footer
+
+	}
+	public function subir()
+	{
+		$idusuario=$_POST['idusuario'];
+		$nombrearchivo=$idusuario.".jpg";
+
+		//ruta donde se guardan los ficheros
+		$config['upload_path']="./uploads/usuarios/";
+		//configurar el nombre del archivo
+		$config['file_name']=$nombrearchivo;
+
+		//remplazar los archivos
+
+		$direccion="./uploads/usuarios/".$nombrearchivo;
+		unlink($direccion);
+
+		//tipos de archivos
+
+		$config['allowed_types']='jpg';	//'gif|jpg|png'
+		$this->load->library('upload',$config);
+
+		if (!$this->upload->do_upload()) {
+			//si  hay un error se para la vista
+			$data['error']=$this->upload->display_errors();
+		}
+		else {
+			$data['foto']=$nombrearchivo;
+			$lista=$this->usuario_model->modificarUsuario($idusuario,$data);
+			$this->upload->data();
+		}
+
+			redirect('','test');
+
+	}
+
+
+
 
 }

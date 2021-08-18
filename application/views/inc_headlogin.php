@@ -20,6 +20,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <link rel="stylesheet" href="<?php echo base_url();?>adminlte/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="<?php echo base_url();?>adminlte/dist/css/adminlte.min.css">
+
+
+
+
+
 </head>
-<body class="hold-transition sidebar-mini">
-<div class="wrapper">
