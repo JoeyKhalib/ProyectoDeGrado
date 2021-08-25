@@ -12,7 +12,7 @@ class Entrenador_model extends CI_Model {
 		return $this->db->get();
 	}
 
-		public function modificarUsuario($idusuario,$data)
+		public function modificarEntrenador($idusuario,$data)
 	{
 		
 		$this->db->where('idusuario',$idusuario);

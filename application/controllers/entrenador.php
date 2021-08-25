@@ -8,10 +8,15 @@ class Entrenador extends CI_Controller {
 public function test()
 	{
 		//en este caso test es nuestra ventana principal
-		
+		$lista=$this->usuario_model->lista();
+		$data['usuarios']=$lista;
+
+
+		$id=$_SESSION['idusuario'];
+		$data2['infousuario']=$this->usuario_model->recuperarUsuario($id);
 
 		$this->load->view('inc_head.php'); 
-		$this->load->view('inc_menuEntrenador.php'); 
+		$this->load->view('inc_menuEntrenador.php',$data2); 
 		$this->load->view('ent_perfil.php');
 		$this->load->view('inc_footer.php'); //archivos del footer
 	}
@@ -55,11 +60,12 @@ public function imprimir()
 
 	public function modificar()
 	{
-		$idusuario=$_POST['idusuario'];
+		$idusuario=$id=$_SESSION['idusuario'];
 		$data['infousuario']=$this->usuario_model->recuperarUsuario($idusuario);
 
-		$this->load->view('inc_head.php'); //archivos cabecera
-		$this->load->view('est_modificarModal',$data); //contenido
+		$this->load->view('inc_head.php');
+		$this->load->view('inc_menuEntrenador.php');
+		$this->load->view('ent_modificar',$data); //contenido
 		$this->load->view('inc_footer.php'); //archivos del footer
 
 	}
@@ -72,12 +78,9 @@ public function imprimir()
 		$data['apellidoMaterno']=$_POST['apellidoMaterno'];
 		$data['ci']=$_POST['ci'];
 		$data['telefono']=$_POST['telefono'];
-		$data['fechaNacimiento']=$_POST['fechaNacimiento'];
 		$data['email']=$_POST['email'];
-		$data['rol']=$_POST['rol'];
-		$data['nombreUsuario']=$_POST['nombreUsuario'];
 		$data['password']=$_POST['password'];
-		$lista=$this->usuario_model->modificarEntrenador($idusuario,$data);
+		$lista=$this->entrenador_model->modificarEntrenador($idusuario,$data);
 		redirect('','refresh');
 	}
 	

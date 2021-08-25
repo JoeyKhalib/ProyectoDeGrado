@@ -1,14 +1,8 @@
- <nav class="main-header navbar navbar-expand  navbar-white navbar-light"  style="background:  #033FFF">
+ <nav class="main-header navbar navbar-expand  navbar-dark navbar-light" >
     <!-- Left navbar links -->
     <ul class="navbar-nav">
       <li class="nav-item">
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
-      </li>
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="<?php echo base_url();?>adminlte/index3.html" class="nav-link font-weight-bold ">Home</a>
-      </li>
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="#" class="nav-link font-weight-bold ">Contacto</a>
       </li>
     </ul>
 
@@ -37,90 +31,9 @@
       </li>
 
       <!-- Messages Dropdown Menu -->
-      <li class="nav-item dropdown" >
-        <a class="nav-link" data-toggle="dropdown" href="#">
-          <i class="far fa-comments"></i>
-          <span class="badge badge-danger navbar-badge">3</span>
-        </a>
-        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-          <a href="#" class="dropdown-item">
-            <!-- Message Start -->
-            <div class="media">
-              <img src="<?php echo base_url();?>adminlte/dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
-              <div class="media-body">
-                <h3 class="dropdown-item-title">
-                  Brad Diesel
-                  <span class="float-right text-sm text-danger"><i class="fas fa-star"></i></span>
-                </h3>
-                <p class="text-sm">Call me whenever you can...</p>
-                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-              </div>
-            </div>
-            <!-- Message End -->
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <!-- Message Start -->
-            <div class="media">
-              <img src="../../dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
-              <div class="media-body">
-                <h3 class="dropdown-item-title">
-                  John Pierce
-                  <span class="float-right text-sm text-muted"><i class="fas fa-star"></i></span>
-                </h3>
-                <p class="text-sm">I got your message bro</p>
-                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-              </div>
-            </div>
-            <!-- Message End -->
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <!-- Message Start -->
-            <div class="media">
-              <img src="../../dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
-              <div class="media-body">
-                <h3 class="dropdown-item-title">
-                  Nora Silvester
-                  <span class="float-right text-sm text-warning"><i class="fas fa-star"></i></span>
-                </h3>
-                <p class="text-sm">The subject goes here</p>
-                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-              </div>
-            </div>
-            <!-- Message End -->
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
-        </div>
-      </li>
+    
       <!-- Notifications Dropdown Menu -->
-      <li class="nav-item dropdown">
-        <a class="nav-link" data-toggle="dropdown" href="#">
-          <i class="far fa-bell"></i>
-          <span class="badge badge-warning navbar-badge">15</span>
-        </a>
-        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-          <span class="dropdown-item dropdown-header">15 Notifications</span>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <i class="fas fa-envelope mr-2"></i> 4 new messages
-            <span class="float-right text-muted text-sm">3 mins</span>
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <i class="fas fa-users mr-2"></i> 8 friend requests
-            <span class="float-right text-muted text-sm">12 hours</span>
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <i class="fas fa-file mr-2"></i> 3 new reports
-            <span class="float-right text-muted text-sm">2 days</span>
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
-        </div>
-      </li>
+ 
       <li class="nav-item">
         <a class="nav-link" data-widget="fullscreen" href="#" role="button">
           <i class="fas fa-expand-arrows-alt"></i>
@@ -136,7 +49,7 @@
   <!-- /.navbar -->
 
   <!-- Main Sidebar Container -->
-  <aside class="main-sidebar sidebar-dark-primary elevation-4" style="background:  #033FFF">
+  <aside class="main-sidebar sidebar-dark-primary elevation-4" >
     <!-- Logo del ADMINTEMPLATE -->
     <a href="../../index3.html" class="brand-link">
       <img src="<?php echo base_url();?>adminlte/dist/img/SpeedAndGOAL.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
@@ -172,124 +85,57 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-          <li class="nav-item">
+ <li class="nav-item">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-users"></i>
+              <i class="nav-icon fas fa-user"></i>
               <p>
-                Usuarios
-                <i class="right fas fa-angle-left"></i>
+                Perfil
+                <i class="fas fa-angle-left right"></i>
               </p>
             </a>
-
-
-               
-       
-
             <ul class="nav nav-treeview">
-              <li class="nav-item">
+              <!--<li class="nav-item">
                 <?php 
-                     echo form_open_multipart('usuario/agregar');
+                     //echo form_open_multipart('usuario/test');
                   ?>
                   <button class="nav-link btn btn-primary-outline text-left">
                      <i class="far fa-circle nav-icon"></i>
-                     <p>Crear Usuario</p>
+                     <p>Visualizar</p>
+                  </button>
+                   <?php 
+                      //echo form_close();
+                      ?>    
+              </li>-->
+               <li class="nav-item">
+                <a href="<?php echo base_url();?>index.php/padre/test" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Visualizar</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <?php 
+                     echo form_open_multipart('usuario/logout');
+                  ?>
+                  <button class="nav-link btn btn-primary-outline text-left">
+                     <i class="far fa-circle nav-icon"></i>
+                     <p>Salir</p>
                   </button>
                    <?php 
                       echo form_close();
                       ?>    
               </li>
-              <li class="nav-item">
-                      <?php 
-                     echo form_open_multipart('usuario/usuarios');
-                  ?>
-                  <button class="nav-link btn btn-primary-outline text-left">
-                     <i class="far fa-circle nav-icon"></i>
-                     Lista de Usuarios
-                  </button>
-                   <?php 
-                      echo form_close();
-                      ?>   
-              </li>
-              <li class="nav-item">
-                  <?php 
-                     echo form_open_multipart('usuario/agregar');
-                  ?>
-                  <button class="nav-link btn btn-primary-outline text-left">
-                     <i class="far fa-circle nav-icon"></i>
-                     Impresion de Usuarios
-                  </button>
-                   <?php 
-                      echo form_close();
-                      ?>   
-              </li>
-            </ul>
+
+
+</ul>
           </li>
+
+
 
           <li class="nav-item">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-copy"></i>
+              <i class="nav-icon fas fa-child"></i>
               <p>
-                Layout Options
-                <i class="fas fa-angle-left right"></i>
-                <span class="badge badge-info right">6</span>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="../layout/top-nav.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Top Navigation</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="../layout/top-nav-sidebar.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Top Navigation + Sidebar</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="../layout/boxed.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Boxed</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="../layout/fixed-sidebar.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Fixed Sidebar</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="../layout/fixed-sidebar-custom.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Fixed Sidebar <small>+ Custom Area</small></p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="../layout/fixed-topnav.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Fixed Navbar</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="../layout/fixed-footer.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Fixed Footer</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="../layout/collapsed-sidebar.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Collapsed Sidebar</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-chart-pie"></i>
-              <p>
-                Charts
+                Rendimiento
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
@@ -297,123 +143,24 @@
               <li class="nav-item">
                 <a href="../charts/chartjs.html" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>ChartJS</p>
+                  <p>Asistencia</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="../charts/flot.html" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Flot</p>
+                  <p>Seguimiento Academico</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="../charts/inline.html" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Inline</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="../charts/uplot.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>uPlot</p>
+                  <p>Eventos</p>
                 </a>
               </li>
             </ul>
           </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-tree"></i>
-              <p>
-                UI Elements
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="../UI/general.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>General</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="../UI/icons.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Icons</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="../UI/buttons.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Buttons</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="../UI/sliders.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Sliders</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="../UI/modals.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Modals & Alerts</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="../UI/navbar.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Navbar & Tabs</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="../UI/timeline.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Timeline</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="../UI/ribbons.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Ribbons</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-edit"></i>
-              <p>
-                Forms
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="../forms/general.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>General Elements</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="../forms/advanced.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Advanced Elements</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="../forms/editors.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Editors</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="../forms/validation.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Validation</p>
-                </a>
-              </li>
-            </ul>
-          </li>
+          
 
 
 

@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Usuario extends CI_Controller {
+class Padre extends CI_Controller {
 
 
 
@@ -17,8 +17,8 @@ public function test()
 		$data2['infousuario']=$this->usuario_model->recuperarUsuario($id);
 
 		$this->load->view('inc_head.php'); 
-		$this->load->view('inc_menu.php'); 
-		$this->load->view('est_perfil',$data2); //contenido
+		$this->load->view('inc_menuPadre.php'); 
+		$this->load->view('pdr_perfil',$data2); //contenido
 		$this->load->view('inc_footer.php'); //archivos del footer
 	}
 
@@ -76,7 +76,7 @@ public function imprimir()
 		$data['infousuario']=$this->usuario_model->recuperarUsuario($idusuario);
 
 		$this->load->view('inc_head.php'); //archivos cabecera
-		$this->load->view('est_modificarPrin',$data); //contenido
+		$this->load->view('est_modificarModal',$data); //contenido
 		$this->load->view('inc_footer.php'); //archivos del footer
 
 	}
@@ -224,8 +224,8 @@ public function modificarbdDoH()
     case 'Administrador':
       redirect('usuario/test','refresh');
         break;
-    case 'Invitado':
-     redirect('invitado/test','refresh');
+    case 'Usuario':
+     redirect('usuarioComun/test','refresh');
         break;
     case 'Entrenador':
       redirect('entrenador/test','refresh');
@@ -293,7 +293,5 @@ public function modificarbdDoH()
 
 
 
-
-	
 
 }

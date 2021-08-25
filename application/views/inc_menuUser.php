@@ -1,4 +1,4 @@
- <nav class="main-header navbar navbar-expand  navbar-white navbar-light"  style="background:  #033FFF">
+ <nav class="main-header navbar navbar-expand  navbar-dark navbar-light" >
     <!-- Left navbar links -->
     <ul class="navbar-nav">
       <li class="nav-item">
@@ -136,7 +136,7 @@
   <!-- /.navbar -->
 
   <!-- Main Sidebar Container -->
-  <aside class="main-sidebar sidebar-dark-primary elevation-4" style="background:  #033FFF">
+  <aside class="main-sidebar sidebar-dark-primary elevation-4" >
     <!-- Logo del ADMINTEMPLATE -->
     <a href="../../index3.html" class="brand-link">
       <img src="<?php echo base_url();?>adminlte/dist/img/SpeedAndGOAL.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
@@ -174,216 +174,49 @@
                with font-awesome or any other icon font library -->
           <li class="nav-item">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-users"></i>
+              <i class="nav-icon fas fa-user"></i>
               <p>
-                Usuarios
-                <i class="right fas fa-angle-left"></i>
+                Perfil
+                <i class="fas fa-angle-left right"></i>
               </p>
             </a>
-
-
-               
-       
-
             <ul class="nav nav-treeview">
+
+              <li class="nav-item">
+                <a href="<?php echo base_url();?>index.php/invitado/test" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Visualizar</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="<?php echo base_url();?>index.php/invitado/modificar" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Modificar</p>
+                </a>
+              </li>
               <li class="nav-item">
                 <?php 
-                     echo form_open_multipart('usuario/agregar');
+                     echo form_open_multipart('entrenador/logout');
                   ?>
                   <button class="nav-link btn btn-primary-outline text-left">
                      <i class="far fa-circle nav-icon"></i>
-                     <p>Crear Usuario</p>
+                     <p>Salir</p>
                   </button>
                    <?php 
                       echo form_close();
                       ?>    
               </li>
-              <li class="nav-item">
-                      <?php 
-                     echo form_open_multipart('usuario/usuarios');
-                  ?>
-                  <button class="nav-link btn btn-primary-outline text-left">
-                     <i class="far fa-circle nav-icon"></i>
-                     Lista de Usuarios
-                  </button>
-                   <?php 
-                      echo form_close();
-                      ?>   
-              </li>
-              <li class="nav-item">
-                  <?php 
-                     echo form_open_multipart('usuario/agregar');
-                  ?>
-                  <button class="nav-link btn btn-primary-outline text-left">
-                     <i class="far fa-circle nav-icon"></i>
-                     Impresion de Usuarios
-                  </button>
-                   <?php 
-                      echo form_close();
-                      ?>   
-              </li>
-            </ul>
+
+
+</ul>
           </li>
 
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-copy"></i>
-              <p>
-                Layout Options
-                <i class="fas fa-angle-left right"></i>
-                <span class="badge badge-info right">6</span>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="../layout/top-nav.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Top Navigation</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="../layout/top-nav-sidebar.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Top Navigation + Sidebar</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="../layout/boxed.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Boxed</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="../layout/fixed-sidebar.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Fixed Sidebar</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="../layout/fixed-sidebar-custom.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Fixed Sidebar <small>+ Custom Area</small></p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="../layout/fixed-topnav.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Fixed Navbar</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="../layout/fixed-footer.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Fixed Footer</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="../layout/collapsed-sidebar.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Collapsed Sidebar</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-chart-pie"></i>
-              <p>
-                Charts
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="../charts/chartjs.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>ChartJS</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="../charts/flot.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Flot</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="../charts/inline.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Inline</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="../charts/uplot.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>uPlot</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-tree"></i>
-              <p>
-                UI Elements
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="../UI/general.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>General</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="../UI/icons.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Icons</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="../UI/buttons.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Buttons</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="../UI/sliders.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Sliders</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="../UI/modals.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Modals & Alerts</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="../UI/navbar.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Navbar & Tabs</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="../UI/timeline.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Timeline</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="../UI/ribbons.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Ribbons</p>
-                </a>
-              </li>
-            </ul>
-          </li>
+
           <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-edit"></i>
               <p>
-                Forms
+                Reservas de Canchas
                 <i class="fas fa-angle-left right"></i>
               </p>
             </a>
@@ -391,27 +224,17 @@
               <li class="nav-item">
                 <a href="../forms/general.html" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>General Elements</p>
+                  <p>Solicitar Reserva</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="../forms/advanced.html" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Advanced Elements</p>
+                  <p>Mis Reservas</p>
                 </a>
               </li>
-              <li class="nav-item">
-                <a href="../forms/editors.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Editors</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="../forms/validation.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Validation</p>
-                </a>
-              </li>
+
+
             </ul>
           </li>
 

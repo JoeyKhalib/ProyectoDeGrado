@@ -5,10 +5,10 @@
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="<?php echo base_url();?>adminlte/index3.html" class="nav-link font-weight-bold ">Home</a>
+
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="#" class="nav-link font-weight-bold ">Contacto</a>
+
       </li>
     </ul>
 
@@ -37,71 +37,15 @@
       </li>
 
       <!-- Messages Dropdown Menu -->
-      <li class="nav-item dropdown" >
-        <a class="nav-link" data-toggle="dropdown" href="#">
-          <i class="far fa-comments"></i>
-          <span class="badge badge-danger navbar-badge">3</span>
-        </a>
-        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-          <a href="#" class="dropdown-item">
-            <!-- Message Start -->
-            <div class="media">
-              <img src="<?php echo base_url();?>adminlte/dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
-              <div class="media-body">
-                <h3 class="dropdown-item-title">
-                  Brad Diesel
-                  <span class="float-right text-sm text-danger"><i class="fas fa-star"></i></span>
-                </h3>
-                <p class="text-sm">Call me whenever you can...</p>
-                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-              </div>
-            </div>
-            <!-- Message End -->
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <!-- Message Start -->
-            <div class="media">
-              <img src="../../dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
-              <div class="media-body">
-                <h3 class="dropdown-item-title">
-                  John Pierce
-                  <span class="float-right text-sm text-muted"><i class="fas fa-star"></i></span>
-                </h3>
-                <p class="text-sm">I got your message bro</p>
-                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-              </div>
-            </div>
-            <!-- Message End -->
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <!-- Message Start -->
-            <div class="media">
-              <img src="../../dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
-              <div class="media-body">
-                <h3 class="dropdown-item-title">
-                  Nora Silvester
-                  <span class="float-right text-sm text-warning"><i class="fas fa-star"></i></span>
-                </h3>
-                <p class="text-sm">The subject goes here</p>
-                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-              </div>
-            </div>
-            <!-- Message End -->
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
-        </div>
-      </li>
+     
       <!-- Notifications Dropdown Menu -->
-      <li class="nav-item dropdown">
+      <!--<li class="nav-item dropdown">
         <a class="nav-link" data-toggle="dropdown" href="#">
           <i class="far fa-bell"></i>
           <span class="badge badge-warning navbar-badge">15</span>
         </a>
     
-      </li>
+      </li>-->
       <li class="nav-item">
         <a class="nav-link" data-widget="fullscreen" href="#" role="button">
           <i class="fas fa-expand-arrows-alt"></i>
@@ -162,17 +106,23 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
-              <li class="nav-item">
+              <!--<li class="nav-item">
                 <?php 
-                     echo form_open_multipart('usuario/test');
+                     //echo form_open_multipart('usuario/test');
                   ?>
                   <button class="nav-link btn btn-primary-outline text-left">
                      <i class="far fa-circle nav-icon"></i>
                      <p>Visualizar</p>
                   </button>
                    <?php 
-                      echo form_close();
+                      //echo form_close();
                       ?>    
+              </li>-->
+               <li class="nav-item">
+                <a href="<?php echo base_url();?>index.php/usuario/test" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Visualizar</p>
+                </a>
               </li>
               <li class="nav-item">
                 <?php 
@@ -213,41 +163,24 @@
        
 
             <ul class="nav nav-treeview">
+
               <li class="nav-item">
-                <?php 
-                     echo form_open_multipart('usuario/agregar');
-                  ?>
-                  <button class="nav-link btn btn-primary-outline text-left">
-                     <i class="far fa-circle nav-icon"></i>
-                     <p>Crear Usuario</p>
-                  </button>
-                   <?php 
-                      echo form_close();
-                      ?>    
+                <a href="<?php echo base_url();?>index.php/usuario/agregar" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Crear Usuario</p>
+                </a>
               </li>
               <li class="nav-item">
-                      <?php 
-                     echo form_open_multipart('usuario/usuarios');
-                  ?>
-                  <button class="nav-link btn btn-primary-outline text-left">
-                     <i class="far fa-circle nav-icon"></i>
-                     Lista de Usuarios
-                  </button>
-                   <?php 
-                      echo form_close();
-                      ?>   
+                <a href="<?php echo base_url();?>index.php/usuario/usuarios" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Lista de Usuarios</p>
+                </a>
               </li>
-              <li class="nav-item">
-                  <?php 
-                     echo form_open_multipart('usuario/imprimir');
-                  ?>
-                  <button class="nav-link btn btn-primary-outline text-left">
-                     <i class="far fa-circle nav-icon"></i>
-                     Impresion de Usuarios
-                  </button>
-                   <?php 
-                      echo form_close();
-                      ?>   
+                 <li class="nav-item">
+                <a href="<?php echo base_url();?>index.php/usuario/imprimir" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Impresion de Usuarios</p>
+                </a>
               </li>
             </ul>
           </li>
@@ -259,51 +192,86 @@
 
           <li class="nav-item">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-file"></i>
+              <i class="nav-icon fas fa-futbol"></i>
               <p>
                 Jugadores
                 <i class="fas fa-angle-left right"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
+              
               <li class="nav-item">
-                <a href="../layout/top-nav.html" class="nav-link">
+                <a href="<?php echo base_url();?>index.php/jugador/opciones" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Top Navigation</p>
+                  <p>Gestionar Jugador</p>
                 </a>
               </li>
-              <li class="nav-item">
-                <a href="../layout/top-nav-sidebar.html" class="nav-link">
+               <li class="nav-item">
+                <a href="<?php echo base_url();?>index.php/jugador/imprimirJugadores" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Top Navigation + Sidebar</p>
+                  <p>Lista de Jugadores</p>
                 </a>
               </li>
-              <li class="nav-item">
-                <a href="../layout/boxed.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Boxed</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="../layout/fixed-sidebar.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Fixed Sidebar</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="../layout/fixed-sidebar-custom.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Fixed Sidebar <small>+ Custom Area</small></p>
-                </a>
-              </li>
- 
-
-
             </ul>
           </li>
+
+           <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-edit"></i>
+              <p>
+                Cursos
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="<?php echo base_url();?>index.php/cursos/agregarC" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Crear de Cursos</p>
+                </a>
+              </li>
+   
+              <li class="nav-item">
+                <a href="<?php echo base_url();?>index.php/cursos/listaCursos" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Listado de Cursos</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+
+
+
+<li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon far fa-calendar-check"></i>
+              <p>
+                Eventos
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="<?php echo base_url();?>index.php/evento/opciones" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Crear Eventos</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="<?php echo base_url();?>index.php/evento/listaEventos" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Lista de Eventos</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+
+
+
+
           <li class="nav-item">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-chart-pie"></i>
+              <i class="nav-icon fas fa-tshirt"></i>
               <p>
                 Material Deportivo
                 <i class="right fas fa-angle-left"></i>
@@ -313,32 +281,22 @@
               <li class="nav-item">
                 <a href="../charts/chartjs.html" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>ChartJS</p>
+                  <p>Crear Material</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="../charts/flot.html" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Flot</p>
+                  <p>Lista de Material</p>
                 </a>
               </li>
-              <li class="nav-item">
-                <a href="../charts/inline.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Inline</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="../charts/uplot.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>uPlot</p>
-                </a>
-              </li>
+
             </ul>
           </li>
+
           <li class="nav-item">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-tree"></i>
+              <i class="nav-icon fas fa-id-card"></i>
               <p>
                Canchas de Futbol
                 <i class="fas fa-angle-left right"></i>
