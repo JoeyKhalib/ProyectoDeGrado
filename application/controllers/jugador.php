@@ -19,14 +19,19 @@ public function opciones()
 
 	public function agregarJug()
 	{
+		$lista=$this->padre_model->recuperarPadres();
+		$data['padres']=$lista;
+
+
 		$this->load->view('inc_head.php');//archivos cabecera
 		$this->load->view('inc_menu.php');
-		$this->load->view('jug_registrar'); //contenido
+		$this->load->view('jug_registrar',$data); //contenido
 		$this->load->view('inc_footer.php'); //archivos del footer
 	}
 
 	public function agregarJugador()
 	{
+		$registro=$_SESSION['idusuario'];
 		$data['nombres']=$_POST['nombres'];
 		$data['apellidoPaterno']=$_POST['apellidoPaterno'];
 		$data['apellidoMaterno']=$_POST['apellidoMaterno'];
@@ -34,8 +39,9 @@ public function opciones()
 		$data['telefono']=$_POST['telefono'];
 		$data['direc']=$_POST['direc'];
 		$data['sexo']=$_POST['sexo'];
-		$data['edad']=$_POST['edad'];
 		$data['fechaNacimiento']=$_POST['fechaNacimiento'];
+		$data['idRegistro']=$registro;
+		$data['usuario_idusuario']=$_POST['padre'];
 		$lista=$this->jugador_model->agregarJugador($data);
 
 		redirect('','refresh');
@@ -76,7 +82,6 @@ public function opciones()
 		$data['apellidoMaterno']=$_POST['apellidoMaterno'];
 		$data['ci']=$_POST['ci'];
 		$data['telefono']=$_POST['telefono'];
-		$data['edad']=$_POST['edad'];
 		$data['direc']=$_POST['direc'];
 		$data['fechaNacimiento']=$_POST['fechaNacimiento'];
 		$lista=$this->jugador_model->modificarJugador($idjugador,$data);

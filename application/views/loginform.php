@@ -70,21 +70,12 @@ echo form_open_multipart('usuario/validarusuario');
             </div>
           </div>
         </div>
-        <div class="row ">
-          <div class="col-8 ">
-            <div class="icheck-primary">
-              <input type="checkbox" id="remember">
-              <label for="remember">
-                Validar Cuenta
-              </label>
-            </div>
+        
+          <div class="row justify-content-center justify-content-md-start">
+            <button type="submit" class="btn btn-dark btn-block ">INGRESAR</button>
           </div>
           <!-- /.col -->
-          <div class="col-4">
-            <button type="submit" class="btn btn-dark btn-block ">Ingresar</button>
-          </div>
-          <!-- /.col -->
-        </div>
+
      
 
 <?php 
@@ -104,12 +95,7 @@ echo form_close();
       </div> -->
       <!-- /.social-auth-links -->
 
-      <p class="mb-1 font-weight-bold">
-        <a href="forgot-password.html">¿Perdiste tu contraseña?</a>
-      </p>
-      <p class="mb-0 font-weight-bold">
-        <a href="register.html" class="text-center">¿No tienes cuenta? Registrate</a>
-      </p>
+
     </div>
     <!-- /.login-card-body -->
   </div>

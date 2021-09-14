@@ -13,102 +13,52 @@
             </ol>
           </div>
         </div>
-      </div><!-- /.container-fluid -->
+      </div>
     </section>
 
     <!-- Main content -->
     <section class="content">
-      <div class="container-fluid">
+
+
+
+        <!-- row -->
         <div class="row">
           <div class="col-12">
-
-
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Modificaciones,Eliminacion de los usuarios</h3>
+                <h3 class="card-title">Lista de usuarios habilitados</h3>
+
+                <div class="card-tools">
+
+                </div>
               </div>
-
-
-
-                 
-
-
               <!-- /.card-header -->
-              <div class="card-body">
-                <table id="example1" class="table table-bordered table-striped">
+              <div class="card-body table-responsive p-0">
+                <table class="table table-hover text-nowrap table-bordered">
                   <thead>
-                  <tr>
-                    <th>#</th>
-                    <th>Nombre Completo</th>
-                    <th>Fecha de Nacimiento</th>
-                    <th>Email</th>
-                    <th>Rol</th>
-                    <th>Telefono</th>
-                    <th>Modificar</th>
-                    <th>Eliminar</th>
-                    <th>Habilitar</th>
-                    <th>Perfil</th>
-                    <th>Subir</th>
-                  </tr>
+                    <tr class="bg-success">
+                      <th>ID</th>
+                      <th>Perfil</th>
+                      <th>Nombre Completo</th>
+                      <th>Cedula de Identidad</th>
+                      <th>Fecha de Nacimiento</th>
+                      <th>Telefono</th>
+                      <th>Rol</th>
+                      <th>Acciones</th>
+                    </tr>
                   </thead>
                   <tbody>
-
 <?php 
 $indice=1;
 foreach ($usuarios->result() as $row) {
  ?>
 
 
-                  <tr>
-                    <td><?php echo $indice;?></td>
-                    <td><?php echo $row->nombres;?> <?php echo $row->apellidoPaterno;?> <?php echo $row->apellidoMaterno;?></td>
-                    <td><?php echo formatearFecha($row->fechaNacimiento);?></td>
-                    <td><?php echo $row->email;?></td>
-                    <td><?php echo $row->rol;?></td>
-                    <td><?php echo $row->telefono;?></td>
-                    <td>
-        <?php 
-          echo form_open_multipart('usuario/modificar');
-        ?>
-        <input type="hidden" name="idusuario" value="<?php echo $row->idusuario;?>">
-        <button type="submit" class="btn btn-primary btn-xs">Modificar</button>         
-    <?php 
-          echo form_close();
-         ?>
-      </td>
-      <td>
-        <?php 
-          echo form_open_multipart('usuario/eliminarbd');
-        ?>
-        <input type="hidden" name="idusuario" value="<?php echo $row->idusuario;?>">
-        <button type="submit" class="btn btn-danger btn-xs">Eliminar</button>
-    <?php 
-          echo form_close();
-         ?>
-      </td>
-                  <td>
-                       <?php     
-          echo form_open_multipart('usuario/habilitar');
-        ?>
-                    <input type="hidden" name="idusuario" value="<?php echo $row->idusuario;?>">
-                    <button type="submit" class="btn btn-primary btn-xs" >Habilitar</button>
-                  
-                <?php 
-                        echo form_close();
-                       ?>
 
-                       <?php     
-          echo form_open_multipart('usuario/desabilitar');
-        ?>
-                        <input type="hidden" name="idusuario" value="<?php echo $row->idusuario;?>">
-                        <button type="submit" class="btn btn-primary btn-xs" >Desabilitar</button>
-                        <?php 
-                        echo form_close();
-                       ?>
-                 </td>
-
-                  <td>
-
+                    <tr>
+                      <td><?php echo $indice;?></td>
+                      <td>
+                        
                     <?php
                         $foto=$row->foto;
                         if ($foto=="") {
@@ -126,22 +76,71 @@ foreach ($usuarios->result() as $row) {
 
 
                       ?> 
-                    </td>
 
 
-                  <td>
-                      <?php 
-          echo form_open_multipart('usuario/subirfoto');
+                      </td>
+                      <td><?php echo $row->nombres;?> <?php echo $row->apellidoPaterno;?> <?php echo $row->apellidoMaterno;?></td>
+                      <td><?php echo $row->ci;?></td>
+                      <td><?php echo formatearFecha($row->fechaNacimiento);?></td>
+                      <td><?php echo $row->telefono;?></td>
+                      <td><?php echo $row->nombreRol;?></td>
+                      <td class="project-actions text-right">
+ <?php 
+          echo form_open_multipart('usuario/modificar');
         ?>
         <input type="hidden" name="idusuario" value="<?php echo $row->idusuario;?>">
-        <button type="submit" class="btn btn-primary btn-xs">Subir</button>
+        <button type="submit" class="btn btn-info btn-sm btn-primary ">
+ <i class="fas fa-pencil-alt">
+                              </i>
+
+        Modificar</button>         
+    <?php 
+          echo form_close();
+         ?>
+
+
+
+
+                        <?php     
+                         echo form_open_multipart('usuario/modificarbdDoH');
+                       ?>
+                        <input type="hidden" name="idusuario" value="<?php echo $row->idusuario;?>">
+                        <input type="hidden" name="desabilitar" value="<?php echo '0';?>">
+                        
+                        <button type="submit" class="btn btn-danger btn-sm btn-primary ">
+<i class="fas fa-trash">
+                              </i>
+                         Desabilitar</button>
+                        <?php 
+                        echo form_close();
+                       ?>
+
+
+
+
+
+
+                        <?php 
+                echo form_open_multipart('usuario/subirfoto');
+                 ?>
+               <input type="hidden" name="idusuario" value="<?php echo $row->idusuario;?>">
+               <button type="submit" class="btn btn-succes btn-sm btn-primary ">
+ <i class="far fa-image">
+                              </i>
+
+               Subir</button>
                       <?php 
                         echo form_close();
                        ?>
 
-                 </td>
 
-                  </tr>
+
+                      </td>
+                    </tr>
+
+
+
+
 
 <?php
  $indice++;
@@ -149,36 +148,16 @@ foreach ($usuarios->result() as $row) {
  ?>
 
 
-
-
-           
                   </tbody>
-                  <tfoot>
-                  <tr>
-                    <th>#</th>
-                    <th>Nombre Completo</th>
-                    <th>Fecha de Nacimiento</th>
-                    <th>Email</th>
-                    <th>Rol</th>
-                    <th>Telefono</th>
-                    <th>Modificar</th>
-                    <th>Eliminar</th>
-                    <th>Habilitar</th>
-                    <th>Perfil</th>
-                    <th>Subir</th>
-                  </tr>
-                  </tfoot>
                 </table>
+
               </div>
               <!-- /.card-body -->
             </div>
             <!-- /.card -->
           </div>
-          <!-- /.col -->
         </div>
-        <!-- /.row -->
-      </div>
-      <!-- /.container-fluid -->
+
     </section>
     <!-- /.content -->
   </div>

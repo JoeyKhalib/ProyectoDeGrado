@@ -5,12 +5,6 @@
           <div class="col-sm-8">
             <h1>Bienvenido/a <font size="4"> - Usted a ingresado al sistema de nuestra escuela de futbol.</font></h1>
           </div>
-          <div class="col-sm-4">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">User Profile</li>
-            </ol>
-          </div>
         </div>
       </div><!-- /.container-fluid -->
     </section>
@@ -55,7 +49,12 @@ foreach ($infousuario->result() as $row)
 
                 <h3 class="profile-username text-center"><?php echo $row->nombres;?> <?php echo $row->apellidoPaterno;?> <?php echo $row->apellidoMaterno;?></h3>
 
-                <p class="text-muted text-center"><?php echo $row->rol;?></p>
+
+
+                <p class="text-muted text-center"><?php echo $row->nombreRol;?></p>
+
+    
+
 
 
   <?php 
@@ -96,9 +95,9 @@ foreach ($infousuario->result() as $row)
 
                 <hr>
 
-                <strong><i class="fas fa-map-marker-alt mr-1"></i> localidad</strong>
+               <!-- <strong><i class="fas fa-map-marker-alt mr-1"></i> localidad</strong>
 
-                <p class="text-muted"><?php echo $row->nacionalidad;?></p>
+                <p class="text-muted"><?php echo $row->nacionalidad;?></p>-->
 
 
                 <hr>

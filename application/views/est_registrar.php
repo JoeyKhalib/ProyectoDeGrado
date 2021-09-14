@@ -36,13 +36,22 @@
 
   <div class="form-group">
     <label for="rol">Seleccione el Rol</label>
+
     <select class="form-control" name="rol">
-      <option>Invitado</option>
-      <option>Administrador</option>
-      <option>Entrenador</option>
-      <option>Padre</option>
+<?php 
+$indice=1;
+foreach ($rol->result() as $row) {
+ ?>
+      <option value="<?php echo $indice;?>"><?php echo $row->nombreRol;?></option>
+  <?php
+ $indice++;
+}
+ ?>
     </select>
   </div>
+
+
+
 
 <div class="form-row">
     <div class="col">

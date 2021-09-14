@@ -3,7 +3,21 @@
 <div class="container">
   <div class="row">
     <div class="col-md-12">
-
+ <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>Jugadores</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#"></a></li>
+              <li class="breadcrumb-item active"></li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </section>
 
 <div class="card">
               <div class="card-header">
@@ -12,14 +26,18 @@
               <!-- /.card-header -->
               <div class="card-body">
                 <table id="example2" class="table table-bordered table-hover">
-                  <thead>
+                  <thead class="bg-success">
+
+
+
+
                   <tr>
                     <th>#</th>
                     <th>Nombre Completo</th>
                     <th>Cedula de Identidad</th>
-                    <th>Edad</th>
                     <th>Telefono</th>
                     <th>Direccion</th>
+                    <th>Acciones</th>
                   </tr>
                   </thead>
                   <tbody>
@@ -35,11 +53,10 @@ foreach ($jugadores->result() as $row) {
                     <td><?php echo $indice;?></td>
                     <td><?php echo $row->nombres;?> <?php echo $row->apellidoPaterno;?> <?php echo $row->apellidoMaterno;?></td>
                     <td><?php echo $row->ci;?></td>
-                     <td><?php echo $row->edad;?></td>
                     <td><?php echo $row->telefono;?></td>
                     <td><?php echo $row->direc;?></td>
                      
-                     <td class="project-actions text-right">
+                     <td class="project-actions text-right ">
 
 
 
@@ -67,9 +84,10 @@ foreach ($jugadores->result() as $row) {
          ?>
 
  <?php     
-          echo form_open_multipart('jugador/desabilitarJug');
+          echo form_open_multipart('jugador/modificarJugDoH');
         ?>
         <input type="hidden" name="idjugador" value="<?php echo $row->idjugador;?>">
+        <input type="hidden" name="desabilitar" value="<?php echo '0';?>">
                           <button class="btn btn-danger btn-sm" href="#" type="submit" >
                               <i class="fas fa-trash">
                               </i>
@@ -87,14 +105,14 @@ foreach ($jugadores->result() as $row) {
 }
  ?>
                   </tbody>
-                  <tfoot>
+                  <tfoot class="bg-success">
                   <tr>
                     <th>#</th>
                     <th>Nombre Completo</th>
                     <th>Cedula de Identidad</th>
-                    <th>Edad</th>
                     <th>Telefono</th>
                     <th>Direccion</th>
+                    <th>Acciones</th>
                   </tr>       
                   </tfoot>
                        </table>
@@ -107,9 +125,6 @@ foreach ($jugadores->result() as $row) {
               </div>
               </div>
               
-
-
-
 
 
 

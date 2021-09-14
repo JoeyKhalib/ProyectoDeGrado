@@ -34,4 +34,13 @@ $cIncial=$ci;
 $conta=$nombresInicial.$apellidoPaternoInicial.$apellidoMaternoInicial.$cIncial;
 return $conta;
 }
+
+function fechaActual()
+{
+	$now = date('Y-m-d H:i:s');
+return $now;
+}
+
+
+
  ?>

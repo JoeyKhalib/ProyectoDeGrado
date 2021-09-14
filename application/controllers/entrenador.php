@@ -11,12 +11,13 @@ public function test()
 		$lista=$this->usuario_model->lista();
 		$data['usuarios']=$lista;
 
-
-		$id=$_SESSION['idusuario'];
-		$data2['infousuario']=$this->usuario_model->recuperarUsuario($id);
+		$rol=$_SESSION['rol_idrol'];
+		//$id=$_SESSION['idusuario'];
+		//$data2['infousuario']=$this->usuario_model->recuperarUsuario($id);
+		$data3['infousuario']=$this->usuario_model->recuperarRol($rol);
 
 		$this->load->view('inc_head.php'); 
-		$this->load->view('inc_menuEntrenador.php',$data2); 
+		$this->load->view('inc_menuEntrenador.php',$data3); 
 		$this->load->view('ent_perfil.php');
 		$this->load->view('inc_footer.php'); //archivos del footer
 	}

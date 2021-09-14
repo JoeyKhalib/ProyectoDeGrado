@@ -49,7 +49,9 @@ foreach ($infousuario->result() as $row)
 
                 <h3 class="profile-username text-center"><?php echo $row->nombres;?> <?php echo $row->apellidoPaterno;?> <?php echo $row->apellidoMaterno;?></h3>
 
-                <p class="text-muted text-center"><?php echo $row->rol;?></p>
+
+                <p class="text-muted text-center"><?php echo $row->nombreRol;?></p>
+
 
 
   <?php 
@@ -89,9 +91,7 @@ foreach ($infousuario->result() as $row)
 
                 <hr>
 
-                <strong><i class="fas fa-map-marker-alt mr-1"></i> localidad</strong>
-
-                <p class="text-muted"><?php echo $row->nacionalidad;?></p>
+               
 
 
                  <!--<strong><i class="fas fa-pencil-alt mr-1"></i> Carnet</strong>

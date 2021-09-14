@@ -44,7 +44,6 @@
                     <th>Cedula De Identidad</th>
                     <th>Telefono</th>
                     <th>Direccion</th>
-                    <th>Edad</th>
                     <th>Fecha de Nacimiento</th>
 
                   </tr>
@@ -63,7 +62,6 @@ foreach ($jugadores->result() as $row) {
                      <td><?php echo $row->ci;?></td>
                     <td><?php echo $row->telefono;?></td>
                     <td><?php echo $row->direc;?></td>
-                    <td><?php echo $row->edad;?></td>
                     <td><?php echo $row->fechaNacimiento;?></td>
                   </tr>
 
@@ -84,7 +82,6 @@ foreach ($jugadores->result() as $row) {
                     <th>Cedula De Identidad</th>
                     <th>Telefono</th>
                     <th>Direccion</th>
-                    <th>Edad</th>
                     <th>Fecha de Nacimiento</th>
 
                   </tr>

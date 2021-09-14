@@ -10,10 +10,25 @@ class Usuario_model extends CI_Model {
 		$this->db->from('usuario');
 		$this->db->where('estado','1');
 		return $this->db->get();
-
-
 	}
 
+	public function roles()
+	{
+		$this->db->select('*');
+		$this->db->from('rol');
+		return $this->db->get();
+	}
+
+	public function listaconRoles()
+	{
+		$this->db->select('*');
+		$this->db->from('usuario U');
+		$this->db->join('rol R','R.idrol=U.rol_idrol');
+		$this->db->where('estado','1');
+		return $this->db->get();
+	}
+
+	
 	public function recuperarUsuario($idusuario)
 	{
 		$this->db->select('*');
@@ -21,6 +36,19 @@ class Usuario_model extends CI_Model {
 		$this->db->where('idusuario',$idusuario);
 		return $this->db->get();
 	}
+
+	public function recuperarRol($rol,$idusuario)
+	{
+		$this->db->select('*');
+		$this->db->from('usuario U');
+		$this->db->join('rol R','R.idrol=U.rol_idrol');
+		$this->db->where('idusuario',$idusuario);
+		$this->db->where('U.rol_idrol',$rol);
+		$this->db->where('estado','1');
+		return $this->db->get();
+	}
+
+
 	public function modificarUsuario($idusuario,$data)
 	{
 		
@@ -59,6 +87,10 @@ public function eliminarUsuariol($idusuario)
 //		$query="SELECT * FROM personas WHERE login='".$login."' AND password='".$password."'"
 //		return $this->db->query($query);
 	
+
+
+
+
 
 
 

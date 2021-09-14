@@ -22,10 +22,7 @@
                     <label for="">Nombres</label>
                     <input type="text" class="form-control" name="nombres" placeholder="Ingrese su nombre">
                   </div>
-                  <div class="col">
-                    <label for="">Edad</label>
-                    <input type="number" class="form-control" name="edad" placeholder="Ingrese su edad">
-                  </div>
+
  </div>
 
 <br>
@@ -86,7 +83,21 @@
                     <input type="date" class="form-control" name="fechaNacimiento" placeholder="Fecha de Nacimiento">
                   </div>
 
+<div class="form-group">
+    <label for="padre">Seleccione Padre o Tutor</label>
 
+    <select class="form-control" name="padre">
+<?php 
+$indice=1;
+foreach ($padres->result() as $row) {
+ ?>
+      <option value="<?php echo $row->idusuario;?>"><?php echo $row->nombres;?> <?php echo $row->apellidoPaterno;?> <?php echo $row->apellidoMaterno;?></option>
+  <?php
+ $indice++;
+}
+ ?>
+    </select>
+  </div>
                   
 
                 <div class="card-footer">

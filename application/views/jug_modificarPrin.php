@@ -45,10 +45,7 @@ foreach ($infojugador->result() as $row)
     </div>
   </div>
              
-<div class="form-group">
-       <label for="">Edad</label>
-      <input type="tel" class="form-control" name="edad" value="<?php echo $row->edad;?>">
-    </div>
+
 
 
             <div class="form-group">
