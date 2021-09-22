@@ -12,6 +12,15 @@ class Usuario_model extends CI_Model {
 		return $this->db->get();
 	}
 
+	public function listaEntrenadores()
+	{
+		$this->db->select('*');
+		$this->db->from('usuario U');
+		$this->db->join('rol R','R.idrol=U.rol_idrol');
+		$this->db->where('R.nombreRol','Entrenador');
+		return $this->db->get();
+	}
+
 	public function roles()
 	{
 		$this->db->select('*');
@@ -48,6 +57,16 @@ class Usuario_model extends CI_Model {
 		return $this->db->get();
 	}
 
+	public function recuperarEventos($idusuario)
+	{
+		$this->db->distinct('U.idusuario');
+		$this->db->select('*');
+		$this->db->from('usuario U');
+		$this->db->join('rol R','U.rol_idrol=R.idrol');
+		$this->db->join('evento E','E.rol_idrol=U.rol_idrol','E.rol_idrol=R.idrol');
+		$this->db->where('U.idusuario',$idusuario);
+		return $this->db->get();
+	}
 
 	public function modificarUsuario($idusuario,$data)
 	{
@@ -77,8 +96,8 @@ class Usuario_model extends CI_Model {
 
 
 		return $this->db->get();
-}
-public function eliminarUsuariol($idusuario)
+	}
+	public function eliminarUsuariol($idusuario)
 		{
 	    $this->db->where('idusuario',$idusuario);
 		$this->db->update('usuario',$data);

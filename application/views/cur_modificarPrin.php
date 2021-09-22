@@ -1,3 +1,4 @@
+<div class="content-wrapper">
 <div class="container">
   <div class="row">
     <div class="col-md-12">
@@ -10,8 +11,8 @@ foreach ($infocurso->result() as $row)
 
 <input type="hidden" name="idcursos" value="<?php echo $row->idcursos;?>">
 
-
-<div class="card card-primary">
+<br>
+<div class="card card-white">
               <div class="card-header">
                 <h3 class="card-title">MODIFICACION DE CURSOS</h3>
               </div>
@@ -69,7 +70,7 @@ foreach ($infocurso->result() as $row)
 
 
                 <div class="card-footer">
-                  <button type="submit" class="btn btn-primary">Modificar</button>
+                  <button type="submit" class="btn btn-info">Modificar</button>
              
                 </div>
             </div>
@@ -81,4 +82,5 @@ echo form_close();
 
      </div>
   </div>
+</div>
 </div>

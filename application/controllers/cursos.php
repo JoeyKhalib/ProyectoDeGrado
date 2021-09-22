@@ -19,9 +19,25 @@ public function opciones()
 
 	public function agregarC()
 	{
+		$lista=$this->curso_model->categorias();
+		$data['categorias']=$lista;
+
+
 		$this->load->view('inc_head.php');//archivos cabecera
 		$this->load->view('inc_menu.php');
-		$this->load->view('cur_registrar'); //contenido
+		$this->load->view('cur_registrar',$data); //contenido
+		$this->load->view('inc_footer.php'); //archivos del footer
+	}
+
+	public function agregarCEntr()
+	{
+		$lista=$this->curso_model->categorias();
+		$data['categorias']=$lista;
+
+
+		$this->load->view('inc_head.php');//archivos cabecera
+		$this->load->view('inc_menuEntrenador.php');
+		$this->load->view('cur_registrar',$data); //contenido
 		$this->load->view('inc_footer.php'); //archivos del footer
 	}
 
@@ -29,6 +45,7 @@ public function opciones()
 
 	public function agregarCurso()
 	{
+		$registro=$_SESSION['idusuario'];
 		$resultado=$_POST['inicial'] .'-'. $_POST['final'];
 		$data['nombreCurso']=$_POST['nombreCurso'];
 		$data['horaIngreso']=$_POST['horaIngreso'];
@@ -38,9 +55,16 @@ public function opciones()
 		$data['categoria']=$_POST['categoria'];
 		$data['rango']=$resultado;
 		$data['descripcion']=$_POST['descripcion'];
+		$data['idRegistro']=$registro;
+		$data['Categoria_idCategoria']=$_POST['categoria'];
 		$lista=$this->curso_model->agregarCursos($data);
-
-		redirect('','refresh');
+		if ($_SESSION['idusuario']==1) {
+			redirect('cursos/listaCursos','refresh');
+		}
+		else
+		{
+			redirect('cursos/listaCursosEntr','refresh');
+		}
 	}
 
 	public function listaCursos()
@@ -57,6 +81,20 @@ public function opciones()
 		$this->load->view('inc_footer.php'); //archivos del footer
 	}
 
+	public function listaCursosEntr()
+	{
+		//en este caso test es nuestra ventana principal
+		
+		$lista=$this->curso_model->lista();
+		$data['todoscursos']=$lista;
+
+
+		$this->load->view('inc_head.php'); 
+		$this->load->view('inc_menuEntrenador.php'); 
+		$this->load->view('cur_listaEntr',$data); //contenido
+		$this->load->view('inc_footer.php'); //archivos del footer
+	}
+
 
 	public function modificarCur()
 	{
@@ -64,6 +102,19 @@ public function opciones()
 		$data['infocurso']=$this->curso_model->recuperarCursos($idcursos);
 
 		$this->load->view('inc_head.php'); //archivos cabecera
+		$this->load->view('inc_menu.php'); 
+		$this->load->view('cur_modificarPrin',$data); //contenido
+		$this->load->view('inc_footer.php'); //archivos del footer
+
+	}
+
+	public function modificarCurEntr()
+	{
+		$idcursos=$_POST['idcursos'];
+		$data['infocurso']=$this->curso_model->recuperarCursos($idcursos);
+
+		$this->load->view('inc_head.php'); //archivos cabecera
+		$this->load->view('inc_menuEntrenador.php'); 
 		$this->load->view('cur_modificarPrin',$data); //contenido
 		$this->load->view('inc_footer.php'); //archivos del footer
 
@@ -82,7 +133,14 @@ public function opciones()
 		$data['turno']=$_POST['turno'];
 		$data['descripcion']=$_POST['descripcion'];
 		$lista=$this->curso_model->modificarCursos($idcursos,$data);
-		redirect('','refresh');
+		if ($_SESSION['idusuario']==1) {
+			redirect('cursos/listaCursos','refresh');
+		}
+		else
+		{
+			redirect('cursos/listaCursosEntr','refresh');
+		}
+
 	}
 
 
@@ -127,6 +185,63 @@ public function imprimirCursos()
 		$this->load->view('inc_menu.php'); 
 		$this->load->view('jug_mostrar',$data); //contenido
 		$this->load->view('inc_footer.php'); //archivos del footer
+	}
+
+	public function imprimirCursosEntr()
+	{
+
+	$lista=$this->jugador_model->lista();
+	$data['jugadores']=$lista;
+
+		$this->load->view('inc_head.php'); 
+		$this->load->view('inc_menuEntrenador.php'); 
+		$this->load->view('jug_mostrar',$data); //contenido
+		$this->load->view('inc_footer.php'); //archivos del footer
+	}
+
+
+	public function subirfoto()
+	{
+		$data['idcursos']=$_POST['idcursos'];
+
+
+		$this->load->view('inc_head.php'); //archivos cabecera
+		$this->load->view('subirformCursos',$data); //contenido
+		$this->load->view('inc_footer.php'); //archivos del footer
+
+	}
+	public function subir()
+	{
+		$idcursos=$_POST['idcursos'];
+		$nombrearchivo=$idcursos.".jpg";
+
+		//ruta donde se guardan los ficheros
+		$config['upload_path']="./uploads/cursos/";
+		//configurar el nombre del archivo
+		$config['file_name']=$nombrearchivo;
+
+		//remplazar los archivos
+
+		$direccion="./uploads/cursos/".$nombrearchivo;
+		unlink($direccion);
+
+		//tipos de archivos
+
+		$config['allowed_types']='jpg';	//'gif|jpg|png'
+		$this->load->library('upload',$config);
+
+		if (!$this->upload->do_upload()) {
+			//si  hay un error se para la vista
+			$data['error']=$this->upload->display_errors();
+		}
+		else {
+			$data['foto']=$nombrearchivo;
+			$lista=$this->curso_model->modificarCursos($idcursos,$data);
+			$this->upload->data();
+		}
+		
+			redirect('','refresh');
+
 	}
 
 

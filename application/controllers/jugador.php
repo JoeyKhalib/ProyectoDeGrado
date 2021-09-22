@@ -15,6 +15,17 @@ public function opciones()
 		$this->load->view('inc_footer.php'); //archivos del footer
 	}
 
+	public function opcionesEntrenador()
+	{
+		//en este caso test es nuestra ventana principal
+		
+
+		$this->load->view('inc_head.php'); 
+		$this->load->view('inc_menuEntrenador.php'); 
+		$this->load->view('jug_optionsEntr'); //contenido
+		$this->load->view('inc_footer.php'); //archivos del footer
+	}
+
 
 
 	public function agregarJug()
@@ -29,13 +40,25 @@ public function opciones()
 		$this->load->view('inc_footer.php'); //archivos del footer
 	}
 
+	public function agregarJugEntr()
+	{
+		$lista=$this->padre_model->recuperarPadres();
+		$data['padres']=$lista;
+
+
+		$this->load->view('inc_head.php');//archivos cabecera
+		$this->load->view('inc_menuEntrenador.php');
+		$this->load->view('jug_registrar',$data); //contenido
+		$this->load->view('inc_footer.php'); //archivos del footer
+	}
+
 	public function agregarJugador()
 	{
 		$registro=$_SESSION['idusuario'];
-		$data['nombres']=$_POST['nombres'];
-		$data['apellidoPaterno']=$_POST['apellidoPaterno'];
-		$data['apellidoMaterno']=$_POST['apellidoMaterno'];
-		$data['ci']=$_POST['ci'];
+		$data['nombresJugador']=$_POST['nombres'];
+		$data['apellidoPaternoJugador']=$_POST['apellidoPaterno'];
+		$data['apellidoMaternoJugador']=$_POST['apellidoMaterno'];
+		$data['ciJugador']=$_POST['ci'];
 		$data['telefono']=$_POST['telefono'];
 		$data['direc']=$_POST['direc'];
 		$data['sexo']=$_POST['sexo'];
@@ -43,8 +66,13 @@ public function opciones()
 		$data['idRegistro']=$registro;
 		$data['usuario_idusuario']=$_POST['padre'];
 		$lista=$this->jugador_model->agregarJugador($data);
-
-		redirect('','refresh');
+		if ($_SESSION['idusuario']==1) {
+			redirect('jugador/listaJugador','refresh');
+		}
+		else
+		{
+			redirect('jugador/listaJugadorEntr','refresh');
+		}
 	}
 
 	public function listaJugador()
@@ -61,6 +89,34 @@ public function opciones()
 		$this->load->view('inc_footer.php'); //archivos del footer
 	}
 
+	public function listaJugadorEntr()
+	{
+		//en este caso test es nuestra ventana principal
+		
+		$lista=$this->jugador_model->lista();
+		$data['jugadores']=$lista;
+
+
+		$this->load->view('inc_head.php'); 
+		$this->load->view('inc_menuEntrenador.php'); 
+		$this->load->view('jug_listaEntr',$data); //contenido
+		$this->load->view('inc_footer.php'); //archivos del footer
+	}
+
+	public function listaInscripcion()
+	{
+		//en este caso test es nuestra ventana principal
+		
+		$lista=$this->jugador_model->listaCompleta();
+		$data['jugadores']=$lista;
+
+
+		$this->load->view('inc_head.php'); 
+		$this->load->view('inc_menu.php'); 
+		$this->load->view('jug_Inscripcion',$data); //contenido
+		$this->load->view('inc_footer.php'); //archivos del footer
+	}
+
 
 	public function modificarJug()
 	{
@@ -68,6 +124,19 @@ public function opciones()
 		$data['infojugador']=$this->jugador_model->recuperarJugador($idjugador);
 
 		$this->load->view('inc_head.php'); //archivos cabecera
+		$this->load->view('inc_menu.php'); 
+		$this->load->view('jug_modificarPrin',$data); //contenido
+		$this->load->view('inc_footer.php'); //archivos del footer
+
+	}
+
+	public function modificarJugEntre()
+	{
+		$idjugador=$_POST['idjugador'];
+		$data['infojugador']=$this->jugador_model->recuperarJugador($idjugador);
+
+		$this->load->view('inc_head.php'); //archivos cabecera
+		$this->load->view('inc_menuEntrenador.php'); 
 		$this->load->view('jug_modificarPrin',$data); //contenido
 		$this->load->view('inc_footer.php'); //archivos del footer
 
@@ -77,15 +146,22 @@ public function opciones()
 		public function modificarJugador()
 	{
 		$idjugador=$_POST['idjugador'];
-		$data['nombres']=$_POST['nombres'];
-		$data['apellidoPaterno']=$_POST['apellidoPaterno'];
-		$data['apellidoMaterno']=$_POST['apellidoMaterno'];
-		$data['ci']=$_POST['ci'];
+		$data['nombresJugador']=$_POST['nombres'];
+		$data['apellidoPaternoJugador']=$_POST['apellidoPaterno'];
+		$data['apellidoMaternoJugador']=$_POST['apellidoMaterno'];
+		$data['ciJugador']=$_POST['ci'];
 		$data['telefono']=$_POST['telefono'];
 		$data['direc']=$_POST['direc'];
 		$data['fechaNacimiento']=$_POST['fechaNacimiento'];
 		$lista=$this->jugador_model->modificarJugador($idjugador,$data);
-		redirect('','refresh');
+		if ($_SESSION['idusuario']==1) {
+			redirect('jugador/listaJugador','refresh');
+		}
+		else
+		{
+			redirect('jugador/listaJugadorEntr','refresh');
+		}
+		
 	}
 
 
@@ -117,7 +193,13 @@ public function modificarJugDoH()
 		$idjugador=$_POST['idjugador'];
 		$data['estado']=$_POST['desabilitar'];
 		$lista=$this->jugador_model->modificarJugador($idjugador,$data);
-		redirect('jugador/listaJugador','refresh');
+		if ($_SESSION['idusuario']==1) {
+			redirect('jugador/listaJugador','refresh');
+		}
+		else
+		{
+			redirect('jugador/listaJugadorEntr','refresh');
+		}
 	}
 
 public function imprimirJugadores()
@@ -132,7 +214,17 @@ public function imprimirJugadores()
 		$this->load->view('inc_footer.php'); //archivos del footer
 	}
 
+public function imprimirJugadoresEntre()
+	{
 
+	$lista=$this->jugador_model->lista();
+	$data['jugadores']=$lista;
+
+		$this->load->view('inc_head.php'); 
+		$this->load->view('inc_menuEntrenador.php'); 
+		$this->load->view('jug_mostrar',$data); //contenido
+		$this->load->view('inc_footer.php'); //archivos del footer
+	}
 
 
 }

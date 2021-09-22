@@ -265,23 +265,23 @@
 
           <li class="nav-item">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-tshirt"></i>
+              <i class="nav-icon fas fa-trophy"></i>
               <p>
-                Material Deportivo
+                Torneo
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="../charts/chartjs.html" class="nav-link">
+                <a href="<?php echo base_url();?>index.php/torneo/tornOpciones" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Crear Material</p>
+                  <p>Gestion de Torneos</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="../charts/flot.html" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Lista de Material</p>
+                  <p>Lista de Equipos</p>
                 </a>
               </li>
 
@@ -290,7 +290,8 @@
 
           <li class="nav-item">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-id-card"></i>
+              <i class="nav-icon fas fa-address-card"></i>
+              
               <p>
                Canchas de Futbol
                 <i class="fas fa-angle-left right"></i>

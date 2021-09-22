@@ -68,12 +68,6 @@ foreach ($infousuario->result() as $row)
          ?>
 
 
-
-
-
-
-
-
               </div>
               <!-- /.card-body -->
             </div>
@@ -103,6 +97,7 @@ foreach ($infousuario->result() as $row)
                 <hr>
 
                 <strong><i class="far fa-file-alt mr-1"></i> Carnet</strong>
+
 
                 <p class="text-muted"><?php echo $row->ci;?></p>
               </div>
@@ -135,15 +130,11 @@ foreach ($infousuario->result() as $row)
 
                   <li  class="nav-item "><a class="nav-link active " href="#activity" data-toggle="tab">Notificaciones</a></li>
                   <li  class="nav-item">
-
-
                     <a  type="hidden" class="nav-link " href="#settings" data-toggle="tab">Configuracion</a>
-
-
                   </li>
-                  
                 </ul>
               </div><!-- /.card-header -->
+
 
 
 
@@ -151,25 +142,14 @@ foreach ($infousuario->result() as $row)
                 <div class="tab-content ">
                   <div class="active tab-pane" id="activity">
                     <!-- Post -->
-                   
-   
+ 
 
 
-                    <!-- /.post -->
 
-                    <!-- Post -->
 
-                    <!-- /.post -->
 
-                    <!-- Post -->
-                   
-                    <!-- /.post -->
                   </div>
-
-
-
-                 
-                  <div class="tab-pane " id="settings">
+                 <div class="tab-pane " id="settings">
                     <form class="form-horizontal">
                       <div class="form-group row ">
                         <label for="inputName" class="col-sm-2 col-form-label">Nombre</label>

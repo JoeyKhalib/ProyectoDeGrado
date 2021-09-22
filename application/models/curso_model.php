@@ -12,6 +12,14 @@ class Curso_model extends CI_Model {
 		return $this->db->get();
 	}
 
+
+	public function categorias()
+	{
+		$this->db->select('*');
+		$this->db->from('categoria');
+		return $this->db->get();
+	}
+
 	public function recuperarCursos($idcursos)
 	{
 		$this->db->select('*');

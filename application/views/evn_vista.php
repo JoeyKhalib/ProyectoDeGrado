@@ -7,12 +7,12 @@
 
 
               <div class="card-header">
-                <h3 class="card-title">Expandable Table</h3>
+                <h3 class="card-title">Lista de Eventos</h3>
               </div>
               <!-- ./card-header -->
               <div class="card-body">
-                <table class="table table-bordered table-hover">
-                  <thead>
+                <table class="table table-bordered table-hover ">
+                  <thead class="bg-success">
                     <tr>
                       <th>#</th>
                       <th>Nombre Evento</th>
@@ -47,9 +47,10 @@ foreach ($todoevento->result() as $row) {
 
 
          <?php 
-          echo form_open_multipart('evento/desabilitarEvento');
+          echo form_open_multipart('evento/modificarEvnDoH');
         ?>
         <input type="hidden" name="idevento" value="<?php echo $row->idevento;?>">
+        <input type="hidden" name="desabilitar" value="<?php echo '0';?>">
         <button type="submit" class="btn btn-danger btn-xs">Eliminar</button>         
     <?php 
           echo form_close();

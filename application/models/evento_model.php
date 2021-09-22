@@ -12,6 +12,15 @@ class Evento_model extends CI_Model {
 		return $this->db->get();
 	}
 
+	public function destinados()
+	{
+		$this->db->select('*');
+		$this->db->from('rol');
+		return $this->db->get();
+	}
+
+
+
 	public function recuperarEvento($idevento)
 	{
 		$this->db->select('*');

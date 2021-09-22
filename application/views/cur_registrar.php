@@ -38,13 +38,19 @@
   </div>
 
 
-  <div class="form-group">
-    <label for="rol">Seleccione la Categoria</label>
+ <div class="form-group">
+    <label for="categoria">Seleccione la Categoria del Curso</label>
+
     <select class="form-control" name="categoria">
-      <option>Infatil</option>
-      <option>Pre-Adolecente</option>
-      <option>Adolecente</option>
-      <option>Mayores</option>
+<?php 
+$indice=1;
+foreach ($categorias->result() as $row) {
+ ?>
+      <option value="<?php echo $row->idCategoria;?>"><?php echo $row->nombreCategoria;?></option>
+  <?php
+ $indice++;
+}
+ ?>
     </select>
   </div>
 

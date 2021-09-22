@@ -2,7 +2,7 @@
    <section class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
-          <div class="col-sm-6">
+          <div class="col-sm-8">
            <h1>Bienvenido/a <font size="4"> - Usted a ingresado al sistema de nuestra escuela de futbol.</font></h1>
           </div>
           <div class="col-sm-6">
@@ -51,11 +51,11 @@ foreach ($infousuario->result() as $row)
 
                 <h3 class="profile-username text-center"><?php echo $row->nombres;?> <?php echo $row->apellidoPaterno;?> <?php echo $row->apellidoMaterno;?></h3>
 
-                <p class="text-muted text-center"><?php echo $row->rol;?></p>
+                <p class="text-muted text-center"><?php echo $row->nombreRol;?></p>
 
 
   <?php 
-          echo form_open_multipart('entrenador/logout');
+          echo form_open_multipart('padre/logout');
           ?>
 
          <button type="submit" class="btn btn-primary btn-danger">Salir</button>
@@ -77,7 +77,7 @@ foreach ($infousuario->result() as $row)
             <!-- /.card -->
 
             <!-- About Me Box -->
-            <div class="card card-primary">
+            <div class="card card-dark">
               <div class="card-header">
                 <h3 class="card-title">Datos del Perfil</h3>
               </div>
@@ -91,9 +91,7 @@ foreach ($infousuario->result() as $row)
 
                 <hr>
 
-                <strong><i class="fas fa-map-marker-alt mr-1"></i> localidad</strong>
 
-                <p class="text-muted"><?php echo $row->nacionalidad;?></p>
 
 
                  <!--<strong><i class="fas fa-pencil-alt mr-1"></i> Carnet</strong>

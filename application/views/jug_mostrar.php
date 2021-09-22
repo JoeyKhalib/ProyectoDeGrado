@@ -58,8 +58,8 @@ foreach ($jugadores->result() as $row) {
 
                   <tr>
                     <td><?php echo $indice;?></td>
-                    <td><?php echo $row->nombres;?> <?php echo $row->apellidoPaterno;?> <?php echo $row->apellidoMaterno;?></td>
-                     <td><?php echo $row->ci;?></td>
+                    <td><?php echo $row->nombresJugador;?> <?php echo $row->apellidoPaternoJugador;?> <?php echo $row->apellidoMaternoJugador;?></td>
+                     <td><?php echo $row->ciJugador;?></td>
                     <td><?php echo $row->telefono;?></td>
                     <td><?php echo $row->direc;?></td>
                     <td><?php echo $row->fechaNacimiento;?></td>

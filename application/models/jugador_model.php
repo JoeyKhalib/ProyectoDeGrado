@@ -12,6 +12,17 @@ class Jugador_model extends CI_Model {
 		return $this->db->get();
 	}
 
+
+
+	public function listaCompleta()
+	{
+		$this->db->select('*');
+		$this->db->from('jugador J');
+		$this->db->join('usuario U','U.idusuario=J.usuario_idusuario');
+		$this->db->where('J.estado','1');
+		return $this->db->get();
+	}
+
 	public function recuperarJugador($idjugador)
 	{
 		$this->db->select('*');

@@ -1,3 +1,4 @@
+<div class="content-wrapper">
 <div class="container">
   <div class="row">
     <div class="col-md-12">
@@ -10,25 +11,25 @@ foreach ($infojugador->result() as $row)
 
 <input type="hidden" name="idjugador" value="<?php echo $row->idjugador;?>">
 
-
-<div class="card card-primary">
+<br>
+<div class="card card-white">
               <div class="card-header">
-                <h3 class="card-title">MODIFICACION DE DATOS</h3>
+                <h3 class="card-title">MODIFICACION DE JUGADOR</h3>
               </div>
                 <div class="card-body">
                   <div class="form-group">
                     <label for="">Nombre</label>
-                    <input type="text" class="form-control" name="nombres" value="<?php echo $row->nombres;?>">
+                    <input type="text" class="form-control" name="nombres" value="<?php echo $row->nombresJugador;?>">
                   </div>
 
  <div class="form-row">
     <div class="col">
       <label for="">Apellido Paterno</label>
-      <input type="text" class="form-control" name="apellidoPaterno" value="<?php echo $row->apellidoPaterno;?>">
+      <input type="text" class="form-control" name="apellidoPaterno" value="<?php echo $row->apellidoPaternoJugador;?>">
     </div>
     <div class="col">
        <label for="">Apellido Paterno</label>
-      <input type="text" class="form-control" name="apellidoMaterno" value="<?php echo $row->apellidoMaterno;?>">
+      <input type="text" class="form-control" name="apellidoMaterno" value="<?php echo $row->apellidoMaternoJugador;?>">
     </div>
   </div>
 
@@ -37,7 +38,7 @@ foreach ($infojugador->result() as $row)
      <div class="form-row">
     <div class="col">
       <label for="">Ingrese Carnet de Identidad</label>
-      <input type="number" class="form-control" name="ci" value="<?php echo $row->ci;?>">
+      <input type="number" class="form-control" name="ci" value="<?php echo $row->ciJugador;?>">
     </div>
     <div class="col">
        <label for="">Telefono/Celular</label>
@@ -63,7 +64,7 @@ foreach ($infojugador->result() as $row)
 
 
                 <div class="card-footer">
-                  <button type="submit" class="btn btn-primary">Modificar</button>
+                  <button type="submit" class="btn btn-info">Modificar</button>
              
                 </div>
             </div>
@@ -75,4 +76,5 @@ echo form_close();
 
      </div>
   </div>
+</div>
 </div>

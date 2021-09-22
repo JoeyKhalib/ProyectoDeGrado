@@ -5,7 +5,9 @@
     <div class="col-md-12">
 
 
-
+<div class="container-fluid content-row">
+    
+       
 
 
 <div class="row row-cols-1 row-cols-md-3 g-4">
@@ -18,27 +20,66 @@ foreach ($todoscursos->result() as $row) {
 
   <div class="col">
    <div class="card" >
-   <!--<img src="..." class="card-img-top" alt="...">-->
+
+    <br class="project-actions text-right">
+
+    <?php
+        $foto=$row->foto;
+          if ($foto=="") {
+         //mostrar una imagen por defecto
+     ?> 
+          <img src="<?php echo base_url(); ?>uploads/cursos/escuelita.jpg" class="card-img-top"  height="200">
+     <?php
+      }
+     else {
+         //mostrar la foto del usuario
+     ?> 
+       <img src="<?php echo base_url(); ?>uploads/cursos/<?php echo $foto; ?>"  height="200">
+      <?php
+       }
+      ?> 
+
+   
   <div class="card-body">
     <h5 class="card-title"><?php echo $row->nombreCurso;?></h5>
     <p class="card-text"><?php echo $row->descripcion;?></p>
-   <div class="d-grid gap-2 d-md-block">
+    
+   <div class="d-grid gap-2 d-md-block ">
+    <div class="btn-group">
     <?php 
           echo form_open_multipart('cursos/modificarCur');
         ?>
         <input type="hidden" name="idcursos" value="<?php echo $row->idcursos;?>">
-  <button class="btn btn-primary" type="submit" >Editar</button>
+  <button class="btn btn-info btn-sm" type="submit" ><i class="fas fa-pencil-alt">
+                              </i> Editar</button>
   <?php 
           echo form_close();
          ?>
+
+
           <?php 
-          echo form_open_multipart('cursos/desabilitarCur');
+          echo form_open_multipart('cursos/modificarCurDoH');
         ?>
         <input type="hidden" name="idcursos" value="<?php echo $row->idcursos;?>">
-  <button class="btn btn-danger" type="submit">Eliminar</button>
+          <input type="hidden" name="desabilitar" value="<?php echo '0';?>">
+  <button class="btn btn-danger btn-sm" type="submit"><i class="fas fa-trash">
+                              </i> Eliminar</button>
       <?php 
          echo form_close();
          ?>
+
+ <?php 
+  echo form_open_multipart('cursos/subirfoto');
+ ?>
+        <input type="hidden" name="idcursos" value="<?php echo $row->idcursos;?>">
+  <button class="btn btn-primary btn-sm" type="submit"> <i class="fas fa-folder">
+                              </i> Cambiar Foto</button>
+      <?php 
+         echo form_close();
+         ?>
+         </div>
+
+
 </div>
   </div>
 </div>
@@ -57,19 +98,11 @@ foreach ($todoscursos->result() as $row) {
 
 
 
-
-
-
-
-
-
-
-
               </div>
          </div>
      </div>
    </div>
-              
+ </div>         
 
 
 

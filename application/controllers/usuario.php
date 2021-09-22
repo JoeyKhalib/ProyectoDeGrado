@@ -8,15 +8,12 @@ class Usuario extends CI_Controller {
 public function test()
 	{
 		//en este caso test es nuestra ventana principal
-		
-		$lista=$this->usuario_model->lista();
-		$data['usuarios']=$lista;
-
-
 		$id=$_SESSION['idusuario'];
 		$rol=$_SESSION['rol_idrol'];
+
 		//$data2['infousuario']=$this->usuario_model->recuperarUsuario($id);
 		$data3['infousuario']=$this->usuario_model->recuperarRol($rol,$id);
+		//$data3['infousuario']=$this->usuario_model->recuperarEventos($rol);
 
 		$this->load->view('inc_head.php'); 
 		$this->load->view('inc_menu.php'); 
@@ -249,12 +246,11 @@ public function modificarbdDoH()
     case '4':
        redirect('padre/test','refresh');
         break;
+	}
 
 }
 
-}
 
-	
 
 	public function logout()
 	{

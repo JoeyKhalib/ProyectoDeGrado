@@ -66,16 +66,31 @@
                 <label for="inputClientCompany">Fecha de Evento</label>
                 <input type="date"  name="fecha"  class="form-control">
               </div>
-              <div class="form-group">
-                <label for="inputProjectLeader">Destinado:</label>
-                <input type="text" name="destinatario" class="form-control">
-              </div>
+  <div class="form-group">
+    <label for="destinatario">Destinado:</label>
+
+    <select class="form-control" name="destinatario">
+<?php 
+$indice=1;
+foreach ($destinatarios->result() as $row) {
+ ?>
+      <option value="<?php echo $indice;?>"><?php echo $row->nombreRol;?></option>
+  <?php
+ $indice++;
+}
+ ?>
+    </select>
+  </div>
+
+
+
+
             </div>
 
-<div class="row">
+<div class="row-center">
         <div class="col-12">
-          <a href="#" class="btn btn-secondary">Cancelar</a>
-          <button type="submit" class="btn btn-success float-right">Crear Evento</button>
+          <a href="#" class="btn btn-danger">Cancelar</a>
+          <button type="submit" class="btn btn-dark float-right">Crear Evento</button>
         </div>
       </div>
 

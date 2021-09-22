@@ -2,14 +2,8 @@
    <section class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1>Perfil</h1>
-          </div>
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">User Profile</li>
-            </ol>
+          <div class="col-sm-8">
+            <h1>Bienvenido/a <font size="4"> - Usted a ingresado al sistema de nuestra escuela de futbol.</font></h1>
           </div>
         </div>
       </div><!-- /.container-fluid -->
@@ -30,7 +24,7 @@ foreach ($infousuario->result() as $row)
             <div class="card card-primary card-outline">
               <div class="card-body box-profile">
                 <div class="text-center">
-                 <?php
+                         <?php
                         $foto=$row->foto;
                         if ($foto=="") {
                           //mostrar una imagen por defecto
@@ -45,11 +39,12 @@ foreach ($infousuario->result() as $row)
                             <?php
                         }
                       ?> 
-                </div>
+                  
+                </div> 
 
                 <h3 class="profile-username text-center"><?php echo $row->nombres;?> <?php echo $row->apellidoPaterno;?> <?php echo $row->apellidoMaterno;?></h3>
 
-                <p class="text-muted text-center"><?php echo $row->rol;?></p>
+               <p class="text-muted text-center"><?php echo $row->nombreRol;?></p>
 
 
   <?php 
@@ -75,7 +70,7 @@ foreach ($infousuario->result() as $row)
             <!-- /.card -->
 
             <!-- About Me Box -->
-            <div class="card card-primary">
+            <div class="card card-dark">
               <div class="card-header">
                 <h3 class="card-title">Datos del Perfil</h3>
               </div>
@@ -89,9 +84,6 @@ foreach ($infousuario->result() as $row)
 
                 <hr>
 
-                <strong><i class="fas fa-map-marker-alt mr-1"></i> localidad</strong>
-
-                <p class="text-muted"><?php echo $row->nacionalidad;?></p>
 
 
                  <!--<strong><i class="fas fa-pencil-alt mr-1"></i> Carnet</strong>

@@ -11,10 +11,11 @@ public function test()
 		$lista=$this->usuario_model->lista();
 		$data['usuarios']=$lista;
 
+		$id=$_SESSION['idusuario'];
 		$rol=$_SESSION['rol_idrol'];
 		//$id=$_SESSION['idusuario'];
 		//$data2['infousuario']=$this->usuario_model->recuperarUsuario($id);
-		$data3['infousuario']=$this->usuario_model->recuperarRol($rol);
+		$data3['infousuario']=$this->usuario_model->recuperarRol($rol,$id);
 
 		$this->load->view('inc_head.php'); 
 		$this->load->view('inc_menuEntrenador.php',$data3); 

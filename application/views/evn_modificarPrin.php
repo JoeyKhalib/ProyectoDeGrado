@@ -1,6 +1,7 @@
-<div class="container">
-  <div class="row">
-    <div class="col-md-12">
+<div class="content-wrapper">
+  <div class="container">
+    <div class="row">
+     <div class="col-md-12">
 
 
 <?php 
@@ -8,6 +9,15 @@ foreach ($infoevento->result() as $row)
  {
   echo form_open_multipart('evento/modificarEvento');
  ?>
+
+<br>
+<div class="card card-white">
+              <div class="card-header">
+                <h3 class="card-title">MODIFICACION DE EVENTOS</h3>
+              </div>
+                <div class="card-body">
+
+
 
 
 <input type="hidden" name="idevento" value="<?php echo $row->idevento;?>">
@@ -21,7 +31,8 @@ foreach ($infoevento->result() as $row)
               </div>
               <div class="form-group">
                 <label for="inputDescription">Descripcion:</label>
-                <input id="inputDescription" name="descripcion" class="form-control" rows="4" value="<?php echo $row->descripcion;?>">
+                <textarea id="inputDescription" name="descripcion" class="form-control" rows="4"><?php echo $row->descripcion;?></textarea>
+
               </div>
               <div class="form-group">
                 <label for="inputStatus">Tipo</label>
@@ -38,13 +49,19 @@ foreach ($infoevento->result() as $row)
                 <input type="date"  name="fecha"  class="form-control" value="<?php echo $row->fecha;?>">
               </div>
               <div class="form-group">
-                <label for="inputProjectLeader">Destinado:</label>
-                <input type="text" name="destinatario" class="form-control" value="<?php echo $row->destinatario;?>">
+                <label for="inputStatus">Destinado</label>
+                <select id="destinatario"  name="destinatario" class="form-control custom-select">
+                  <option selected disabled>Destinado</option>
+                  <option value="1">Administrador</option>
+                  <option value="2">Entrenador</option>
+                  <option value="3">Invitado</option>
+                  <option value="4">Padre</option>
+                </select>
               </div>
             </div>
 
  <div class="card-footer">
-                  <button type="submit" class="btn btn-primary">Modificar</button>
+                  <button type="submit" class="btn btn-info">Modificar</button>
              
                 </div>
             </div>
@@ -59,4 +76,5 @@ echo form_close();
 
      </div>
   </div>
+</div>
 </div>

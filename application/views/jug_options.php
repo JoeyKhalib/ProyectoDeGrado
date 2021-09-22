@@ -46,7 +46,22 @@
             </div>
           </div>
           <!-- ./col -->
+          <div class="col-lg-6 col-4">
+            <!-- small card -->
+            <div class="small-box bg-warning">
+              <div class="inner">
+                <h3>Lista de Inscripciones </h3>
 
+                <p>Se listara las inscripciones de todos los jugadores</p>
+              </div>
+              <div class="icon">
+                <i class="fas fa-clipboard-list"></i>
+              </div>
+              <a href="<?php echo base_url();?>index.php/jugador/listaInscripcion" class="small-box-footer">
+               Lista Inscripciones <i class="fas fa-arrow-circle-right"></i>
+              </a>
+            </div>
+          </div>
           <!-- ./col -->
           <div class="col-lg-6 col-4">
             <!-- small card -->
