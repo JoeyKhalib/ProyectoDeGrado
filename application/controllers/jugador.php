@@ -105,7 +105,7 @@ public function opciones()
 
 	public function listaInscripcion()
 	{
-		//en este caso test es nuestra ventana principal
+
 		
 		$lista=$this->jugador_model->listaCompleta();
 		$data['jugadores']=$lista;
@@ -114,6 +114,17 @@ public function opciones()
 		$this->load->view('inc_head.php'); 
 		$this->load->view('inc_menu.php'); 
 		$this->load->view('jug_Inscripcion',$data); //contenido
+		$this->load->view('inc_footer.php'); //archivos del footer
+	}
+
+	public function registrarInscripcion()
+	{
+
+		
+		$this->load->view('inc_head.php'); 
+		$this->load->view('inc_menu.php'); 
+		$this->load->view('jug_regisInscrip2'); 
+		$this->load->view('jug_regisInscrip');
 		$this->load->view('inc_footer.php'); //archivos del footer
 	}
 
