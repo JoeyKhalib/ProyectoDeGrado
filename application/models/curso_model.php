@@ -12,6 +12,10 @@ class Curso_model extends CI_Model {
 		return $this->db->get();
 	}
 
+	public function inscripcion($data)
+	{
+		$this->db->insert('inscripcion',$data);
+	}
 
 	public function categorias()
 	{

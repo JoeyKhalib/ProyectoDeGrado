@@ -64,6 +64,8 @@ foreach ($infojugador->result() as $row)
 
 
                 <div class="card-footer">
+                  <input type="hidden" name="idpadre" value="<?php echo $row->usuario_idusuario;?>">
+                  <input type="hidden" name="idjugador" value="<?php echo $row->idjugador;?>">
                   <button type="submit" class="btn btn-info">Modificar</button>
              
                 </div>

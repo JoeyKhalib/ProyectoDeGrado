@@ -1,0 +1,20 @@
+[33m1ccc6ff[m[33m ([m[1;36mHEAD -> [m[1;32mPruebas[m[33m)[m Se comenzo a crear la inscripcion
+[33m63aa907[m[33m ([m[1;31morigin/Pruebas[m[33m)[m Avance de las 4 tablas con validaciones y todo en correccion
+[33ma32153a[m Avance del 13/09/2021 comenzando con el arreglo de la interfaz y avance de los cruds
+[33m36c5ae3[m[33m ([m[1;31morigin/main[m[33m, [m[1;32mmain[m[33m)[m Se creo las tablas en el proyecto web los cuales son: Jugadores,Eventos y Cursos
+[33m0960266[m Se añadio un avance de los perfiles y una mejor interfaz grafica
+[33med36bbc[m agregamos mas funciones a los usuarios
+[33ma062866[m Se agrego el tema de usuarios para registrar en un crud mas estetico
+[33m0b0699e[m se creo el controlador de canchas de futbol
+[33me6e6761[m se creo y trabajo el modelo cancha
+[33m0c622a0[m se agrego la opcion de agregar y comenzamos con el segundo crud con las canchas de futbol de misma manera que el primer proyecto
+[33m3ca6c8b[m anadiendo admintempl al proyecto
+[33m52629d1[m Anadiendo Funciones y configurando rutas
+[33m80f7e0f[m Creando modificar,formulario,menu y test en las vistas
+[33m4145965[m anadiendo el controlador usuario
+[33m96f52f2[m se cre modelo usuario
+[33m65cf1cc[m Configurando las bases de datos y configuracion
+[33mb98e62b[m creando footer y Head de las vistas
+[33mba652ac[m Anadiendo bootstrap
+[33m675c808[m se creo automatizacion de las URL
+[33m681fb7d[m anadiendo base de codeIgnaiter

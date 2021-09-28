@@ -117,16 +117,43 @@ public function opciones()
 		$this->load->view('inc_footer.php'); //archivos del footer
 	}
 
+	public function agregarInscripcion()
+	{
+		$registro=$_SESSION['idusuario'];
+		$data['fechaInscripcionI']=$_POST['fechaInicial'];
+		$data['fechaInscripcionF']=$_POST['fechaFinal'];
+		$data['costoDeInscripcion']=$_POST['pago'];
+		$data['idcursos']=$_POST['curso'];
+		$data['idjugador']=$_POST['idjugador'];
+		$data['idtutor']=$_POST['idtutor'];
+		$data['idRegistro']=$registro;
+		$lista=$this->curso_model->inscripcion($data);
+		if ($_SESSION['idusuario']==1) {
+			redirect('jugador/listaJugador','refresh');
+		}
+		else
+		{
+			redirect('jugador/listaJugadorEntr','refresh');
+		}
+	}
+
+
+
+
 	public function registrarInscripcion()
 	{
-
+		$idjugador=$_POST['idjugador'];
+		$data['infojugador']=$this->jugador_model->recuperarJugador($idjugador);
+		$data2['cursos']=$this->curso_model->lista();
 		
 		$this->load->view('inc_head.php'); 
 		$this->load->view('inc_menu.php'); 
-		$this->load->view('jug_regisInscrip2'); 
-		$this->load->view('jug_regisInscrip');
+		$this->load->view('jug_regisInscrip2',$data); 
+		$this->load->view('jug_regisInscrip',$data2);
 		$this->load->view('inc_footer.php'); //archivos del footer
 	}
+
+
 
 
 	public function modificarJug()
