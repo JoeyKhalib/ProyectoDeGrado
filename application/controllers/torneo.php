@@ -76,6 +76,18 @@ public function tornOpciones()
 		$this->load->view('inc_footer.php'); //archivos del footer
 	}
 
+
+
+	public function listadoEquiposTor()
+	{
+
+
+		$this->load->view('inc_head.php'); 
+		$this->load->view('inc_menu.php'); 
+		$this->load->view('torn_equipos'); //contenido
+		$this->load->view('inc_footer.php'); //archivos del footer
+	}
+
 	public function listaTorneoEntr()
 	{
 		//en este caso test es nuestra ventana principal

@@ -12,7 +12,14 @@ class Jugador_model extends CI_Model {
 		return $this->db->get();
 	}
 
-
+	public function obtenerInscripcion($idjugador)
+	{
+		$this->db->select('idjugador id , fechaInscripcionI start ,fechaInscripcionF end, costoDeInscripcion title');
+		$this->db->from('inscripcion');
+		$this->db->where('estado','1');
+		$this->db->where('idjugador',$idjugador);
+		return $this->db->get()->result();
+	}
 
 	public function listaCompleta()
 	{
@@ -30,6 +37,8 @@ class Jugador_model extends CI_Model {
 		$this->db->where('idjugador',$idjugador);
 		return $this->db->get();
 	}
+
+
 	public function modificarJugador($idjugador,$data)
 	{
 		

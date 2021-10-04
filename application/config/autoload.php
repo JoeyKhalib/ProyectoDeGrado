@@ -132,4 +132,4 @@ $autoload['language'] = array();
 |
 |	$autoload['model'] = array('first_model' => 'first');
 */
-$autoload['model'] = array('usuario_model','cancha_model','entrenador_model','invitado_model','padre_model','jugador_model','curso_model','evento_model','material_model','torneo_model');
+$autoload['model'] = array('usuario_model','entrenador_model','invitado_model','padre_model','jugador_model','curso_model','evento_model','material_model','torneo_model','calendario_model');

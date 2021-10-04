@@ -257,6 +257,12 @@
                   <p>Lista de Eventos</p>
                 </a>
               </li>
+              <li class="nav-item">
+                <a href="<?php echo base_url();?>index.php/calendario/index" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Eventos Calendario</p>
+                </a>
+              </li>
             </ul>
           </li>
 

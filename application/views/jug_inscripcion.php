@@ -64,10 +64,8 @@ foreach ($jugadores->result() as $row) {
 
 
 
-                          <!--<span class="badge badge-success">Inscrito</span>-->
-                           
- <span class="badge badge-danger">No inscrito</span>
-
+                           <span class="badge badge-danger">No inscrito</span>    
+                          <!--<span class="badge badge-success">Inscrito</span>-->     
 
                       </td>
                       <td class="project-actions text-right">
@@ -92,9 +90,9 @@ foreach ($jugadores->result() as $row) {
 
 
                         <?php 
-                echo form_open_multipart('usuario/subirfoto');
+                echo form_open_multipart('jugador/pagoVista');
                  ?>
-               <input type="hidden" name="idusuario" value="<?php echo $row->idusuario;?>">
+               <input type="hidden" name="idjugador" value="<?php echo $row->idjugador;?>">
                <button type="submit" class="btn-sm btn-primary">
  <i class="fas fa-clipboard">
                               </i>

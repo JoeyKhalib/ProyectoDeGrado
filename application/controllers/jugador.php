@@ -52,6 +52,22 @@ public function opciones()
 		$this->load->view('inc_footer.php'); //archivos del footer
 	}
 
+	public function pagoVista()
+	{
+		$this->load->view('inc_headCalendarioInscripcion');
+		$this->load->view('inc_menu');
+		$this->load->view('v_calendario');
+		$this->load->view('inc_footerCalendario');
+	}
+
+	public function getEventos()
+  	{
+  		$idjugador=$_POST['idjugador'];
+   		$lista=$this->jugador_model->obtenerInscripcion($idjugador);
+   		echo json_encode($lista);
+  	}
+
+
 	public function agregarJugador()
 	{
 		$registro=$_SESSION['idusuario'];
@@ -145,7 +161,7 @@ public function opciones()
 		$idjugador=$_POST['idjugador'];
 		$data['infojugador']=$this->jugador_model->recuperarJugador($idjugador);
 		$data2['cursos']=$this->curso_model->lista();
-		
+			
 		$this->load->view('inc_head.php'); 
 		$this->load->view('inc_menu.php'); 
 		$this->load->view('jug_regisInscrip2',$data); 

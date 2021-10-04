@@ -64,6 +64,18 @@ foreach ($listatorneos->result() as $row) {
     <?php 
           echo form_close();
          ?>
+
+         <?php 
+          echo form_open_multipart('torneo/listadoEquiposTor');
+        ?>
+        <input type="hidden" name="idtorneo" value="<?php echo $row->idtorneo;?>">
+        <button type="submit" class="btn btn-warning btn-xs"><i class="fas fa-users">
+                              </i> Equipos</button>
+    <?php 
+          echo form_close();
+         ?>
+
+
       </td>
     </tr>
  <?php
