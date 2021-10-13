@@ -209,49 +209,6 @@ public function imprimirCursos()
 	}
 
 
-	public function subirfoto()
-	{
-		$data['idcursos']=$_POST['idcursos'];
-
-
-		$this->load->view('inc_head.php'); //archivos cabecera
-		$this->load->view('subirformCursos',$data); //contenido
-		$this->load->view('inc_footer.php'); //archivos del footer
-
-	}
-	public function subir()
-	{
-		$idcursos=$_POST['idcursos'];
-		$nombrearchivo=$idcursos.".jpg";
-
-		//ruta donde se guardan los ficheros
-		$config['upload_path']="./uploads/cursos/";
-		//configurar el nombre del archivo
-		$config['file_name']=$nombrearchivo;
-
-		//remplazar los archivos
-
-		$direccion="./uploads/cursos/".$nombrearchivo;
-		unlink($direccion);
-
-		//tipos de archivos
-
-		$config['allowed_types']='jpg';	//'gif|jpg|png'
-		$this->load->library('upload',$config);
-
-		if (!$this->upload->do_upload()) {
-			//si  hay un error se para la vista
-			$data['error']=$this->upload->display_errors();
-		}
-		else {
-			$data['foto']=$nombrearchivo;
-			$lista=$this->curso_model->modificarCursos($idcursos,$data);
-			$this->upload->data();
-		}
-		
-			redirect('','refresh');
-
-	}
 
 
 

@@ -3,7 +3,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Usuario_model extends CI_Model {
 
-
+	public function listaCompleta()
+	{
+		$this->db->select('*');
+		$this->db->from('usuario');
+		return $this->db->get();
+	}
+	
 	public function lista()
 	{
 		$this->db->select('*');

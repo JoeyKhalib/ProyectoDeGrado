@@ -28,13 +28,13 @@ foreach ($todoscursos->result() as $row) {
           if ($foto=="") {
          //mostrar una imagen por defecto
      ?> 
-          <img src="<?php echo base_url(); ?>uploads/cursos/escuelita.jpg" class="card-img-top"  height="200">
+          <img src="<?php echo base_url(); ?>uploads/cursosFotos/escuelita.jpg" height="200">
      <?php
       }
      else {
          //mostrar la foto del usuario
      ?> 
-       <img src="<?php echo base_url(); ?>uploads/cursos/<?php echo $foto; ?>"  height="200">
+       <img src="<?php echo base_url(); ?>uploads/cursosFotos/<?php echo $foto;?>" height="200">
       <?php
        }
       ?> 

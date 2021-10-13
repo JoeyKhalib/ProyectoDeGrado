@@ -71,10 +71,10 @@ foreach ($infojugador->result() as $row)
 
 
 
+
 <?php 
 }
 ?>
-
 
 
                 </div>

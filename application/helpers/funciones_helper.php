@@ -41,6 +41,10 @@ function fechaActual()
 return $now;
 }
 
-
+function fechaAhora()
+{
+	$now = date('Y-m-d');
+return $now;
+}
 
  ?>

@@ -44,8 +44,12 @@ foreach ($cursos->result() as $row) {
 
 
                 <div class="card-footer">
-                  <button type="submit" class="btn btn-info">REGISTRAR INSCRIPCION</button>
-             
+
+
+
+          <button type="submit" class="btn btn-info">REGISTRAR INSCRIPCION</button>
+  
+
                 </div>
 
 
@@ -57,12 +61,12 @@ echo form_close();
 ?>
 
 
+
                 <!-- /.card-body -->
 
             </div>
           </div>
        </div>
     </div>
-
 
 

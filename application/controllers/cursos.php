@@ -216,20 +216,15 @@ public function imprimirCursos()
 		$nombrearchivo=$idcursos.".jpg";
 
 		//ruta donde se guardan los ficheros
-		$config['upload_path']="./uploads/cursos/";
+		$config['upload_path']="./uploads/cursosFotos/";
 		//configurar el nombre del archivo
 		$config['file_name']=$nombrearchivo;
-
 		//remplazar los archivos
-
-		$direccion="./uploads/cursos/".$nombrearchivo;
+		$direccion="./uploads/cursosFotos/".$nombrearchivo;
 		unlink($direccion);
-
 		//tipos de archivos
-
 		$config['allowed_types']='jpg';	//'gif|jpg|png'
 		$this->load->library('upload',$config);
-
 		if (!$this->upload->do_upload()) {
 			//si  hay un error se para la vista
 			$data['error']=$this->upload->display_errors();
@@ -240,7 +235,7 @@ public function imprimirCursos()
 			$this->upload->data();
 		}
 		
-			redirect('','refresh');
+			redirect('cursos/listaCursos','refresh');
 
 	}
 

@@ -12,12 +12,32 @@ class Jugador_model extends CI_Model {
 		return $this->db->get();
 	}
 
-	public function obtenerInscripcion($idjugador)
+	public function actInscripcion()
+	{
+		$data = array(
+	'inscripcion' => '1',
+	);
+		$this->db->where('idjugador',$idjugador);
+		$this->db->update('jugador',$data);
+	}
+
+	public function inscripcionForm($idjugador)
+	{
+		$this->db->select('*');
+		$this->db->from('inscripcion I');
+		$this->db->join('jugador J','J.idjugador=I.idjugador');
+		$this->db->join('usuario U','U.idusuario=J.usuario_idusuario');
+		$this->db->where('J.idjugador',$idjugador);
+		return $this->db->get();
+	}
+
+
+	public function obtenerInscripcion()
 	{
 		$this->db->select('idjugador id , fechaInscripcionI start ,fechaInscripcionF end, costoDeInscripcion title');
 		$this->db->from('inscripcion');
 		$this->db->where('estado','1');
-		$this->db->where('idjugador',$idjugador);
+		//$this->db->where('idjugador',$idjugador);
 		return $this->db->get()->result();
 	}
 

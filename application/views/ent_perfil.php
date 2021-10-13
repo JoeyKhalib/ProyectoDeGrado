@@ -29,13 +29,13 @@ foreach ($infousuario->result() as $row)
                         if ($foto=="") {
                           //mostrar una imagen por defecto
                            ?> 
-                           <img src="<?php echo base_url(); ?>uploads/usuarios/perfil.jpg" alt="user-avatar" class="img-circle img-fluid">  
+                           <img src="<?php echo base_url(); ?>uploads/usuarios/perfil.jpg"  class="img-circle img-fluid">  
                            <?php
                         }
                         else {
                           //mostrar la foto del usuario
                             ?> 
-                             <img src="<?php echo base_url(); ?>uploads/usuarios/<?php echo $foto;?>" alt="user-avatar" class="img-circle img-fluid">     
+                             <img src="<?php echo base_url(); ?>uploads/usuarios/<?php echo $foto;?>"  class="img-circle img-fluid">     
                             <?php
                         }
                       ?> 

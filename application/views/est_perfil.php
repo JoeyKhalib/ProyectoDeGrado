@@ -32,13 +32,13 @@ foreach ($infousuario->result() as $row)
                         if ($foto=="") {
                           //mostrar una imagen por defecto
                            ?> 
-                           <img src="<?php echo base_url(); ?>uploads/usuarios/perfil.jpg" alt="user-avatar" class="img-circle img-fluid">  
+                           <img src="<?php echo base_url();?>uploads/usuariosFotos/perfil.jpg" class="img-circle img-fluid">  
                            <?php
                         }
                         else {
                           //mostrar la foto del usuario
                             ?> 
-                             <img src="<?php echo base_url(); ?>uploads/usuarios/<?php echo $foto;?>" alt="user-avatar" class="img-circle img-fluid">     
+                             <img src="<?php echo base_url();?>uploads/usuariosFotos/<?php echo $foto;?>"class="img-circle img-fluid">     
                             <?php
                         }
                       ?> 
@@ -149,36 +149,7 @@ foreach ($infousuario->result() as $row)
                 </div>
                 <!-- /.card-body -->
 
-                <div class="card-footer">
-                   <?php 
-          echo form_open_multipart('usuario/modificar');
-        ?>
-        <input type="hidden" name="idusuario" value="<?php echo $row->idusuario;?>">
-        <button type="submit" class="btn btn-info btn-sm">
- <i class="fas fa-pencil-alt">
-                              </i>
-
-        Modificar</button>         
-    <?php 
-          echo form_close();
-         ?>
-
-
-
-
-                         <?php 
-                echo form_open_multipart('usuario/subirfoto');
-                 ?>
-               <input type="hidden" name="idusuario" value="<?php echo $row->idusuario;?>">
-               <button type="submit" class="btn btn-primary btn-sm">
- <i class="far fa-image">
-                              </i>
-
-               Subir</button>
-                      <?php 
-                        echo form_close();
-                       ?>
-                </div>
+      
               </form>
 
 

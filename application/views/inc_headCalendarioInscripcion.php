@@ -32,6 +32,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <!-- Traduccion al español -->
   <script src="<?php echo base_url();?>assets/plugins/fullcalendar-3.9.0/locale/es.js"></script>
 
+
   <script>
     $(document).ready(function() {
 
@@ -60,6 +61,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 
 </head>
+
+
+
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
 

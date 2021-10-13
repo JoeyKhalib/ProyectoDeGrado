@@ -30,6 +30,11 @@
 
                 <div class="card-tools">
 
+                     <a target="_blank" href="<?php echo base_url();?>index.php/usuario/listapdf">
+  <button class="btn btn-success btn-block">Lista de Usuarios</button>
+</a>
+
+
                 </div>
               </div>
               <!-- /.card-header -->
@@ -64,13 +69,13 @@ foreach ($usuarios->result() as $row) {
                         if ($foto=="") {
                           //mostrar una imagen por defecto
                            ?> 
-                           <img width="100" src="<?php echo base_url(); ?>uploads/usuarios/perfil.jpg">
+                           <img width="100" src="<?php echo base_url();?>uploads/usuariosFotos/perfil.jpg">
                            <?php
                         }
                         else {
                           //mostrar la foto del usuario
                             ?> 
-                            <img width="100" src="<?php echo base_url(); ?>uploads/usuarios/<?php echo $foto; ?>">
+                            <img width="100" src="<?php echo base_url();?>uploads/usuariosFotos/<?php echo $foto;?>">
                             <?php
                         }
 

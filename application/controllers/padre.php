@@ -248,51 +248,7 @@ public function modificarbdDoH()
 	}
 
 
-	public function subirfoto()
-	{
-		$data['idusuario']=$_POST['idusuario'];
-
-
-		$this->load->view('inc_head.php'); //archivos cabecera
-		$this->load->view('subirform',$data); //contenido
-		$this->load->view('inc_footer.php'); //archivos del footer
-
-	}
-	public function subir()
-	{
-		$idusuario=$_POST['idusuario'];
-		$nombrearchivo=$idusuario.".jpg";
-
-		//ruta donde se guardan los ficheros
-		$config['upload_path']="./uploads/usuarios/";
-		//configurar el nombre del archivo
-		$config['file_name']=$nombrearchivo;
-
-		//remplazar los archivos
-
-		$direccion="./uploads/usuarios/".$nombrearchivo;
-		unlink($direccion);
-
-		//tipos de archivos
-
-		$config['allowed_types']='jpg';	//'gif|jpg|png'
-		$this->load->library('upload',$config);
-
-		if (!$this->upload->do_upload()) {
-			//si  hay un error se para la vista
-			$data['error']=$this->upload->display_errors();
-		}
-		else {
-			$data['foto']=$nombrearchivo;
-			$lista=$this->usuario_model->modificarUsuario($idusuario,$data);
-			$this->upload->data();
-		}
-
-			redirect('','test');
-
-	}
-
-
+	
 
 
 }

@@ -21,6 +21,57 @@ public function test()
 		$this->load->view('inc_footer.php'); //archivos del footer
 	}
 
+
+
+	public function listapdf()
+	{
+		$lista=$this->usuario_model->listaCompleta();
+		$lista=$lista->result();
+
+		$this->pdf=new Pdf();
+		$this->pdf->AddPage();
+		$this->pdf->AliasNbPages();
+		$this->pdf->SetTitle("Lista de Usuarios");
+		$this->pdf->SetLeftMargin(15);
+		$this->pdf->SetRightMargin(15);
+		$this->pdf->SetFillColor(210,210,210);
+		$this->pdf->SetFont('Arial','B',11);
+		$this->pdf->Cell(30);
+		$this->pdf->Cell(120,10,'LISTA DE USUARIOS','LTBR',0,'C',1);
+		$this->pdf->Ln(20);
+		$this->pdf->Image('\Xampp\htdocs\codeignaiter\ProyectoConGIT\application\third_party\fpdf\img\logo.jpg',10,8,33);
+		$this->pdf->SetFont('Arial','B',10);
+		$this->pdf->Cell(10,5,'No.','TBLR',0,'L',0);
+		$this->pdf->Cell(50,5,'NOMBRE','TBLR',0,'L',0);
+		$this->pdf->Cell(40,5,'APELLIDO PATERNO','TBLR',0,'L',0);
+		$this->pdf->Cell(40,5,'APELLIDO MATERNO','TBLR',0,'L',0);
+		$this->pdf->Cell(25,5,'CI','TBLR',0,'L',0);
+		$this->pdf->Cell(25,5,'TELEFONO','TBLR',0,'L',0);
+		$this->pdf->Ln(5);
+
+		$this->pdf->SetFont('Arial','B',8);
+		$num=1;
+		foreach ($lista as $row) {
+			$nombres=$row->nombres;
+			$apellidoPaterno=$row->apellidoPaterno;
+			$apellidoMaterno=$row->apellidoMaterno;
+			$ci=$row->ci;
+			$telefono=$row->telefono;
+
+			$this->pdf->Cell(10,5,$num,'TBLR',0,'L',0);
+			$this->pdf->Cell(50,5,$nombres,'TBLR',0,'L',0);
+			$this->pdf->Cell(40,5,$apellidoPaterno,'TBLR',0,'L',0);
+			$this->pdf->Cell(40,5,$apellidoMaterno,'TBLR',0,'L',0);
+			$this->pdf->Cell(25,5,$ci,'TBLR',0,'L',0);
+			$this->pdf->Cell(25,5,$telefono,'TBLR',0,'L',0);
+			$this->pdf->Ln(5);
+			$num++;
+		}
+
+
+		$this->pdf->Output('listadeusuario.pfg','I');
+	}
+
 	public function usuarios()
 	{
 		//en este caso test es nuestra ventana principal
@@ -37,19 +88,7 @@ public function test()
 
 
 
-/*
-public function perfil()
-	{
 
-		$idusuario=$_POST['idusuario'];
-		$data['infousuario']=$this->usuario_model->recuperarUsuario($idusuario);
-
-		$this->load->view('inc_head.php'); 
-		$this->load->view('inc_menu.php'); 
-		$this->load->view('est_perfil',); //contenido
-		$this->load->view('inc_footer.php'); //archivos del footer
-	}
-*/
 public function imprimir()
 	{
 
@@ -207,7 +246,6 @@ public function imprimir()
 				//crear las variables de session
 				$this->session->set_userdata('idusuario',$row->idusuario);
 				$this->session->set_userdata('nombreUsuario',$row->nombreUsuario);
-
 				$this->session->set_userdata('rol_idrol',$row->rol_idrol);
 				redirect('usuario/panel','refresh');
 
@@ -221,7 +259,7 @@ public function imprimir()
 		}
 
 	
-public function modificarbdDoH()
+	public function modificarbdDoH()
 	{
 		$idusuario=$_POST['idusuario'];
 		$data['estado']=$_POST['desabilitar'];
@@ -275,13 +313,12 @@ public function modificarbdDoH()
 		$nombrearchivo=$idusuario.".jpg";
 
 		//ruta donde se guardan los ficheros
-		$config['upload_path']="./uploads/usuarios/";
+		$config['upload_path']="./uploads/usuariosFotos/";
 		//configurar el nombre del archivo
 		$config['file_name']=$nombrearchivo;
 
 		//remplazar los archivos
-
-		$direccion="./uploads/usuarios/".$nombrearchivo;
+		$direccion="./uploads/usuariosFotos/".$nombrearchivo;
 		unlink($direccion);
 
 		//tipos de archivos
@@ -299,7 +336,7 @@ public function modificarbdDoH()
 			$this->upload->data();
 		}
 
-			redirect('','test');
+			redirect('usuario/test','refresh');
 
 	}
 

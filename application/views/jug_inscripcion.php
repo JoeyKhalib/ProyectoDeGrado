@@ -62,10 +62,24 @@ foreach ($jugadores->result() as $row) {
                       <td><?php echo $row->nombres;?> <?php echo $row->apellidoPaterno;?> <?php echo $row->apellidoMaterno;?></td>
                       <td>
 
+                           <?php
+                        $inscripcion=$row->inscripcion;
+                        if ($inscripcion=="") {
+                          //mostrar una imagen por defecto
+                           ?> 
+                           <span class="badge badge-danger">No inscrito</span>   
+                           <?php
+                        }
+                        else {
+                          //mostrar la foto del usuario
+                            ?> 
+                             <span class="badge badge-success">Inscrito</span>      
+                            <?php
+                        }
+                      ?> 
 
-
-                           <span class="badge badge-danger">No inscrito</span>    
-                          <!--<span class="badge badge-success">Inscrito</span>-->     
+                           
+                            
 
                       </td>
                       <td class="project-actions text-right">
@@ -84,8 +98,18 @@ foreach ($jugadores->result() as $row) {
                         echo form_close();
                        ?>
 
-
-
+                        <?php     
+                         echo form_open_multipart('jugador/formulariopdf');
+                       ?>
+                         <input type="hidden" name="idjugador" value="<?php echo $row->idjugador;?>">
+                        <button type="submit" class="btn-sm btn-info">
+                          </a>
+                        <i class="fas fa-file-pdf"></i>
+                         Reporte Inscripcion</button>
+                      <?php 
+                        echo form_close();
+                       ?>
+ 
 
 
 
@@ -128,10 +152,6 @@ foreach ($jugadores->result() as $row) {
             <!-- /.card -->
           </div>
         </div>
-
-    </section>
-    <!-- /.content -->
-  </div>
-
-
-
+        
+    </section>   <!-- /.content -->
+</div>
