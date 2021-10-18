@@ -96,6 +96,21 @@ public function opciones()
 	}
 
 
+
+		public function listaJInscritos()
+	{
+		//en este caso test es nuestra ventana principal
+		$idcursos=$_POST['idcursos'];
+		$lista=$this->curso_model->listaInscritos($idcursos);
+		$data['todinscritos']=$lista;
+		
+		$this->load->view('inc_head.php'); 
+		$this->load->view('inc_menu.php'); 
+		$this->load->view('cur_inscritos',$data); //contenido
+		$this->load->view('inc_footer.php'); //archivos del footer
+	}
+
+
 	public function modificarCur()
 	{
 		$idcursos=$_POST['idcursos'];

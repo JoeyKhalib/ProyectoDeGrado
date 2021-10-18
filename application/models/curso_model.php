@@ -12,6 +12,17 @@ class Curso_model extends CI_Model {
 		return $this->db->get();
 	}
 
+	public function listaInscritos($idcursos)
+	{
+		$this->db->select('*');
+		$this->db->from('inscripcion I');
+		$this->db->join('jugador J','I.idjugador=J.idjugador');
+		$this->db->join('cursos C','C.idcursos=I.idcursos');
+		$this->db->where('I.estado','1');
+		$this->db->where('C.idcursos',$idcursos);
+		return $this->db->get();
+	}
+
 	public function inscripcion($data)
 	{
 		$this->db->insert('inscripcion',$data);

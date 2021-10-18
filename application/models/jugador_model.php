@@ -14,9 +14,6 @@ class Jugador_model extends CI_Model {
 
 	public function actInscripcion()
 	{
-		$data = array(
-	'inscripcion' => '1',
-	);
 		$this->db->where('idjugador',$idjugador);
 		$this->db->update('jugador',$data);
 	}
@@ -32,12 +29,12 @@ class Jugador_model extends CI_Model {
 	}
 
 
-	public function obtenerInscripcion()
+	public function obtenerInscripcion($idjugador)
 	{
 		$this->db->select('idjugador id , fechaInscripcionI start ,fechaInscripcionF end, costoDeInscripcion title');
 		$this->db->from('inscripcion');
 		$this->db->where('estado','1');
-		//$this->db->where('idjugador',$idjugador);
+		$this->db->where('idjugador',$idjugador);
 		return $this->db->get()->result();
 	}
 

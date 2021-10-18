@@ -7,7 +7,7 @@
 
 <div class="container-fluid content-row">
     
-       
+       <br>
 
 
 <div class="row row-cols-1 row-cols-md-3 g-4">
@@ -73,10 +73,23 @@ foreach ($todoscursos->result() as $row) {
  ?>
         <input type="hidden" name="idcursos" value="<?php echo $row->idcursos;?>">
   <button class="btn btn-primary btn-sm" type="submit"> <i class="fas fa-folder">
-                              </i> Cambiar Foto</button>
+                              </i>Foto</button>
       <?php 
          echo form_close();
          ?>
+
+
+          <?php 
+  echo form_open_multipart('cursos/listaJInscritos');
+ ?>
+        <input type="hidden" name="idcursos" value="<?php echo $row->idcursos;?>">
+  <button class="btn btn-success btn-sm" type="submit"> <i class="fas fa-users">
+                              </i> Jugadores</button>
+      <?php 
+         echo form_close();
+         ?>
+
+
          </div>
 
 

@@ -31,33 +31,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <script src="<?php echo base_url();?>assets/plugins/fullcalendar-3.9.0/fullcalendar.min.js"></script>
   <!-- Traduccion al español -->
   <script src="<?php echo base_url();?>assets/plugins/fullcalendar-3.9.0/locale/es.js"></script>
+  
 
-
-  <script>
-    $(document).ready(function() {
-
-      $('#calendar').fullCalendar({
-        header: {
-            left: 'prev,next today',
-            center: 'title',
-            right: 'month,basicWeek,basicDay'
-          },
-        option:{
-          locale : "es"
-        },
-        defaultDate: new Date(),
-        events: '<?php echo site_url("jugador/getEventos");?>',
-      });
-    });
-  </script>
-
-    <style>
-      #calendar{
-        width: 800px;
-        margin: 0px auto;
-      }
-
-    </style>
 
 
 </head>

@@ -58,6 +58,8 @@ public function opciones()
 		$this->pdf->SetFont('Arial','B',13);
 		$this->pdf->SetXY(20,40);
 		$this->pdf->Cell(115,10,'FORMULARIO DE INSCRIPCION',0,'C',0);
+
+		//$this->pdf->Image('\Xampp\htdocs\codeignaiter\ProyectoConGIT\application\third_party\fpdf\img\decoracion.png',60,50, 100, 70,'PNG');
 	
 		$this->pdf->SetFont('Arial','', 8);
 		$this->pdf->SetXY(145,60);
@@ -65,9 +67,9 @@ public function opciones()
 		$this->pdf->Line(163, 65.5, 185, 65.5);
  
 		//Nombre //Apellidos //DNI //TELEFONO
-		$this->pdf->SetXY(25, 80);
+		$this->pdf->SetXY(25, 90);
 		$this->pdf->Cell(20, 8, 'NOMBRE(S):', 0, 'L');
-		$this->pdf->Line(52, 85.5, 120, 85.5);
+		$this->pdf->Line(52, 95, 120, 95);
 		//*****
 		$this->pdf->SetXY(25,100);
 		$this->pdf->Cell(19, 8, 'APELLIDOS:', 0, 'L');
@@ -132,7 +134,7 @@ public function opciones()
 		}
  
 
-		$this->pdf->Output('RegistroJugador.pdf','D');
+		$this->pdf->Output('RegistroJugador.pdf','I');
 	}
 
 
@@ -174,20 +176,19 @@ public function opciones()
 	public function pagoVista()
 	{
 		$idjugador=$_POST['idjugador'];
-		$this->load->view('inc_headCalendarioInscripcion',$idjugador);
+		$lista=$this->jugador_model->obtenerInscripcion($idjugador);
+		
+		
+		$this->load->view('inc_headCalendarioInscripcion');
 		$this->load->view('inc_menu');
-		$this->load->view('v_calendario');
+		$this->load->view('v_calendarioInscripcion',$lista);
 		$this->load->view('inc_footerCalendario');
-
+		
 	}
 
-	public function getEventos()
+	public function getInscripcion()
   	{
-
-   		$lista=$this->jugador_model->obtenerInscripcion();
-   		echo json_encode($lista);
-
-
+  		
   	}
 
 
@@ -268,7 +269,10 @@ public function opciones()
 		$data['idjugador']=$_POST['idjugador'];
 		$data['idtutor']=$_POST['idtutor'];
 		$data['idRegistro']=$registro;
+		$idjuga=$_POST['idinscrip'];
+		$data2['inscripcion']=$_POST['desabilitar'];
 		$lista=$this->curso_model->inscripcion($data);
+		$lista=$this->jugador_model->modificarJugador($idjuga,$data2);
 		if ($_SESSION['idusuario']==1) {
 			redirect('jugador/listaJugador','refresh');
 		}

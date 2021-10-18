@@ -68,6 +68,8 @@ foreach ($infojugador->result() as $row)
 
                   <input type="hidden" name="idtutor" value="<?php echo $row->usuario_idusuario;?>">
                   <input type="hidden" name="idjugador" value="<?php echo $row->idjugador;?>">
+                  <input type="hidden" name="idinscrip" value="<?php echo $row->idjugador;?>">
+                  <input type="hidden" name="desabilitar" value="<?php echo '1';?>">
 
 
 

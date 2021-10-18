@@ -64,16 +64,16 @@ foreach ($jugadores->result() as $row) {
 
                            <?php
                         $inscripcion=$row->inscripcion;
-                        if ($inscripcion=="") {
+                        if ($inscripcion=="0") {
                           //mostrar una imagen por defecto
                            ?> 
-                           <span class="badge badge-danger">No inscrito</span>   
+                           <span class="badge badge-danger">NO INSCRITO</span>   
                            <?php
                         }
                         else {
                           //mostrar la foto del usuario
                             ?> 
-                             <span class="badge badge-success">Inscrito</span>      
+                             <span class="badge badge-success">INSCRITO</span>      
                             <?php
                         }
                       ?> 
@@ -89,11 +89,27 @@ foreach ($jugadores->result() as $row) {
                         <?php     
                          echo form_open_multipart('Jugador/registrarInscripcion');
                        ?>
+                       <?php
+                       if ($inscripcion=="0") 
+                         {
+                        ?> 
                       <input type="hidden" name="idjugador" value="<?php echo $row->idjugador;?>">
                         <button type="submit" class="btn-sm btn-warning">
+
 <i class="fas fa-medal">
                               </i>
                          Inscripcion</button>
+
+                           <?php
+                        }
+                        else {
+                          //mostrar la foto del usuario
+                            ?> 
+                             <span class="badge badge-warning">VIGENTE</span>      
+                            <?php
+                        }
+                      ?> 
+
                         <?php 
                         echo form_close();
                        ?>
