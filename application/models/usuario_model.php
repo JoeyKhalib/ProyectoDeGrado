@@ -115,8 +115,69 @@ class Usuario_model extends CI_Model {
 
 
 
+		//Consultas para generar reportes
+
+		public function listaconRolesCompleto()
+	{
+		$this->db->select('*');
+		$this->db->from('usuario U');
+		$this->db->join('rol R','R.idrol=U.rol_idrol');
+		return $this->db->get();
+	}
 
 
+
+	public function totalUsuarios()
+	{
+		$this->db->select('COUNT(*) AS total');
+		$this->db->from('usuario');
+		return $this->db->get();
+	}
+	
+	public function totalHabilitados()
+	{
+		$this->db->select('COUNT(*) AS habilitados');
+		$this->db->from('usuario');
+		$this->db->where('estado','1');
+		return $this->db->get();
+	}
+
+	public function totalDesabilitados()
+	{
+		$this->db->select('COUNT(*) AS desabilitados');
+		$this->db->from('usuario');
+		$this->db->where('estado','0');
+		return $this->db->get();
+	}
+	
+	public function totalAdministradores()
+	{
+		$this->db->select('COUNT(*) AS administradores');
+		$this->db->from('usuario');
+		$this->db->where('rol_idrol','1');
+		return $this->db->get();
+	}
+	public function totalEntrenadores()
+	{
+		$this->db->select('COUNT(*) AS entrenadores');
+		$this->db->from('usuario');
+		$this->db->where('rol_idrol','2');
+		return $this->db->get();
+	}
+	public function totalPadres()
+	{
+		$this->db->select('COUNT(*) AS padres');
+		$this->db->from('usuario');
+		$this->db->where('rol_idrol','4');
+		return $this->db->get();
+	}
+	public function totalInvitados()
+	{
+		$this->db->select('COUNT(*) AS invitados');
+		$this->db->from('usuario');
+		$this->db->where('rol_idrol','3');
+		return $this->db->get();
+	}
 
 
 }

@@ -11,7 +11,7 @@
 
 <h5 class="mb-2 mt-4">Seleccione las multiples opciones que quiera ejecutar:</h5>
         <div class="row">
-          <div class="col-lg-6 col-4">
+          <div class="col-lg-6 col-10">
             <!-- small card -->
             <div class="small-box bg-info">
               <div class="inner">
@@ -30,7 +30,7 @@
           <!-- ./col -->
           
           <!-- ./col -->
-          <div class="col-lg-6 col-4">
+          <div class="col-lg-6 col-10">
             <!-- small card -->
             <div class="small-box bg-olive">
               <div class="inner">
@@ -48,7 +48,7 @@
             </div>
           </div>
           <!-- ./col -->
-          <div class="col-lg-6 col-4">
+          <div class="col-lg-6 col-10">
             <!-- small card -->
             <div class="small-box bg-warning">
               <div class="inner">
@@ -66,7 +66,7 @@
             </div>
           </div>
 
-          <div class="col-lg-6 col-4">
+          <div class="col-lg-6 col-10">
             <!-- small card -->
             <div class="small-box bg-lime">
               <div class="inner">

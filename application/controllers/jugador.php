@@ -75,26 +75,67 @@ public function opciones()
 		$this->pdf->Cell(19, 8, 'APELLIDOS:', 0, 'L');
 		$this->pdf->Line(52, 105.5, 180, 105.5);
 		//*****
-		$this->pdf->SetXY(25, 120);
-		$this->pdf->Cell(10, 8, 'CI', 0, 'L');
-		$this->pdf->Line(35, 125.5, 90, 125.5);
+		$this->pdf->SetXY(25, 110);
+		$this->pdf->Cell(10, 8, 'CI:', 0, 'L');
+		$this->pdf->Line(35, 115, 90, 115);
 		//*****
-		$this->pdf->SetXY(110, 120);
+		$this->pdf->SetXY(110, 110);
 		$this->pdf->Cell(10, 8, utf8_decode('TELÉFONO:'), 0, 'L');
-		$this->pdf->Line(135, 125.5, 170, 125.5);
+		$this->pdf->Line(135, 115, 170, 115);
+
+		$this->pdf->SetXY(25,120);
+		$this->pdf->Cell(15, 8, 'FECHA INICIO:', 0, 'L');
+		$this->pdf->Line(55, 125, 90, 125);
+
+
+		$this->pdf->SetXY(110,120);
+		$this->pdf->Cell(15, 8, 'FECHA FINAL:', 0, 'L');
+		$this->pdf->Line(140, 125, 170, 125);
+
  
 		//LICENCIATURA  //CARGO   //CÓDIGO POSTAL
-		$this->pdf->SetXY(25, 140);
-		$this->pdf->Cell(10, 8, 'LINCECIATURA EN:', 0, 'L');
-		$this->pdf->Line(27, 154, 65, 154);
+		$this->pdf->SetXY(25, 129);
+		$this->pdf->Cell(10, 8, 'CATEGORIA:', 0, 'L');
+		$this->pdf->Line(27, 143, 65, 143);
 		//*****
-		$this->pdf->SetXY(80, 140);
-		$this->pdf->Cell(10, 8, 'CARGO:', 0, 'L');
-		$this->pdf->Line(75, 154, 105, 154);
+		$this->pdf->SetXY(75, 129);
+		$this->pdf->Cell(10, 8, 'TURNO:', 0, 'L');
+		$this->pdf->Line(75, 143, 105, 143);
 		//*****
-		$this->pdf->SetXY(125, 140);
-		$this->pdf->Cell(10, 8, utf8_decode('CÓDIGO POSTAL:'), 0, 'L');
-		$this->pdf->Line(120, 154, 170, 154);
+		$this->pdf->SetXY(125, 129);
+		$this->pdf->Cell(10, 8, utf8_decode('NOMBRE DEL CURSO:'), 0, 'L');
+		$this->pdf->Line(120, 143, 170, 143);
+
+		$this->pdf->SetXY(25, 150);
+		$this->pdf->Cell(20, 8, 'NOMBRE(S) DEL PADRE O TUTOR:', 0, 'L');
+		$this->pdf->Line(26, 165, 80, 165);
+		//*****
+		$this->pdf->SetXY(25,170);
+		$this->pdf->Cell(19, 8, 'APELLIDOS DEL PADRE O TUTOR:', 0, 'L');
+		$this->pdf->Line(26, 185, 150, 185);
+
+		$this->pdf->SetXY(110, 150);
+		$this->pdf->Cell(10, 8, utf8_decode('CI DEL PADRE/TUTOR:'), 0, 'L');
+		$this->pdf->Line(110, 165, 150, 165);
+		
+
+		$this->pdf->SetXY(30, 200);
+		$this->pdf->Cell(10, 8, utf8_decode('-LA INCRIPCION ESTA REALIZADA PAGANDO EL MONTO DE:'), 0, 'L');
+		$this->pdf->SetXY(30, 210);
+		$this->pdf->Cell(10, 8, utf8_decode('-SE RECOMIENDA PUNTUALIDAD EN LOS ENTRENAMIENTOS DE FUTBOL.'), 0, 'L');
+		$this->pdf->SetXY(30, 220);
+		$this->pdf->Cell(10, 8, utf8_decode('-DISIPLINA Y BUENA CONDUCTA HACEN A UN BUEN DEPORTISTA BIENVENIDO.'), 0, 'L');
+
+
+		$this->pdf->SetXY(33, 255);
+		$this->pdf->Cell(10, 8, 'FIRMA DEL ADMINISTRADOR:', 0, 'L');
+		$this->pdf->Line(110, 254.5, 150, 254.5);
+
+		$this->pdf->SetXY(110, 255);
+		$this->pdf->Cell(10, 8, 'FIRMA DEL PADRE O TUTOR:', 0, 'L');
+		$this->pdf->Line(34, 254.5, 74, 254.5);
+
+
 
 		$misCoordenadas = array(
                         array('x' => 165, 'y' => 58), //Fecha
@@ -116,26 +157,205 @@ public function opciones()
 			$apellidoMaternoJugador=$row->apellidoMaternoJugador;
 			$ciJugador=$row->ciJugador;
 			$telefono=$row->telefono;
+			$fechaInscripcionI=$row->fechaInscripcionI;
+			$fechaInscripcionF=$row->fechaInscripcionF;
+			$categoria=$row->categoria;
+			$turno=$row->turno;
+			$nombreCurso=$row->nombreCurso;
+
+			$nombres=$row->nombres;
+			$apellidoPaterno=$row->apellidoPaterno;
+			$apellidoMaterno=$row->apellidoMaterno;
+			$ci=$row->ci;
+
 
 			$this->pdf->SetXY(165, 61);
 			$this->pdf->Cell(50,5,$date,'',0,'L',0);
-			$this->pdf->SetXY(54, 81);
+			$this->pdf->SetXY(54, 90);
 			$this->pdf->Cell(50,5,$nombresJugador,'',0,'L',0);
 			$this->pdf->SetXY(54, 101);
 			$this->pdf->Cell(40,5,$apellidoPaternoJugador,'',0,'L',0);
 			$this->pdf->SetXY(70, 101);
 			$this->pdf->Cell(40,5,$apellidoMaternoJugador,'',0,'L',0);
-			$this->pdf->SetXY(37, 121);
+			$this->pdf->SetXY(45, 110.5);
 			$this->pdf->Cell(25,5,$ciJugador,'',0,'L',0);
-			$this->pdf->SetXY(137, 121);
+			$this->pdf->SetXY(137, 110.5);
 			$this->pdf->Cell(25,5,$telefono,'',0,'L',0);
+			$this->pdf->SetXY(63, 120);
+			$this->pdf->Cell(25,5,$fechaInscripcionI,'',0,'L',0);
+			$this->pdf->SetXY(146, 120);
+			$this->pdf->Cell(25,5,$fechaInscripcionF,'',0,'L',0);
+			$this->pdf->SetXY(34, 138);
+			$this->pdf->Cell(25,5,$categoria,'',0,'L',0);
+			$this->pdf->SetXY(80, 138);
+			$this->pdf->Cell(25,5,$turno,'',0,'L',0);
+			$this->pdf->SetXY(135, 138);
+			$this->pdf->Cell(25,5,$nombreCurso,'',0,'L',0);
 			$this->pdf->Ln(5);
+
+			$this->pdf->SetXY(30, 160);
+			$this->pdf->Cell(50,5,$nombres,'',0,'L',0);
+			$this->pdf->SetXY(30, 180);
+			$this->pdf->Cell(40,5,$apellidoPaterno,'',0,'L',0);
+			$this->pdf->SetXY(55, 180);
+			$this->pdf->Cell(40,5,$apellidoMaterno,'',0,'L',0);
+			$this->pdf->SetXY(120, 160);
+			$this->pdf->Cell(40,5,$ci,'',0,'L',0);
 			$num++;
 		}
  
 
-		$this->pdf->Output('RegistroJugador.pdf','I');
+		$this->pdf->Output('RegistroJugador'.$ciJugador.'.pdf','I');
 	}
+
+
+
+	
+
+	public function reporteUsuarios()
+	{
+
+		$totalUsuarios=$this->usuario_model->totalUsuarios();
+		$totalActivos=$this->usuario_model->totalHabilitados();
+		$totalDesactivos=$this->usuario_model->totalDesabilitados();
+		$totalADMIN=$this->usuario_model->totalAdministradores();
+		$toralENTR=$this->usuario_model->totalEntrenadores();
+		$totalPADRE=$this->usuario_model->totalPadres();
+		$totalINVI=$this->usuario_model->totalInvitados();
+		$totalUsuarios=$totalUsuarios->result();
+		$totalActivos=$totalActivos->result();
+		$totalDesactivos=$totalDesactivos->result();
+		$totalADMIN=$totalADMIN->result();
+		$toralENTR=$toralENTR->result();
+		$totalPADRE=$totalPADRE->result();
+		$totalINVI=$totalINVI->result();
+
+
+		$lista=$this->usuario_model->listaconRolesCompleto();
+		$lista=$lista->result();
+
+
+
+		$this->pdf=new Pdf();
+		$this->pdf->AddPage();
+		$this->pdf->AliasNbPages();
+		$this->pdf->SetTitle("Lista de Usuarios");
+		$this->pdf->SetLeftMargin(15);
+		$this->pdf->SetRightMargin(15);
+		$this->pdf->SetFillColor(210,210,210);
+		$this->pdf->SetFont('Arial','B',15);
+		$this->pdf->Cell(30);
+		$this->pdf->Cell(120,10,'REPORTE DE USUARIOS','LTBR',0,'C',1);
+		$this->pdf->Ln(15);
+		$this->pdf->SetFont('Arial','', 12);
+		$this->pdf->MultiCell(178,3,('"PASION POR EL DEPORTE"'), 0, 'C');
+		$this->pdf->Ln(20);
+		$this->pdf->Image('\Xampp\htdocs\codeignaiter\ProyectoConGIT\application\third_party\fpdf\img\logo.jpg',10,8,33);
+		$this->pdf->SetFont('Arial','B',10);
+		$this->pdf->Cell(10,5,'No.','TBLR',0,'L',0);
+		$this->pdf->Cell(50,5,'NOMBRES COMPLETO','TBLR',0,'L',0);
+		$this->pdf->Cell(40,5,'ROL','TBLR',0,'L',0);
+		$this->pdf->Cell(20,5,'CI','TBLR',0,'L',0);
+		$this->pdf->Cell(25,5,'TELEFONO','TBLR',0,'L',0);
+		$this->pdf->Ln(5);
+
+		$this->pdf->SetFont('Arial','B',8);
+		$num=1;
+		foreach ($lista as $row) {
+			$nombres=$row->nombres;
+			$apellidoPaterno=$row->apellidoPaterno;
+			$apellidoMaterno=$row->apellidoMaterno;
+			$nombreRol=$row->nombreRol;
+			$ci=$row->ci;
+			$telefono=$row->telefono;
+			$estado=$row->estado;
+			$this->pdf->SetFillColor(245,30,30);
+
+			if ($estado==1) {
+			$this->pdf->Cell(10,5,$num,'TBLR',0,'L',0);
+			$this->pdf->Cell(50,5,$nombres.' '.$apellidoPaterno.' '.$apellidoMaterno,'TBLR',0,'L',0);
+			$this->pdf->Cell(40,5,$nombreRol,'TBLR',0,'L',0);
+			//$this->pdf->Cell(40,5,$apellidoMaterno,'TBLR',0,'L',0);
+			$this->pdf->Cell(20,5,$ci,'TBLR',0,'L',0);
+			$this->pdf->Cell(25,5,$telefono,'TBLR',0,'L',0);
+			$this->pdf->Ln(5);
+			$num++;
+			}
+			else
+			{
+			$this->pdf->Cell(10,5,$num,'TBLR',0,'L',1);
+			$this->pdf->Cell(50,5,$nombres.' '.$apellidoPaterno.' '.$apellidoMaterno,'TBLR',0,'L',1);
+			$this->pdf->Cell(40,5,$nombreRol,'TBLR',0,'L',1);
+			//$this->pdf->Cell(40,5,$apellidoMaterno,'TBLR',0,'L',0);
+			$this->pdf->Cell(20,5,$ci,'TBLR',0,'L',1);
+			$this->pdf->Cell(25,5,$telefono,'TBLR',0,'L',1);
+			$this->pdf->Ln(5);
+			$num++;
+			}
+
+
+			
+		}
+
+
+
+		foreach ($totalUsuarios as $row) {
+			$total=$row->total;
+			$this->pdf->Ln(5);
+			$this->pdf->Cell(53,5,'TOTAL DE USUARIOS:','TBLR',0,'L',0);
+			$this->pdf->Cell(10,5,$total,'TBLR',0,'L',0);
+		}
+		foreach ($totalActivos as $row) {
+			$habilitados=$row->habilitados;
+			$this->pdf->Ln(5);
+			$this->pdf->Cell(53,5,'TOTAL DE USUARIOS ACTIVOS:','TBLR',0,'L',0);
+			$this->pdf->Cell(10,5,$habilitados,'TBLR',0,'L',0);
+		}
+		foreach ($totalDesactivos as $row) {
+			$desabilitados=$row->desabilitados;
+			$this->pdf->Ln(5);
+			$this->pdf->Cell(53,5,'TOTAL DE USUARIOS DESACTIVOS:','TBLR',0,'L',0);
+			$this->pdf->Cell(10,5,$desabilitados,'TBLR',0,'L',0);
+		}
+		foreach ($totalADMIN as $row) {
+			$administradores=$row->administradores;
+			$this->pdf->Ln(5);
+			$this->pdf->Cell(53,5,'USUARIOS ADMINISTRADORES:','TBLR',0,'L',0);
+			$this->pdf->Cell(10,5,$administradores,'TBLR',0,'L',0);
+		}
+		foreach ($toralENTR as $row) {
+			$entrenador=$row->entrenadores;
+			$this->pdf->Ln(5);
+			$this->pdf->Cell(53,5,'USUARIOS ENTRENADORES:','TBLR',0,'L',0);
+			$this->pdf->Cell(10,5,$entrenador,'TBLR',0,'L',0);
+		}
+		foreach ($totalPADRE as $row) {
+			$padre=$row->padres;
+			$this->pdf->Ln(5);
+			$this->pdf->Cell(53,5,'USUARIOS PADRES/TUTORES:','TBLR',0,'L',0);
+			$this->pdf->Cell(10,5,$padre,'TBLR',0,'L',0);
+		}
+		foreach ($totalINVI as $row) {
+			$invitado=$row->invitados;
+			$this->pdf->Ln(5);
+			$this->pdf->Cell(53,5,'USUARIOS INVITADOS:','TBLR',0,'L',0);
+			$this->pdf->Cell(10,5,$invitado,'TBLR',0,'L',0);
+
+
+		}
+
+		
+		$this->pdf->Ln(16);
+		$this->pdf->SetFont('Arial','B',8);
+		$this->pdf->Cell(42,5,'FIRMA DEL ADMINISTRADOR','T',0,'C',0);
+
+
+		$this->pdf->Output('listadeusuario.pdf','I');
+	}
+
+
+
+
 
 
 	public function inscrito()
@@ -176,20 +396,16 @@ public function opciones()
 	public function pagoVista()
 	{
 		$idjugador=$_POST['idjugador'];
-		$lista=$this->jugador_model->obtenerInscripcion($idjugador);
+		$data['inscritos']=$this->jugador_model->obtenerInscripcion($idjugador);
 		
 		
 		$this->load->view('inc_headCalendarioInscripcion');
 		$this->load->view('inc_menu');
-		$this->load->view('v_calendarioInscripcion',$lista);
+		$this->load->view('v_calendarioInscripcion',$data);
 		$this->load->view('inc_footerCalendario');
 		
 	}
 
-	public function getInscripcion()
-  	{
-  		
-  	}
 
 
 

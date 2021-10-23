@@ -11,7 +11,7 @@
 
 <h5 class="mb-2 mt-4">Seleccione las multiples opciones que quiera ejecutar:</h5>
         <div class="row">
-          <div class="col-lg-6 col-4">
+          <div class="col-lg-6 col-8">
             <!-- small card -->
             <div class="small-box bg-info">
               <div class="inner">
@@ -29,11 +29,11 @@
             </div>
           </div>
           <!-- ./col -->
-          <div class="col-lg-6 col-4">
+          <div class="col-lg-6 col-8">
             <!-- small card -->
             <div class="small-box bg-success">
               <div class="inner">
-                <h3>Listar Jugadores</h3>
+                <h3>Jugadores</h3>
 
                 <p>Editar y  los datos de nuestros queridos jugadores</p>
               </div>
@@ -46,11 +46,11 @@
             </div>
           </div>
           <!-- ./col -->
-          <div class="col-lg-6 col-4">
+          <div class="col-lg-6 col-8">
             <!-- small card -->
             <div class="small-box bg-warning">
               <div class="inner">
-                <h3>Lista de Inscripciones </h3>
+                <h3>Inscripciones </h3>
 
                 <p>Se listara las inscripciones de todos los jugadores</p>
               </div>
@@ -63,25 +63,24 @@
             </div>
           </div>
           <!-- ./col -->
-          <div class="col-lg-6 col-4">
+          <div class="col-lg-6 col-8">
             <!-- small card -->
-          <!--  <div class="small-box bg-danger">
+           <div class="small-box bg-orange">
               <div class="inner">
-                <h3>Eliminar</h3>
+                <h3>Lista de Jugadores</h3>
 
-                <p>Se eliminara a los jugadores de nuestra de futbol</p>
+                <p>Se imprime la lista de todos los jugadores inscritos en la escuela de futbol</p>
               </div>
               <div class="icon">
-                <i class="fas fa-user-minus"></i>
+                <i class="fas fa-file-pdf"></i>
               </div>
-              <a href="#" class="small-box-footer">
-               Eliminar <i class="fas fa-arrow-circle-right"></i>
+              <a href="<?php echo base_url();?>index.php/jugador/reporteJugadores" class="small-box-footer">
+               Imprimir <i class="fas fa-arrow-circle-right"></i>
               </a>
             </div>
-          </div>-->
+          </div>
 
-          <!-- ./col -->
-        </div>
+          
 
 
 

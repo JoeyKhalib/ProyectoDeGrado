@@ -23,6 +23,7 @@ class Jugador_model extends CI_Model {
 		$this->db->select('*');
 		$this->db->from('inscripcion I');
 		$this->db->join('jugador J','J.idjugador=I.idjugador');
+		$this->db->join('cursos C','C.idcursos=I.idcursos');
 		$this->db->join('usuario U','U.idusuario=J.usuario_idusuario');
 		$this->db->where('J.idjugador',$idjugador);
 		return $this->db->get();
@@ -35,7 +36,7 @@ class Jugador_model extends CI_Model {
 		$this->db->from('inscripcion');
 		$this->db->where('estado','1');
 		$this->db->where('idjugador',$idjugador);
-		return $this->db->get()->result();
+		return $this->db->get();
 	}
 
 	public function listaCompleta()

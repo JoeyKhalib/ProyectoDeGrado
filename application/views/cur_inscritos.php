@@ -65,7 +65,7 @@ foreach ($todinscritos->result() as $row) {
                       <i class="fas fa-comments"></i>
                     </a>
                     <a href="#" class="btn btn-sm btn-primary">
-                      <i class="fas fa-user"></i> View Profile
+                      <i class="fas fa-user"></i> Ver Perfil
                     </a>
                   </div>
                 </div>

@@ -42,10 +42,10 @@ public function test()
 		$this->pdf->Image('\Xampp\htdocs\codeignaiter\ProyectoConGIT\application\third_party\fpdf\img\logo.jpg',10,8,33);
 		$this->pdf->SetFont('Arial','B',10);
 		$this->pdf->Cell(10,5,'No.','TBLR',0,'L',0);
-		$this->pdf->Cell(50,5,'NOMBRE','TBLR',0,'L',0);
+		$this->pdf->Cell(35,5,'NOMBRE','TBLR',0,'L',0);
 		$this->pdf->Cell(40,5,'APELLIDO PATERNO','TBLR',0,'L',0);
 		$this->pdf->Cell(40,5,'APELLIDO MATERNO','TBLR',0,'L',0);
-		$this->pdf->Cell(25,5,'CI','TBLR',0,'L',0);
+		$this->pdf->Cell(20,5,'CI','TBLR',0,'L',0);
 		$this->pdf->Cell(25,5,'TELEFONO','TBLR',0,'L',0);
 		$this->pdf->Ln(5);
 
@@ -59,18 +59,168 @@ public function test()
 			$telefono=$row->telefono;
 
 			$this->pdf->Cell(10,5,$num,'TBLR',0,'L',0);
-			$this->pdf->Cell(50,5,$nombres,'TBLR',0,'L',0);
+			$this->pdf->Cell(35,5,$nombres,'TBLR',0,'L',0);
 			$this->pdf->Cell(40,5,$apellidoPaterno,'TBLR',0,'L',0);
 			$this->pdf->Cell(40,5,$apellidoMaterno,'TBLR',0,'L',0);
-			$this->pdf->Cell(25,5,$ci,'TBLR',0,'L',0);
+			$this->pdf->Cell(20,5,$ci,'TBLR',0,'L',0);
 			$this->pdf->Cell(25,5,$telefono,'TBLR',0,'L',0);
 			$this->pdf->Ln(5);
 			$num++;
 		}
+		$this->pdf->Ln(15);
+		$this->pdf->Cell(42,5,'FIRMA DEL ADMINISTRADOR','T',0,'L',0);
 
 
-		$this->pdf->Output('listadeusuario.pfg','I');
+
+		$this->pdf->Output('listadeusuarios.pdf','I');
 	}
+
+
+
+
+
+	public function reporteUsuarios()
+	{
+
+		$totalUsuarios=$this->usuario_model->totalUsuarios();
+		$totalActivos=$this->usuario_model->totalHabilitados();
+		$totalDesactivos=$this->usuario_model->totalDesabilitados();
+		$totalADMIN=$this->usuario_model->totalAdministradores();
+		$toralENTR=$this->usuario_model->totalEntrenadores();
+		$totalPADRE=$this->usuario_model->totalPadres();
+		$totalINVI=$this->usuario_model->totalInvitados();
+		$totalUsuarios=$totalUsuarios->result();
+		$totalActivos=$totalActivos->result();
+		$totalDesactivos=$totalDesactivos->result();
+		$totalADMIN=$totalADMIN->result();
+		$toralENTR=$toralENTR->result();
+		$totalPADRE=$totalPADRE->result();
+		$totalINVI=$totalINVI->result();
+
+
+		$lista=$this->usuario_model->listaconRolesCompleto();
+		$lista=$lista->result();
+
+
+
+		$this->pdf=new Pdf();
+		$this->pdf->AddPage();
+		$this->pdf->AliasNbPages();
+		$this->pdf->SetTitle("Lista de Usuarios");
+		$this->pdf->SetLeftMargin(15);
+		$this->pdf->SetRightMargin(15);
+		$this->pdf->SetFillColor(210,210,210);
+		$this->pdf->SetFont('Arial','B',15);
+		$this->pdf->Cell(30);
+		$this->pdf->Cell(120,10,'REPORTE DE USUARIOS','LTBR',0,'C',1);
+		$this->pdf->Ln(15);
+		$this->pdf->SetFont('Arial','', 12);
+		$this->pdf->MultiCell(178,3,('"PASION POR EL DEPORTE"'), 0, 'C');
+		$this->pdf->Ln(20);
+		$this->pdf->Image('\Xampp\htdocs\codeignaiter\ProyectoConGIT\application\third_party\fpdf\img\logo.jpg',10,8,33);
+		$this->pdf->SetFont('Arial','B',10);
+		$this->pdf->Cell(10,5,'No.','TBLR',0,'L',0);
+		$this->pdf->Cell(50,5,'NOMBRES COMPLETO','TBLR',0,'L',0);
+		$this->pdf->Cell(40,5,'ROL','TBLR',0,'L',0);
+		$this->pdf->Cell(20,5,'CI','TBLR',0,'L',0);
+		$this->pdf->Cell(25,5,'TELEFONO','TBLR',0,'L',0);
+		$this->pdf->Ln(5);
+
+		$this->pdf->SetFont('Arial','B',8);
+		$num=1;
+		foreach ($lista as $row) {
+			$nombres=$row->nombres;
+			$apellidoPaterno=$row->apellidoPaterno;
+			$apellidoMaterno=$row->apellidoMaterno;
+			$nombreRol=$row->nombreRol;
+			$ci=$row->ci;
+			$telefono=$row->telefono;
+			$estado=$row->estado;
+			$this->pdf->SetFillColor(245,30,30);
+
+			if ($estado==1) {
+			$this->pdf->Cell(10,5,$num,'TBLR',0,'L',0);
+			$this->pdf->Cell(50,5,$nombres.' '.$apellidoPaterno.' '.$apellidoMaterno,'TBLR',0,'L',0);
+			$this->pdf->Cell(40,5,$nombreRol,'TBLR',0,'L',0);
+			//$this->pdf->Cell(40,5,$apellidoMaterno,'TBLR',0,'L',0);
+			$this->pdf->Cell(20,5,$ci,'TBLR',0,'L',0);
+			$this->pdf->Cell(25,5,$telefono,'TBLR',0,'L',0);
+			$this->pdf->Ln(5);
+			$num++;
+			}
+			else
+			{
+			$this->pdf->Cell(10,5,$num,'TBLR',0,'L',1);
+			$this->pdf->Cell(50,5,$nombres.' '.$apellidoPaterno.' '.$apellidoMaterno,'TBLR',0,'L',1);
+			$this->pdf->Cell(40,5,$nombreRol,'TBLR',0,'L',1);
+			//$this->pdf->Cell(40,5,$apellidoMaterno,'TBLR',0,'L',0);
+			$this->pdf->Cell(20,5,$ci,'TBLR',0,'L',1);
+			$this->pdf->Cell(25,5,$telefono,'TBLR',0,'L',1);
+			$this->pdf->Ln(5);
+			$num++;
+			}
+
+
+			
+		}
+
+
+
+		foreach ($totalUsuarios as $row) {
+			$total=$row->total;
+			$this->pdf->Ln(5);
+			$this->pdf->Cell(53,5,'TOTAL DE USUARIOS:','TBLR',0,'L',0);
+			$this->pdf->Cell(10,5,$total,'TBLR',0,'L',0);
+		}
+		foreach ($totalActivos as $row) {
+			$habilitados=$row->habilitados;
+			$this->pdf->Ln(5);
+			$this->pdf->Cell(53,5,'TOTAL DE USUARIOS ACTIVOS:','TBLR',0,'L',0);
+			$this->pdf->Cell(10,5,$habilitados,'TBLR',0,'L',0);
+		}
+		foreach ($totalDesactivos as $row) {
+			$desabilitados=$row->desabilitados;
+			$this->pdf->Ln(5);
+			$this->pdf->Cell(53,5,'TOTAL DE USUARIOS DESACTIVOS:','TBLR',0,'L',0);
+			$this->pdf->Cell(10,5,$desabilitados,'TBLR',0,'L',0);
+		}
+		foreach ($totalADMIN as $row) {
+			$administradores=$row->administradores;
+			$this->pdf->Ln(5);
+			$this->pdf->Cell(53,5,'USUARIOS ADMINISTRADORES:','TBLR',0,'L',0);
+			$this->pdf->Cell(10,5,$administradores,'TBLR',0,'L',0);
+		}
+		foreach ($toralENTR as $row) {
+			$entrenador=$row->entrenadores;
+			$this->pdf->Ln(5);
+			$this->pdf->Cell(53,5,'USUARIOS ENTRENADORES:','TBLR',0,'L',0);
+			$this->pdf->Cell(10,5,$entrenador,'TBLR',0,'L',0);
+		}
+		foreach ($totalPADRE as $row) {
+			$padre=$row->padres;
+			$this->pdf->Ln(5);
+			$this->pdf->Cell(53,5,'USUARIOS PADRES/TUTORES:','TBLR',0,'L',0);
+			$this->pdf->Cell(10,5,$padre,'TBLR',0,'L',0);
+		}
+		foreach ($totalINVI as $row) {
+			$invitado=$row->invitados;
+			$this->pdf->Ln(5);
+			$this->pdf->Cell(53,5,'USUARIOS INVITADOS:','TBLR',0,'L',0);
+			$this->pdf->Cell(10,5,$invitado,'TBLR',0,'L',0);
+
+
+		}
+
+		
+		$this->pdf->Ln(16);
+		$this->pdf->SetFont('Arial','B',8);
+		$this->pdf->Cell(42,5,'FIRMA DEL ADMINISTRADOR','T',0,'C',0);
+
+
+		$this->pdf->Output('reportesdeusuarios.pdf','I');
+	}
+
+
 
 	public function usuarios()
 	{

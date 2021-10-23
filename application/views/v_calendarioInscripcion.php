@@ -10,15 +10,27 @@
 
 <div id='calendar'></div>
 
-    <?php 
-$lista=$lista->result();
-echo $nombresJugador=$row->nombresJugador;
-         ?>
-	
+<?php 
+foreach ($inscritos->result() as $row) {
+ ?>
+
+
+<input type="hidden" id="id" name="id" value="<?php echo $row->id;?>;">
+<input type="hidden" id="start" name="start" value="<?php echo $row->start;?>;">
+<input type="hidden" id="end" name="end" value="<?php echo $row->end;?>;">
+<input type="hidden" id="title" name="title" value="<?php echo $row->title;?>;">
+
+ <?php
+}
+ ?>
+
 
   <script>
     $(document).ready(function() {
-
+    	var id= $('#id').val();
+    	var start=$('#start').val();
+    	var end=$('#end').val();
+    	var title=$('#title').val();
       $('#calendar').fullCalendar({
         header: {
             left: 'prev,next today',
@@ -29,7 +41,13 @@ echo $nombresJugador=$row->nombresJugador;
           locale : "es"
         },
         defaultDate: new Date(),
-        events: '<?php echo site_url("jugador/pagoVista");?>',
+        events: [ {
+          id:id,
+          title: title,
+          start: start,
+          end:end,
+          backgroundColor:'green'
+        }],
       });
     });
   </script>
