@@ -24,6 +24,7 @@ class Jugador_model extends CI_Model {
 		$this->db->from('inscripcion I');
 		$this->db->join('jugador J','J.idjugador=I.idjugador');
 		$this->db->join('cursos C','C.idcursos=I.idcursos');
+		$this->db->join('categoria CA','CA.idCategoria=C.Categoria_idCategoria');
 		$this->db->join('usuario U','U.idusuario=J.usuario_idusuario');
 		$this->db->where('J.idjugador',$idjugador);
 		return $this->db->get();
@@ -64,6 +65,14 @@ class Jugador_model extends CI_Model {
 		$this->db->update('jugador',$data);
 	}
 
+		public function modificarInscripcion($idjugador,$data)
+	{
+		
+		$this->db->where('idjugador',$idjugador);
+		$this->db->update('inscripcion',$data);
+	}
+
+
 	public function agregarJugador($data)
 	{
 		$this->db->insert('jugador',$data);
@@ -80,5 +89,78 @@ class Jugador_model extends CI_Model {
 	    $this->db->where('idjugador',$idjugador);
 		$this->db->update('jugador',$data);
 	}
+
+
+	public function obtenerTodas()
+	{
+		$this->db->select('idjugador id ,idtutor idp , fechaInscripcionI start ,fechaInscripcionF end, costoDeInscripcion title');
+		$this->db->from('inscripcion');
+		$this->db->where('estado','1');
+		return $this->db->get();
+}
+
+
+	public function eliminarInscripcion($idjugador)
+	{
+		$this->db->where('idjugador',$idjugador);
+		$this->db->delete('inscripcion');
+	}
+
+
+
+		//Consultas para generar reportes de Jugadores
+
+	public function listaCompletaJugadores()
+	{
+		$this->db->select('*');
+		$this->db->from('jugador');
+		return $this->db->get();
+	}
+
+	public function totalJugadores()
+	{
+		$this->db->select('COUNT(*) AS total');
+		$this->db->from('jugador');
+		return $this->db->get();
+	}
+	
+	public function totalHabJugadores()
+	{
+		$this->db->select('COUNT(*) AS habilitados');
+		$this->db->from('jugador');
+		$this->db->where('estado','1');
+		return $this->db->get();
+	}
+
+	public function totalDesJugadores()
+	{
+		$this->db->select('COUNT(*) AS desabilitados');
+		$this->db->from('jugador');
+		$this->db->where('estado','0');
+		return $this->db->get();
+	}
+
+		public function totalInscritos()
+	{
+		$this->db->select('COUNT(*) AS inscriptosS');
+		$this->db->from('jugador');
+		$this->db->where('inscripcion','1');
+		return $this->db->get();
+	}
+
+	public function totalNoInscritos()
+	{
+		$this->db->select('COUNT(*) AS inscriptosN');
+		$this->db->from('jugador');
+		$this->db->where('inscripcion','0');
+		return $this->db->get();
+	}
+
+	
+
+
+
+
+
 
 }

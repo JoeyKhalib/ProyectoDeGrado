@@ -57,7 +57,7 @@
   <div class="form-group">
     <label for="entrenador">Seleccione Entrenador a Cargo</label>
 
-    <select class="form-control" name="entrenador">
+    <select class="form-control select2" name="entrenador">
       <option selected disabled="true">Entrenador encargado del torneo</option>
 <?php 
 $indice=1;

@@ -47,4 +47,33 @@ function fechaAhora()
 return $now;
 }
 
+function hora($horas)
+{
+
+	/*17:43:39*/
+
+$hor=substr($horas, 0,2);
+$minuto=substr($horas, 3,2);
+
+$horaformateada=$hor.":".$minuto;
+
+return $horaformateada;
+}
+
+
+function edad($fechaNacimiento)
+{
+	$now = date('y-m-d');
+
+$edadActual=abs(strtotime($now)-strtotime($fechaNacimiento));
+
+$years  = floor($edadActual / (365 * 60 * 60 * 24));
+
+
+	
+
+
+return $years;
+}
+
  ?>

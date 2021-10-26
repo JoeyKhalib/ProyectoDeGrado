@@ -7,9 +7,9 @@
 
 
 
+<h5 class="mb-2 mt-4">Seleccione las multiples opciones que quiera ejecutar: </h5>
+<?php echo fechaAhora() ?>
 
-
-<h5 class="mb-2 mt-4">Seleccione las multiples opciones que quiera ejecutar:</h5>
         <div class="row">
           <div class="col-lg-6 col-8">
             <!-- small card -->
@@ -74,7 +74,7 @@
               <div class="icon">
                 <i class="fas fa-file-pdf"></i>
               </div>
-              <a href="<?php echo base_url();?>index.php/jugador/reporteJugadores" class="small-box-footer">
+              <a href="<?php echo base_url();?>index.php/jugador/reporteJugador" class="small-box-footer">
                Imprimir <i class="fas fa-arrow-circle-right"></i>
               </a>
             </div>

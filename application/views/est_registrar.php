@@ -37,7 +37,7 @@
   <div class="form-group">
     <label for="rol">Seleccione el Rol</label>
 
-    <select class="form-control" name="rol">
+    <select class="form-control"  name="rol">
 <?php 
 $indice=1;
 foreach ($rol->result() as $row) {
@@ -91,6 +91,9 @@ foreach ($rol->result() as $row) {
                     <label for="">Fecha de Nacimiento</label>
                     <input type="date" class="form-control" name="fechaNacimiento" placeholder="Fecha de Nacimiento">
                   </div>
+
+
+
 
 
                   

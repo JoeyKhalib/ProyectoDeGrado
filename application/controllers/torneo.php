@@ -24,10 +24,10 @@ public function tornOpciones()
 		$data['entrenadores']=$lista;
 
 
-		$this->load->view('inc_head.php');//archivos cabecera
+		$this->load->view('inc_headEquipo.php');//archivos cabecera
 		$this->load->view('inc_menu.php');
 		$this->load->view('torn_registrar',$data); //contenido
-		$this->load->view('inc_footer.php'); //archivos del footer
+		$this->load->view('inc_footerEquipo.php'); //archivos del footer
 	}
 
 	public function agregarTEntr()
@@ -206,6 +206,102 @@ public function imprimirCursos()
 		$this->load->view('inc_menuEntrenador.php'); 
 		$this->load->view('jug_mostrar',$data); //contenido
 		$this->load->view('inc_footer.php'); //archivos del footer
+	}
+
+
+
+	public function reporteTorneo()
+	{
+		/*
+		$totalEventos=$this->evento_model->totalEventos();
+		$totalEventosAct=$this->evento_model->totalEvenHab();
+		$totalEventosDesc=$this->evento_model->totalEvenDes();
+		$reunion=$this->evento_model->categoriaReunion();
+		$invitacion=$this->evento_model->categoriaInvitacion();
+		$comunicado=$this->evento_model->categoriaComunicado();
+		$solicitud=$this->evento_model->categoriaSolicitud();
+
+		$totalEventos=$totalEventos->result();
+		$totalEventosAct=$totalEventosAct->result();
+		$totalEventosDesc=$totalEventosDesc->result();
+
+		$reunion=$reunion->result();
+		$invitacion=$invitacion->result();
+		$comunicado=$comunicado->result();
+		$solicitud=$solicitud->result();
+
+*/
+		$lista=$this->torneo_model->listaCompletaTorneo();
+		$lista=$lista->result();
+
+
+
+		$this->pdf=new Pdf();
+		$this->pdf->AddPage();
+		$this->pdf->AliasNbPages();
+		$this->pdf->SetTitle("Lista de Torneo");
+		$this->pdf->SetLeftMargin(15);
+		$this->pdf->SetRightMargin(15);
+		$this->pdf->SetFillColor(210,210,210);
+		$this->pdf->SetFont('Arial','B',15);
+		$this->pdf->Cell(30);
+		$this->pdf->Cell(120,10,'REPORTE DE TORNEOS','LTBR',0,'C',1);
+		$this->pdf->Ln(15);
+		$this->pdf->SetFont('Arial','', 12);
+		$this->pdf->MultiCell(178,3,('"PASION POR EL DEPORTE"'), 0, 'C');
+		$this->pdf->Ln(20);
+		$this->pdf->Image('\Xampp\htdocs\codeignaiter\ProyectoConGIT\application\third_party\fpdf\img\logo.jpg',10,8,33);
+
+
+		$this->pdf->SetFont('Arial','B',8);
+		$num=1;
+
+
+		foreach ($lista as $row) {
+			$nombre=$row->nombre;
+			$premio=$row->premio;
+			$horaTorneo=$row->horaTorneo;
+			$fechaTorneo=$row->fechaTorneo;
+			$totalEquipos=$row->totalEquipos;
+			$estado=$row->estado;
+
+			if ($estado==1) {
+		$this->pdf->SetFont('Arial','B',10);
+		$this->pdf->Cell(180,5,'','T',0,'L',0);
+		$this->pdf->Ln(3);
+		$this->pdf->Cell(75,5,$num,'',0,'L',0);
+		$this->pdf->Cell(40,5,$nombre,'',0,'C',0);
+		$this->pdf->Ln(8);
+		$this->pdf->Cell(150,5,$premio,'',0,'L',0);
+		$this->pdf->Cell(30,5,$fechaTorneo,'',0,'L',0);
+		$this->pdf->Ln(8);
+		$this->pdf->SetFont('Arial','', 10);
+		$this->pdf->MultiCell(180,5,'El Torneo '.$nombre.' iniciara a las '.hora($horaTorneo).' la fecha '.$fechaTorneo.' el numero de equipos que se admitiran '.$totalEquipos.' con los siguientes premios: '.$premio, 0, 'C',0);
+
+		$this->pdf->Ln(10);
+			$num++;
+			}
+			else
+			{
+		$this->pdf->SetFont('Arial','B',10);
+		$this->pdf->Cell(180,5,'','T',0,'L',1);
+		$this->pdf->Ln(3);
+		$this->pdf->Cell(75,5,$num,'',0,'L',1);
+		$this->pdf->Cell(40,5,$nombre,'',0,'C',1);
+		$this->pdf->Ln(8);
+		$this->pdf->Cell(150,5,$premio,'',0,'L',1);
+		$this->pdf->Cell(30,5,$fechaTorneo,'',0,'L',1);
+		$this->pdf->Ln(8);
+		$this->pdf->SetFont('Arial','', 10);
+		$this->pdf->MultiCell(180,5,$horaTorneo, 0, 'C',1);
+			$num++;
+			}
+}
+
+
+
+
+		$this->pdf->Output('listadetorneos.pdf','I');
 	}
 
 

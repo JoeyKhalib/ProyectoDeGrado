@@ -7,7 +7,26 @@ class Jugador extends CI_Controller {
 public function opciones()
 	{
 		//en este caso test es nuestra ventana principal
-		
+		$lista=$this->jugador_model->obtenerTodas();
+		$lista=$lista->result();
+
+
+
+		foreach ($lista as $row) {
+			
+			$final=$row->end;
+			$idjugador=$row->id;
+			$idtutor=$row->idp;
+
+		if ($final<=fechaAhora()) {
+		$data['estado']='0';
+		$data2['inscripcion']='0';
+		$lista=$this->jugador_model->eliminarInscripcion($idjugador);
+		//$lista=$this->jugador_model->modificarInscripcion($idjugador,$data);
+		$lista2=$this->jugador_model->modificarJugador($idjugador,$data2);
+		}
+
+		}
 
 		$this->load->view('inc_head.php'); 
 		$this->load->view('inc_menu.php'); 
@@ -17,7 +36,6 @@ public function opciones()
 
 	public function opcionesEntrenador()
 	{
-		//en este caso test es nuestra ventana principal
 		
 
 		$this->load->view('inc_head.php'); 
@@ -159,7 +177,7 @@ public function opciones()
 			$telefono=$row->telefono;
 			$fechaInscripcionI=$row->fechaInscripcionI;
 			$fechaInscripcionF=$row->fechaInscripcionF;
-			$categoria=$row->categoria;
+			$nombreCategoria=$row->nombreCategoria;
 			$turno=$row->turno;
 			$nombreCurso=$row->nombreCurso;
 
@@ -186,7 +204,7 @@ public function opciones()
 			$this->pdf->SetXY(146, 120);
 			$this->pdf->Cell(25,5,$fechaInscripcionF,'',0,'L',0);
 			$this->pdf->SetXY(34, 138);
-			$this->pdf->Cell(25,5,$categoria,'',0,'L',0);
+			$this->pdf->Cell(25,5,$nombreCategoria,'',0,'L',0);
 			$this->pdf->SetXY(80, 138);
 			$this->pdf->Cell(25,5,$turno,'',0,'L',0);
 			$this->pdf->SetXY(135, 138);
@@ -205,33 +223,30 @@ public function opciones()
 		}
  
 
-		$this->pdf->Output('RegistroJugador'.$ciJugador.'.pdf','I');
+		$this->pdf->Output('RegistroJugador.pdf','I');
 	}
 
 
 
 	
 
-	public function reporteUsuarios()
+	public function reporteJugador()
 	{
 
-		$totalUsuarios=$this->usuario_model->totalUsuarios();
-		$totalActivos=$this->usuario_model->totalHabilitados();
-		$totalDesactivos=$this->usuario_model->totalDesabilitados();
-		$totalADMIN=$this->usuario_model->totalAdministradores();
-		$toralENTR=$this->usuario_model->totalEntrenadores();
-		$totalPADRE=$this->usuario_model->totalPadres();
-		$totalINVI=$this->usuario_model->totalInvitados();
-		$totalUsuarios=$totalUsuarios->result();
-		$totalActivos=$totalActivos->result();
-		$totalDesactivos=$totalDesactivos->result();
-		$totalADMIN=$totalADMIN->result();
-		$toralENTR=$toralENTR->result();
-		$totalPADRE=$totalPADRE->result();
-		$totalINVI=$totalINVI->result();
+		$totalJugadores=$this->jugador_model->totalJugadores();
+		$totalAct=$this->jugador_model->totalHabJugadores();
+		$totalDes=$this->jugador_model->totalDesJugadores();
+		$jugadoresInsc=$this->jugador_model->totalInscritos();
+		$jugadoresNoInsc=$this->jugador_model->totalNoInscritos();
+
+		$totalJugadores=$totalJugadores->result();
+		$totalAct=$totalAct->result();
+		$totalDes=$totalDes->result();
+		$jugadoresInsc=$jugadoresInsc->result();
+		$jugadoresNoInsc=$jugadoresNoInsc->result();
 
 
-		$lista=$this->usuario_model->listaconRolesCompleto();
+		$lista=$this->jugador_model->listaCompletaJugadores();
 		$lista=$lista->result();
 
 
@@ -239,13 +254,13 @@ public function opciones()
 		$this->pdf=new Pdf();
 		$this->pdf->AddPage();
 		$this->pdf->AliasNbPages();
-		$this->pdf->SetTitle("Lista de Usuarios");
+		$this->pdf->SetTitle("Lista de Jugadores");
 		$this->pdf->SetLeftMargin(15);
 		$this->pdf->SetRightMargin(15);
 		$this->pdf->SetFillColor(210,210,210);
 		$this->pdf->SetFont('Arial','B',15);
 		$this->pdf->Cell(30);
-		$this->pdf->Cell(120,10,'REPORTE DE USUARIOS','LTBR',0,'C',1);
+		$this->pdf->Cell(120,10,'REPORTE DE JUGADORES','LTBR',0,'C',1);
 		$this->pdf->Ln(15);
 		$this->pdf->SetFont('Arial','', 12);
 		$this->pdf->MultiCell(178,3,('"PASION POR EL DEPORTE"'), 0, 'C');
@@ -254,41 +269,64 @@ public function opciones()
 		$this->pdf->SetFont('Arial','B',10);
 		$this->pdf->Cell(10,5,'No.','TBLR',0,'L',0);
 		$this->pdf->Cell(50,5,'NOMBRES COMPLETO','TBLR',0,'L',0);
-		$this->pdf->Cell(40,5,'ROL','TBLR',0,'L',0);
 		$this->pdf->Cell(20,5,'CI','TBLR',0,'L',0);
 		$this->pdf->Cell(25,5,'TELEFONO','TBLR',0,'L',0);
+		$this->pdf->Cell(45,5,'ESTADO DE INCRIPCION','TBLR',0,'L',0);
+		$this->pdf->Cell(20,5,'EDAD','TBLR',0,'L',0);
 		$this->pdf->Ln(5);
 
 		$this->pdf->SetFont('Arial','B',8);
 		$num=1;
 		foreach ($lista as $row) {
-			$nombres=$row->nombres;
-			$apellidoPaterno=$row->apellidoPaterno;
-			$apellidoMaterno=$row->apellidoMaterno;
-			$nombreRol=$row->nombreRol;
-			$ci=$row->ci;
+			$nombresJugador=$row->nombresJugador;
+			$apellidoPaternoJugador=$row->apellidoPaternoJugador;
+			$apellidoMaternoJugador=$row->apellidoMaternoJugador;
+			$ciJugador=$row->ciJugador;
 			$telefono=$row->telefono;
 			$estado=$row->estado;
-			$this->pdf->SetFillColor(245,30,30);
+			$inscripcion=$row->inscripcion;
+			$fechaNacimiento=$row->fechaNacimiento;
+			$edad=edad($fechaNacimiento);
+
+			$this->pdf->SetFillColor(227,53,69);
 
 			if ($estado==1) {
 			$this->pdf->Cell(10,5,$num,'TBLR',0,'L',0);
-			$this->pdf->Cell(50,5,$nombres.' '.$apellidoPaterno.' '.$apellidoMaterno,'TBLR',0,'L',0);
-			$this->pdf->Cell(40,5,$nombreRol,'TBLR',0,'L',0);
+			$this->pdf->Cell(50,5,$nombresJugador.' '.$apellidoPaternoJugador.' '.$apellidoMaternoJugador,'TBLR',0,'L',0);
+			$this->pdf->Cell(20,5,$ciJugador,'TBLR',0,'L',0);
 			//$this->pdf->Cell(40,5,$apellidoMaterno,'TBLR',0,'L',0);
-			$this->pdf->Cell(20,5,$ci,'TBLR',0,'L',0);
 			$this->pdf->Cell(25,5,$telefono,'TBLR',0,'L',0);
+			if ($inscripcion==1) {
+			$this->pdf->Cell(45,5,'Jugador Inscrito','TBLR',0,'L',0);
+			}
+			else
+			{
+			$this->pdf->Cell(45,5,'Jugador No Inscrito','TBLR',0,'L',0);
+			}
+
+			$this->pdf->Cell(20,5,$edad,'TBLR',0,'L',0);
+
+
 			$this->pdf->Ln(5);
 			$num++;
 			}
 			else
 			{
 			$this->pdf->Cell(10,5,$num,'TBLR',0,'L',1);
-			$this->pdf->Cell(50,5,$nombres.' '.$apellidoPaterno.' '.$apellidoMaterno,'TBLR',0,'L',1);
-			$this->pdf->Cell(40,5,$nombreRol,'TBLR',0,'L',1);
+			$this->pdf->Cell(50,5,$nombresJugador.' '.$apellidoPaternoJugador.' '.$apellidoMaternoJugador,'TBLR',0,'L',1);
+			$this->pdf->Cell(20,5,$ciJugador,'TBLR',0,'L',1);
 			//$this->pdf->Cell(40,5,$apellidoMaterno,'TBLR',0,'L',0);
-			$this->pdf->Cell(20,5,$ci,'TBLR',0,'L',1);
 			$this->pdf->Cell(25,5,$telefono,'TBLR',0,'L',1);
+
+			if ($inscripcion==1) {
+			$this->pdf->Cell(45,5,'Jugador Inscrito','TBLR',0,'L',1);
+			}
+			else
+			{
+			$this->pdf->Cell(45,5,'Jugador No Inscrito','TBLR',0,'L',1);
+			}
+			$this->pdf->Cell(20,5,$edad,'TBLR',0,'L',1);
+
 			$this->pdf->Ln(5);
 			$num++;
 			}
@@ -296,53 +334,49 @@ public function opciones()
 
 			
 		}
+			$this->pdf->SetFillColor(40,167,69);
 
-
-
-		foreach ($totalUsuarios as $row) {
-			$total=$row->total;
+			$this->pdf->Ln(10);
+			$this->pdf->Cell(50,5,'TOTAL DE JUGADORES ACTIVOS:','TBLR',0,'C',1);
+			$this->pdf->Cell(60,5,'TOTAL DE JUGADORES NO ACTIVOS:','TBLR',0,'C',1);
+			$this->pdf->Cell(40,5,'TOTAL DE JUGADORES:','TBLR',0,'C',1);
 			$this->pdf->Ln(5);
-			$this->pdf->Cell(53,5,'TOTAL DE USUARIOS:','TBLR',0,'L',0);
-			$this->pdf->Cell(10,5,$total,'TBLR',0,'L',0);
-		}
-		foreach ($totalActivos as $row) {
+
+
+			foreach ($totalAct as $row) {
 			$habilitados=$row->habilitados;
-			$this->pdf->Ln(5);
-			$this->pdf->Cell(53,5,'TOTAL DE USUARIOS ACTIVOS:','TBLR',0,'L',0);
-			$this->pdf->Cell(10,5,$habilitados,'TBLR',0,'L',0);
+			$this->pdf->Cell(50,5,$habilitados,'TBLR',0,'C',0);
 		}
-		foreach ($totalDesactivos as $row) {
+		foreach ($totalDes as $row) {
 			$desabilitados=$row->desabilitados;
-			$this->pdf->Ln(5);
-			$this->pdf->Cell(53,5,'TOTAL DE USUARIOS DESACTIVOS:','TBLR',0,'L',0);
-			$this->pdf->Cell(10,5,$desabilitados,'TBLR',0,'L',0);
+			
+			$this->pdf->Cell(60,5,$desabilitados,'TBLR',0,'C',0);
 		}
-		foreach ($totalADMIN as $row) {
-			$administradores=$row->administradores;
-			$this->pdf->Ln(5);
-			$this->pdf->Cell(53,5,'USUARIOS ADMINISTRADORES:','TBLR',0,'L',0);
-			$this->pdf->Cell(10,5,$administradores,'TBLR',0,'L',0);
+				foreach ($totalJugadores as $row) {
+			$total=$row->total;
+			$this->pdf->Cell(40,5,$total,'TBLR',0,'C',0);
 		}
-		foreach ($toralENTR as $row) {
-			$entrenador=$row->entrenadores;
-			$this->pdf->Ln(5);
-			$this->pdf->Cell(53,5,'USUARIOS ENTRENADORES:','TBLR',0,'L',0);
-			$this->pdf->Cell(10,5,$entrenador,'TBLR',0,'L',0);
-		}
-		foreach ($totalPADRE as $row) {
-			$padre=$row->padres;
-			$this->pdf->Ln(5);
-			$this->pdf->Cell(53,5,'USUARIOS PADRES/TUTORES:','TBLR',0,'L',0);
-			$this->pdf->Cell(10,5,$padre,'TBLR',0,'L',0);
-		}
-		foreach ($totalINVI as $row) {
-			$invitado=$row->invitados;
-			$this->pdf->Ln(5);
-			$this->pdf->Cell(53,5,'USUARIOS INVITADOS:','TBLR',0,'L',0);
-			$this->pdf->Cell(10,5,$invitado,'TBLR',0,'L',0);
 
 
+		$this->pdf->Ln(10);
+			$this->pdf->Cell(75,5,'JUGADORES INSCRITOS:','TBLR',0,'C',1);
+			$this->pdf->Cell(75,5,'JUGADORES NO INSCRITOS:','TBLR',0,'C',1);
+			$this->pdf->Ln(5);
+		
+		foreach ($jugadoresInsc as $row) {
+			$inscriptosS=$row->inscriptosS;
+			
+			$this->pdf->Cell(75,5,$inscriptosS,'TBLR',0,'C',0);
 		}
+		foreach ($jugadoresNoInsc as $row) {
+			$inscriptosN=$row->inscriptosN;
+			
+			$this->pdf->Cell(75,5,$inscriptosN,'TBLR',0,'C',0);
+		}
+
+
+
+
 
 		
 		$this->pdf->Ln(16);
@@ -350,7 +384,7 @@ public function opciones()
 		$this->pdf->Cell(42,5,'FIRMA DEL ADMINISTRADOR','T',0,'C',0);
 
 
-		$this->pdf->Output('listadeusuario.pdf','I');
+		$this->pdf->Output('ListadeJugadores.pdf','D');
 	}
 
 
@@ -375,10 +409,10 @@ public function opciones()
 		$data['padres']=$lista;
 
 
-		$this->load->view('inc_head.php');//archivos cabecera
+		$this->load->view('inc_headEquipo.php');//archivos cabecera
 		$this->load->view('inc_menu.php');
 		$this->load->view('jug_registrar',$data); //contenido
-		$this->load->view('inc_footer.php'); //archivos del footer
+		$this->load->view('inc_footerEquipo.php'); //archivos del footer
 	}
 
 	public function agregarJugEntr()
@@ -468,7 +502,7 @@ public function opciones()
 		$lista=$this->jugador_model->listaCompleta();
 		$data['jugadores']=$lista;
 
-
+		
 		$this->load->view('inc_head.php'); 
 		$this->load->view('inc_menu.php'); 
 		$this->load->view('jug_Inscripcion',$data); //contenido
@@ -490,11 +524,11 @@ public function opciones()
 		$lista=$this->curso_model->inscripcion($data);
 		$lista=$this->jugador_model->modificarJugador($idjuga,$data2);
 		if ($_SESSION['idusuario']==1) {
-			redirect('jugador/listaJugador','refresh');
+			redirect('jugador/listaInscripcion','refresh');
 		}
 		else
 		{
-			redirect('jugador/listaJugadorEntr','refresh');
+			redirect('jugador/listaInscripcion','refresh');
 		}
 	}
 
@@ -624,6 +658,66 @@ public function imprimirJugadoresEntre()
 		$this->load->view('jug_mostrar',$data); //contenido
 		$this->load->view('inc_footer.php'); //archivos del footer
 	}
+
+
+
+public function listaJugpdf()
+	{
+		$lista=$this->jugador_model->listaCompletaJugadores();
+		$lista=$lista->result();
+
+		$this->pdf=new Pdf();
+		$this->pdf->AddPage();
+		$this->pdf->AliasNbPages();
+		$this->pdf->SetTitle("Lista de Jugadores");
+		$this->pdf->SetLeftMargin(15);
+		$this->pdf->SetRightMargin(15);
+		$this->pdf->SetFillColor(210,210,210);
+		$this->pdf->SetFont('Arial','B',11);
+		$this->pdf->Cell(30);
+		$this->pdf->Cell(120,10,'LISTA DE JUGADORES','LTBR',0,'C',1);
+		$this->pdf->Ln(20);
+		$this->pdf->Image('\Xampp\htdocs\codeignaiter\ProyectoConGIT\application\third_party\fpdf\img\logo.jpg',10,8,33);
+		$this->pdf->SetFont('Arial','B',10);
+		$this->pdf->Cell(10,5,'No.','TBLR',0,'L',0);
+		$this->pdf->Cell(60,5,'NOMBRE COMPLETO','TBLR',0,'L',0);
+		$this->pdf->Cell(20,5,'CI','TBLR',0,'L',0);
+		$this->pdf->Cell(25,5,'TELEFONO','TBLR',0,'L',0);
+		$this->pdf->Cell(40,5,'DIRECCION','TBLR',0,'L',0);
+		$this->pdf->Cell(20,5,'EDAD','TBLR',0,'L',0);
+		$this->pdf->Ln(5);
+
+		$this->pdf->SetFont('Arial','B',8);
+		$num=1;
+		foreach ($lista as $row) {
+			$nombresJugador=$row->nombresJugador;
+			$apellidoPaternoJugador=$row->apellidoPaternoJugador;
+			$apellidoMaternoJugador=$row->apellidoMaternoJugador;
+			$ciJugador=$row->ciJugador;
+			$telefono=$row->telefono;
+			$direc=$row->direc;
+			$fechaNacimiento=$row->fechaNacimiento;
+
+			$this->pdf->Cell(10,5,$num,'TBLR',0,'L',0);
+			$this->pdf->Cell(60,5,$nombresJugador.' '.$apellidoPaternoJugador.' '.$apellidoMaternoJugador,'TBLR',0,'L',0);
+			$this->pdf->Cell(20,5,$ciJugador,'TBLR',0,'L',0);
+			$this->pdf->Cell(25,5,$telefono,'TBLR',0,'L',0);
+			$this->pdf->Cell(40,5,$direc,'TBLR',0,'L',0);
+			$this->pdf->Cell(20,5,edad($fechaNacimiento),'TBLR',0,'L',0);
+			$this->pdf->Ln(5);
+			$num++;
+		}
+		$this->pdf->Ln(15);
+		$this->pdf->Cell(42,5,'FIRMA DEL ADMINISTRADOR','T',0,'L',0);
+
+
+
+		$this->pdf->Output('listadeusuarios.pdf','I');
+	}
+
+
+
+
 
 
 }

@@ -123,7 +123,7 @@ public function test()
 		$this->pdf->Cell(50,5,'NOMBRES COMPLETO','TBLR',0,'L',0);
 		$this->pdf->Cell(40,5,'ROL','TBLR',0,'L',0);
 		$this->pdf->Cell(20,5,'CI','TBLR',0,'L',0);
-		$this->pdf->Cell(25,5,'TELEFONO','TBLR',0,'L',0);
+		$this->pdf->Cell(26,5,'TELEFONO','TBLR',0,'L',0);
 		$this->pdf->Ln(5);
 
 		$this->pdf->SetFont('Arial','B',8);
@@ -144,7 +144,7 @@ public function test()
 			$this->pdf->Cell(40,5,$nombreRol,'TBLR',0,'L',0);
 			//$this->pdf->Cell(40,5,$apellidoMaterno,'TBLR',0,'L',0);
 			$this->pdf->Cell(20,5,$ci,'TBLR',0,'L',0);
-			$this->pdf->Cell(25,5,$telefono,'TBLR',0,'L',0);
+			$this->pdf->Cell(26,5,$telefono,'TBLR',0,'L',0);
 			$this->pdf->Ln(5);
 			$num++;
 			}
@@ -155,69 +155,85 @@ public function test()
 			$this->pdf->Cell(40,5,$nombreRol,'TBLR',0,'L',1);
 			//$this->pdf->Cell(40,5,$apellidoMaterno,'TBLR',0,'L',0);
 			$this->pdf->Cell(20,5,$ci,'TBLR',0,'L',1);
-			$this->pdf->Cell(25,5,$telefono,'TBLR',0,'L',1);
+			$this->pdf->Cell(26,5,$telefono,'TBLR',0,'L',1);
 			$this->pdf->Ln(5);
 			$num++;
 			}
 
-
-			
+	
 		}
 
 
 
-		foreach ($totalUsuarios as $row) {
-			$total=$row->total;
 			$this->pdf->Ln(5);
-			$this->pdf->Cell(53,5,'TOTAL DE USUARIOS:','TBLR',0,'L',0);
-			$this->pdf->Cell(10,5,$total,'TBLR',0,'L',0);
-		}
+			$this->pdf->Cell(53,5,'TOTAL DE USUARIOS ACTIVOS:','TBLR',0,'C',0);
+			$this->pdf->Cell(53,5,'TOTAL DE USUARIOS DESACTIVOS:','TBLR',0,'C',0);
+			$this->pdf->Cell(40,5,'TOTAL DE USUARIOS:','TBLR',0,'C',0);
+			$this->pdf->Ln(5);
+
+
+	
 		foreach ($totalActivos as $row) {
 			$habilitados=$row->habilitados;
-			$this->pdf->Ln(5);
-			$this->pdf->Cell(53,5,'TOTAL DE USUARIOS ACTIVOS:','TBLR',0,'L',0);
-			$this->pdf->Cell(10,5,$habilitados,'TBLR',0,'L',0);
+			$this->pdf->Cell(53,5,$habilitados,'TBLR',0,'C',0);
 		}
 		foreach ($totalDesactivos as $row) {
 			$desabilitados=$row->desabilitados;
-			$this->pdf->Ln(5);
-			$this->pdf->Cell(53,5,'TOTAL DE USUARIOS DESACTIVOS:','TBLR',0,'L',0);
-			$this->pdf->Cell(10,5,$desabilitados,'TBLR',0,'L',0);
+			
+			$this->pdf->Cell(53,5,$desabilitados,'TBLR',0,'C',0);
 		}
+				foreach ($totalUsuarios as $row) {
+			$total=$row->total;
+			$this->pdf->Cell(40,5,$total,'TBLR',0,'C',0);
+		}
+
+
+			$this->pdf->Ln(10);
+			$this->pdf->Cell(73,5,'USUARIOS ADMINISTRADORES:','TBLR',0,'C',0);
+			$this->pdf->Cell(73,5,'USUARIOS ENTRENADORES:','TBLR',0,'C',0);
+			$this->pdf->Ln(5);
 		foreach ($totalADMIN as $row) {
 			$administradores=$row->administradores;
-			$this->pdf->Ln(5);
-			$this->pdf->Cell(53,5,'USUARIOS ADMINISTRADORES:','TBLR',0,'L',0);
-			$this->pdf->Cell(10,5,$administradores,'TBLR',0,'L',0);
+			
+			$this->pdf->Cell(73,5,$administradores,'TBLR',0,'C',0);
 		}
 		foreach ($toralENTR as $row) {
 			$entrenador=$row->entrenadores;
-			$this->pdf->Ln(5);
-			$this->pdf->Cell(53,5,'USUARIOS ENTRENADORES:','TBLR',0,'L',0);
-			$this->pdf->Cell(10,5,$entrenador,'TBLR',0,'L',0);
+			
+			$this->pdf->Cell(73,5,$entrenador,'TBLR',0,'C',0);
 		}
+
+
+
+			$this->pdf->Ln(10);
+			$this->pdf->Cell(73,5,'USUARIOS PADRES/TUTORES:','TBLR',0,'C',0);
+			$this->pdf->Cell(73,5,'USUARIOS INVITADOS:','TBLR',0,'C',0);
+			$this->pdf->Ln(5);
+
+		
+	
 		foreach ($totalPADRE as $row) {
 			$padre=$row->padres;
-			$this->pdf->Ln(5);
-			$this->pdf->Cell(53,5,'USUARIOS PADRES/TUTORES:','TBLR',0,'L',0);
-			$this->pdf->Cell(10,5,$padre,'TBLR',0,'L',0);
+
+			
+			$this->pdf->Cell(73,5,$padre,'TBLR',0,'C',0);
 		}
 		foreach ($totalINVI as $row) {
 			$invitado=$row->invitados;
-			$this->pdf->Ln(5);
-			$this->pdf->Cell(53,5,'USUARIOS INVITADOS:','TBLR',0,'L',0);
-			$this->pdf->Cell(10,5,$invitado,'TBLR',0,'L',0);
+
+			
+			$this->pdf->Cell(73,5,$invitado,'TBLR',0,'C',0);
 
 
 		}
 
 		
-		$this->pdf->Ln(16);
+		$this->pdf->Ln(20);
 		$this->pdf->SetFont('Arial','B',8);
 		$this->pdf->Cell(42,5,'FIRMA DEL ADMINISTRADOR','T',0,'C',0);
 
 
-		$this->pdf->Output('reportesdeusuarios.pdf','I');
+		$this->pdf->Output('reportesdeusuarios.pdf','D');
 	}
 
 

@@ -171,9 +171,9 @@
                 </a>
               </li>
                  <li class="nav-item">
-                <a href="<?php echo base_url();?>index.php/usuario/imprimir" class="nav-link">
+                <a href="<?php echo base_url();?>index.php/usuario/reporteUsuarios" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Impresion de Usuarios</p>
+                  <p>Reportes de Usuarios</p>
                 </a>
               </li>
             </ul>
@@ -231,6 +231,12 @@
                   <p>Listado de Cursos</p>
                 </a>
               </li>
+              <li class="nav-item">
+                <a href="<?php echo base_url();?>index.php/cursos/reporteCursos" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Reporte de Cursos</p>
+                </a>
+              </li>
             </ul>
           </li>
 
@@ -285,7 +291,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="../charts/flot.html" class="nav-link">
+                <a href="<?php echo base_url();?>index.php/torneo/reporteTorneo" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Lista de Equipos</p>
                 </a>

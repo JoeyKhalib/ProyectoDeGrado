@@ -16,6 +16,12 @@
 
               <div class="card-header">
                 <h3 class="card-title">Lista de Eventos</h3>
+  <div class="card-tools">
+    <a target="_blank" href="<?php echo base_url();?>index.php/evento/reporteEventos">
+  <button class="btn btn-success btn-block">Lista de Eventos</button>
+</a>
+                </div>
+
               </div>
               <!-- ./card-header -->
               <div class="card-body">

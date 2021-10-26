@@ -38,6 +38,9 @@
 <script src="<?php echo base_url();?>adminlte/dist/js/demo.js"></script>
 <!-- Page specific script -->
 <script>
+
+
+
   $(function () {
     $("#example1").DataTable({
       "responsive": true, "lengthChange": false, "autoWidth": false,

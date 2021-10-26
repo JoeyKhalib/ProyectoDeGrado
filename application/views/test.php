@@ -29,12 +29,9 @@
                 <h3 class="card-title">Lista de usuarios habilitados</h3>
 
                 <div class="card-tools">
-
                      <a target="_blank" href="<?php echo base_url();?>index.php/usuario/listapdf">
   <button class="btn btn-success btn-block">Lista de Usuarios</button>
 </a>
-
-
                 </div>
               </div>
               <!-- /.card-header -->

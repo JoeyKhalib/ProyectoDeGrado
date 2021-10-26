@@ -35,11 +35,11 @@ foreach ($infocurso->result() as $row)
 
 <div class="form-group">
     <label for="rol">Seleccione la Categoria</label>
-    <select class="form-control" name="categoria" value="<?php echo $row->categoria;?>">
-      <option>Infatil</option>
-      <option>Pre-Adolecente</option>
-      <option>Adolecente</option>
-      <option>Mayores</option>
+    <select class="form-control" name="categoria" value="<?php echo $row->Categoria_idCategoria;?>">
+      <option value="1">Infatil</option>
+      <option value="2">Pre-Adolecente</option>
+      <option value="3">Adolecente</option>
+      <option value="4">Mayores</option>
     </select>
   </div>
 

@@ -86,7 +86,8 @@
 <div class="form-group">
     <label for="padre">Seleccione Padre o Tutor</label>
 
-    <select class="form-control" name="padre">
+    <select class="form-control select2" name="padre">
+    <option selected disabled="true">Seleccione Padre o Tutor del Jugador</option>
 <?php 
 $indice=1;
 foreach ($padres->result() as $row) {
