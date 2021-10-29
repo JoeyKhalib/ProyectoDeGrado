@@ -23,198 +23,89 @@ public function test()
 		$this->load->view('inc_footer.php'); //archivos del footer
 	}
 
-	public function usuarios()
+
+	public function eventosInvitado()
 	{
-		//en este caso test es nuestra ventana principal
-		$lista=$this->usuario_model->lista();
-		$data['usuarios']=$lista;
+
+		$rol=$_SESSION['rol_idrol'];
+		$lista=$this->evento_model->listaEntrenador($rol);
+		$data['todoevento']=$lista;
+
 
 		$this->load->view('inc_head.php'); 
-		$this->load->view('inc_menu.php'); 
-		$this->load->view('test',$data); //contenido
+		$this->load->view('inc_menuUser.php'); 
+		$this->load->view('inv_vistaEventos',$data); //contenido
 		$this->load->view('inc_footer.php'); //archivos del footer
 	}
 
-/*
-public function perfil()
+
+
+	public function reservasVista()
 	{
 
-		$idusuario=$_POST['idusuario'];
-		$data['infousuario']=$this->usuario_model->recuperarUsuario($idusuario);
+
+		$data['registroCanchitas']=$this->calendario_model->listandoReserv();
+
+		$this->load->view('inc_headCalendarioReserv.php'); 
+		$this->load->view('inc_menuUser.php'); 
+		$this->load->view('reserva_calendario',$data); //contenido
+		$this->load->view('inc_footerCalendario.php'); //archivos del footer
+	}
+
+
+
+
+	public function reservasCanchasOpcion()
+	{
+		$lista=$this->calendario_model->listandoCanchas();
+		$data['todoscanchas']=$lista;
 
 		$this->load->view('inc_head.php'); 
-		$this->load->view('inc_menu.php'); 
-		$this->load->view('est_perfil',); //contenido
+		$this->load->view('inc_menuUser.php'); 
+		$this->load->view('canch_seleccion',$data); //contenido
 		$this->load->view('inc_footer.php'); //archivos del footer
 	}
-*/
-public function imprimir()
-	{
 
-	$lista=$this->usuario_model->lista();
-	$data['usuarios']=$lista;
+
+	public function reserva()
+	{
+		$idcanchas=$_POST['idcanchas'];
+		$lista=$this->calendario_model->recuperarCancha($idcanchas);
+		$data['canchitas']=$lista;
 
 		$this->load->view('inc_head.php'); 
-		$this->load->view('inc_menu.php'); 
-		$this->load->view('est_mostrar',$data); //contenido
-		$this->load->view('inc_footer.php'); //archivos del footer
+		$this->load->view('inc_menuUser.php'); 
+		$this->load->view('reser_registrar'); //contenido
+		$this->load->view('reser_registrar2',$data); //contenido
+		$this->load->view('inc_footerCalendario.php'); //archivos del footer
 	}
 
-
-	public function index2()
+	public function agregarReserva()
 	{
-		$lista=$this->usuario_model->lista();
-		$data['usuarios']=$lista;
-
-		$this->load->view('inc_head.php'); //archivos cabecera
-		$this->load->view('est_registrar.php',$data); //contenido
-		$this->load->view('inc_footer.php'); //archivos del footer
-	}
-
-	public function modificar()
-	{
-		$idusuario=$_POST['idusuario'];
-		$data['infousuario']=$this->usuario_model->recuperarUsuario($idusuario);
-
-		$this->load->view('inc_head.php'); //archivos cabecera
-		$this->load->view('est_modificarModal',$data); //contenido
-		$this->load->view('inc_footer.php'); //archivos del footer
-
-	}
-
-	public function modificarbd()
-	{
-		$idusuario=$_POST['idusuario'];
-		$data['nombres']=$_POST['nombres'];
-		$data['apellidoPaterno']=$_POST['apellidoPaterno'];
-		$data['apellidoMaterno']=$_POST['apellidoMaterno'];
-		$data['ci']=$_POST['ci'];
-		$data['telefono']=$_POST['telefono'];
-		$data['fechaNacimiento']=$_POST['fechaNacimiento'];
-		$data['email']=$_POST['email'];
-		$data['rol']=$_POST['rol'];
-		$lista=$this->usuario_model->modificarUsuario($idusuario,$data);
-		redirect('','refresh');
-	}
-
-	public function modificarUsuariobd()
-	{
-		$idusuario=$_POST['idusuario'];
-		$data['nombres']=$_POST['nombres'];
-		$data['apellidoPaterno']=$_POST['apellidoPaterno'];
-		$data['apellidoMaterno']=$_POST['apellidoMaterno'];
-		$data['ci']=$_POST['ci'];
-		$data['telefono']=$_POST['telefono'];
-		$data['fechaNacimiento']=$_POST['fechaNacimiento'];
-		$data['email']=$_POST['email'];
-		$lista=$this->usuario_model->modificarUsuario($idusuario,$data);
-		redirect('','refresh');
-	}
-	
-	public function desabilitar()
-	{
-
-		$idusuario=$_POST['idusuario'];
-		$data['infousuario']=$this->usuario_model->recuperarUsuario($idusuario);
-
-		$this->load->view('inc_head.php'); //archivos cabecera
-		$this->load->view('est_desabilitar',$data); //contenido
-		$this->load->view('inc_footer.php'); //archivos del footer
-	}
-
-	public function habilitar()
-	{
-
-		$idusuario=$_POST['idusuario'];
-		$data['infousuario']=$this->usuario_model->recuperarUsuario($idusuario);
-
-		$this->load->view('inc_head.php'); //archivos cabecera
-		$this->load->view('est_habilitar',$data); //contenido
-		$this->load->view('inc_footer.php'); //archivos del footer
-	}
+		$this->db->trans_begin();
+		$registro=$_SESSION['idusuario'];
+		$data['fechaReserva']=$_POST['fechaReserva'];
+		$data['totalJugadores']=$_POST['totalJugadores'];
+		$data['horaInicial']=$_POST['horaInicial'];
+		$data['horaFinal']=$_POST['horaFinal'];
+		$data['canchas_idcanchas']=$_POST['idcanchas'];
+		$data['usuario_idusuario']=$registro;
 
 
-	public function agregar()
-	{
-		$this->load->view('inc_head.php');//archivos cabecera
-		$this->load->view('inc_menu.php');
-		$this->load->view('est_registrar'); //contenido
-		$this->load->view('inc_footer.php'); //archivos del footer
-	}
+		$lista=$this->calendario_model->registroCancha($data);
+		$this->db->trans_complete();
 
-	public function agregarbd()
-	{
-		$user=generarUsuario($_POST['nombres'],$_POST['ci']);
-		$contra=generarContra($_POST['nombres'],$_POST['apellidoPaterno'],$_POST['apellidoMaterno'],$_POST['ci']);
-		$data['nombres']=$_POST['nombres'];
-		$data['apellidoPaterno']=$_POST['apellidoPaterno'];
-		$data['apellidoMaterno']=$_POST['apellidoMaterno'];
-		$data['ci']=$_POST['ci'];
-		$data['telefono']=$_POST['telefono'];
-		$data['fechaNacimiento']=$_POST['fechaNacimiento'];
-		$data['sexo']=$_POST['sexo'];
-		$data['email']=$_POST['email'];
-		$data['nombreUsuario']=$user;
-		$data['rol']=$_POST['rol'];
-		$data['password']=md5($contra);
-		$lista=$this->usuario_model->agregarUsuario($data);
+		if ($this->db->trans_status() === FALSE){      
+         //Hubo errores en la consulta, entonces se cancela la transacción.   
+         $this->db->trans_rollback();      
+         return false;    
+      }else{      
+         //Todas las consultas se hicieron correctamente.  
+         $this->db->trans_commit();
+         redirect('invitado/test','refresh');    
+         return true;    
+      }  
 
-		redirect('','refresh');
-	}
-
-		public function index()
-	{
-
-		//index.php/usuarios/index/2
-		$data['msg']=$this->uri->segment(3);
-		if ($this->session->userdata('nombreUsuario')) 
-		{
-			redirect('usuario/panel','refresh');
-		}
-		else
-		{
-			//cargar un login form
-		$this->load->view('inc_headlogin.php'); //archivos cabecera
-		$this->load->view('loginform',$data); //login
-		$this->load->view('inc_footerlogin.php'); //archivos del footer
-		}
-
-	}
-
-	public function validarusuario()
-	{
-
-		$nombreUsuario=$_POST['nombreUsuario'];
-		$password=md5($_POST['password']);
-
-		$consulta=$this->usuario_model->validar($nombreUsuario,$password);
-
-		if ($consulta->num_rows()>0)
-		{
-			foreach ($consulta->result() as $row) 
-			{
-				//crear las variables de session
-				$this->session->set_userdata('idusuario',$row->idusuario);
-				$this->session->set_userdata('nombreUsuario',$row->nombreUsuario);
-				$this->session->set_userdata('rol',$row->rol);
-				redirect('usuario/panel','refresh');
-
-			}
-			}
-			else
-			{
-				//sino redirigimos a index enviando 1 en el urisegment 3
-				redirect('usuario/index/1','refresh');
-			}
-		}
-
-	
-public function modificarbdDoH()
-	{
-		$idusuario=$_POST['idusuario'];
-		$data['estado']=$_POST['desabilitar'];
-		$lista=$this->usuario_model->modificarUsuario($idusuario,$data);
-		redirect('usuario/test','refresh');
 	}
 
 

@@ -29,4 +29,15 @@ public function crear()
   }
 
 
+
+  public function prueba()
+  {
+
+    $this->load->view('inc_headEquipoConEstilo.php'); 
+    $this->load->view('inc_menu.php'); 
+    $this->load->view('equi_prueba'); //contenido
+    $this->load->view('inc_footerEquipo.php'); //archivos del footer
+  }
+
+
 }

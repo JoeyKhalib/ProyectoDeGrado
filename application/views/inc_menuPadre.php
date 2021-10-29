@@ -123,25 +123,25 @@
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-child"></i>
               <p>
-                Rendimiento
+                Mi Jugador
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="../charts/chartjs.html" class="nav-link">
+                <a href="<?php echo base_url();?>index.php/padre/listaJugadores" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Asistencia</p>
+                  <p>Perfil</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="../charts/flot.html" class="nav-link">
+                <a href="<?php echo base_url();?>index.php/padre/calendario" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Seguimiento Academico</p>
+                  <p>Calendario</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="../charts/inline.html" class="nav-link">
+                <a href="<?php echo base_url();?>index.php/padre/eventosJugador" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Eventos</p>
                 </a>

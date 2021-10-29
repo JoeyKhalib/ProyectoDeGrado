@@ -12,6 +12,16 @@ class Evento_model extends CI_Model {
 		return $this->db->get();
 	}
 
+
+		public function listaEntrenador($rol)
+	{
+		$this->db->select('*');
+		$this->db->from('evento');
+		$this->db->where('estado','1');
+		$this->db->where('rol_idrol',$rol);
+		return $this->db->get();
+	}
+
 	public function destinados()
 	{
 		$this->db->select('*');

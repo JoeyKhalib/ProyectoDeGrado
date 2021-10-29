@@ -36,7 +36,26 @@ public function opciones()
 
 	public function opcionesEntrenador()
 	{
-		
+		$lista=$this->jugador_model->obtenerTodas();
+		$lista=$lista->result();
+
+
+
+		foreach ($lista as $row) {
+			
+			$final=$row->end;
+			$idjugador=$row->id;
+			$idtutor=$row->idp;
+
+		if ($final<=fechaAhora()) {
+		$data['estado']='0';
+		$data2['inscripcion']='0';
+		$lista=$this->jugador_model->eliminarInscripcion($idjugador);
+		//$lista=$this->jugador_model->modificarInscripcion($idjugador,$data);
+		$lista2=$this->jugador_model->modificarJugador($idjugador,$data2);
+		}
+
+		}
 
 		$this->load->view('inc_head.php'); 
 		$this->load->view('inc_menuEntrenador.php'); 
@@ -186,6 +205,7 @@ public function opciones()
 			$apellidoMaterno=$row->apellidoMaterno;
 			$ci=$row->ci;
 
+			$costoDeInscripcion=$row->costoDeInscripcion;
 
 			$this->pdf->SetXY(165, 61);
 			$this->pdf->Cell(50,5,$date,'',0,'L',0);
@@ -219,6 +239,13 @@ public function opciones()
 			$this->pdf->Cell(40,5,$apellidoMaterno,'',0,'L',0);
 			$this->pdf->SetXY(120, 160);
 			$this->pdf->Cell(40,5,$ci,'',0,'L',0);
+
+			$this->pdf->SetFont('Arial','', 12);
+			$this->pdf->SetXY(115, 200);
+			$this->pdf->Cell(10, 8,$costoDeInscripcion, 0, 'L');
+
+
+
 			$num++;
 		}
  
@@ -288,7 +315,7 @@ public function opciones()
 			$fechaNacimiento=$row->fechaNacimiento;
 			$edad=edad($fechaNacimiento);
 
-			$this->pdf->SetFillColor(227,53,69);
+			$this->pdf->SetFillColor(190,190,190);
 
 			if ($estado==1) {
 			$this->pdf->Cell(10,5,$num,'TBLR',0,'L',0);
@@ -384,7 +411,7 @@ public function opciones()
 		$this->pdf->Cell(42,5,'FIRMA DEL ADMINISTRADOR','T',0,'C',0);
 
 
-		$this->pdf->Output('ListadeJugadores.pdf','D');
+		$this->pdf->Output('ListadeJugadores.pdf','I');
 	}
 
 
@@ -509,6 +536,21 @@ public function opciones()
 		$this->load->view('inc_footer.php'); //archivos del footer
 	}
 
+
+		public function listaInscripcionEntre()
+	{
+
+		
+		$lista=$this->jugador_model->listaCompleta();
+		$data['jugadores']=$lista;
+
+		
+		$this->load->view('inc_head.php'); 
+		$this->load->view('inc_menuEntrenador.php'); 
+		$this->load->view('jug_InscripcionEntre',$data); //contenido
+		$this->load->view('inc_footer.php'); //archivos del footer
+	}
+
 	public function agregarInscripcion()
 	{
 		$registro=$_SESSION['idusuario'];
@@ -519,6 +561,8 @@ public function opciones()
 		$data['idjugador']=$_POST['idjugador'];
 		$data['idtutor']=$_POST['idtutor'];
 		$data['idRegistro']=$registro;
+
+
 		$idjuga=$_POST['idinscrip'];
 		$data2['inscripcion']=$_POST['desabilitar'];
 		$lista=$this->curso_model->inscripcion($data);
@@ -663,7 +707,7 @@ public function imprimirJugadoresEntre()
 
 public function listaJugpdf()
 	{
-		$lista=$this->jugador_model->listaCompletaJugadores();
+		$lista=$this->jugador_model->lista();
 		$lista=$lista->result();
 
 		$this->pdf=new Pdf();

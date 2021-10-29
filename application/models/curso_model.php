@@ -28,6 +28,12 @@ class Curso_model extends CI_Model {
 		$this->db->insert('inscripcion',$data);
 	}
 
+	public function historial($data)
+	{
+		$this->db->insert('historial',$data);
+	}
+
+
 	public function categorias()
 	{
 		$this->db->select('*');
@@ -132,6 +138,7 @@ class Curso_model extends CI_Model {
 		$this->db->where('Categoria_idCategoria','4');
 		return $this->db->get();
 	}
+
 
 
 }

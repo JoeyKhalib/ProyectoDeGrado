@@ -429,6 +429,98 @@ public function imprimirCursos()
 
 
 
+		public function listaJugcurso()
+	{
+		$idcursos=$_POST['idcursos'];
+		$lista=$this->curso_model->listaInscritos($idcursos);
+		$lista=$lista->result();
+
+
+
+		$this->pdf=new Pdf();
+		$this->pdf->AddPage();
+		$this->pdf->AliasNbPages();
+		$this->pdf->SetTitle("Lista De Jugadores");
+		$this->pdf->SetLeftMargin(15);
+		$this->pdf->SetRightMargin(15);
+		$this->pdf->SetFillColor(210,210,210);
+		$this->pdf->SetFont('Arial','B',15);
+		$this->pdf->Cell(30);
+		$this->pdf->Cell(120,10,'Jugadores Lista','LTBR',0,'C',1);
+		$this->pdf->Ln(15);
+		$this->pdf->SetFont('Arial','', 12);
+		$this->pdf->MultiCell(178,3,('"PASION POR EL DEPORTE"'), 0, 'C');
+		$this->pdf->Ln(20);
+		$this->pdf->Image('\Xampp\htdocs\codeignaiter\ProyectoConGIT\application\third_party\fpdf\img\logo.jpg',10,8,33);
+		$this->pdf->SetFont('Arial','B',10);
+		$this->pdf->Cell(10,5,'No.','TBLR',0,'L',0);
+		$this->pdf->Cell(40,5,'NOMBRE COMPLETO','TBLR',0,'L',0);
+		$this->pdf->Cell(25,5,'CI','TBLR',0,'L',0);
+		$this->pdf->Cell(15,5,'EDAD','TBLR',0,'L',0);
+		$this->pdf->Cell(30,5,'TELEFONO','TBLR',0,'L',0);
+		$this->pdf->Cell(50,5,'DIRECCION','TBLR',0,'L',0);
+		$this->pdf->Ln(5);
+
+		$this->pdf->SetFont('Arial','B',8);
+		$num=1;
+		foreach ($lista as $row) {
+			$nombresJugador=$row->nombresJugador;
+			$apellidoPaternoJugador=$row->apellidoPaternoJugador;
+			$apellidoMaternoJugador=$row->apellidoMaternoJugador;
+			$ciJugador=$row->ciJugador;
+			$fechaNacimiento=$row->fechaNacimiento;
+			$telefono=$row->telefono;
+			$direc=$row->direc;
+			$estado=$row->estado;
+			//$inscripcion=$row->inscripcion;
+			//$fechaNacimiento=$row->fechaNacimiento;
+			//$edad=edad($fechaNacimiento);
+
+			$this->pdf->SetFillColor(245,30,30);
+
+			if ($estado==1) {
+			$this->pdf->Cell(10,5,$num,'TBLR',0,'L',0);
+			$this->pdf->Cell(40,5,$nombresJugador.' '.$apellidoPaternoJugador.' '. $apellidoMaternoJugador,'TBLR',0,'L',0);
+			$this->pdf->Cell(25,5,$ciJugador,'TBLR',0,'L',0);
+			$this->pdf->Cell(15,5,edad($fechaNacimiento),'TBLR',0,'L',0);
+			$this->pdf->Cell(30,5,$telefono,'TBLR',0,'L',0);
+			$this->pdf->Cell(50,5,$direc,'TBLR',0,'L',0);
+
+
+
+			$this->pdf->Ln(5);
+			$num++;
+			}
+			else
+			{
+			$this->pdf->Cell(10,5,$num,'TBLR',0,'L',1);
+			$this->pdf->Cell(30,5,$nombreCurso,'TBLR',0,'L',1);
+			$this->pdf->Cell(30,5,$horaIngreso,'TBLR',0,'L',1);
+			$this->pdf->Cell(40,5,$horaSalida,'TBLR',0,'L',1);
+			$this->pdf->Cell(20,5,$cupos,'TBLR',0,'L',1);
+			$this->pdf->Cell(20,5,$turno,'TBLR',0,'L',1);
+			$this->pdf->Cell(30,5,$nombreCategoria,'TBLR',0,'L',1);
+			$this->pdf->Ln(5);
+			$num++;
+			}
+
+			
+		}
+
+		
+	
+
+
+		
+		$this->pdf->Ln(16);
+		$this->pdf->SetFont('Arial','B',8);
+		$this->pdf->Cell(42,5,'FIRMA DEL ADMINISTRADOR','T',0,'C',0);
+
+
+		$this->pdf->Output('Lista de Jugadores.pdf','I');
+	}
+
+
 
 
 }

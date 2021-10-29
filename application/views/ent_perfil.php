@@ -21,7 +21,7 @@ foreach ($infousuario->result() as $row)
  ?>
 
             <!-- Profile Image -->
-            <div class="card card-primary card-outline">
+            <div class="card card-success card-outline">
               <div class="card-body box-profile">
                 <div class="text-center">
                  <?php
@@ -29,13 +29,13 @@ foreach ($infousuario->result() as $row)
                         if ($foto=="") {
                           //mostrar una imagen por defecto
                            ?> 
-                           <img src="<?php echo base_url(); ?>uploads/usuarios/perfil.jpg"  class="img-circle img-fluid">  
+                           <img src="<?php echo base_url(); ?>uploads/usuariosFotos/perfil.jpg"  class="img-circle img-fluid">  
                            <?php
                         }
                         else {
                           //mostrar la foto del usuario
                             ?> 
-                             <img src="<?php echo base_url(); ?>uploads/usuarios/<?php echo $foto;?>"  class="img-circle img-fluid">     
+                             <img src="<?php echo base_url(); ?>uploads/usuariosFotos/<?php echo $foto;?>"  class="img-circle img-fluid">     
                             <?php
                         }
                       ?> 
@@ -57,10 +57,6 @@ foreach ($infousuario->result() as $row)
           <?php 
           echo form_close();
          ?>
-
-
-
-
 
 
 
@@ -110,121 +106,72 @@ foreach ($infousuario->result() as $row)
           </div>
           <!-- /.col -->
 
+
+
+       <div class="col-md-9 ">
+            <div class="card">
+            <div class="card-header bg-dark">
+            <h3 class="card-title">Datos del Usuario</h3>
+            </div>
+
+            <form>
+                <div class="card-body">
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Nombre</label>
+                    <input type="text" class="form-control" id="nombres" value="<?php echo $row->nombres;?>"readonly>
+                  </div>
+
+                  <div class="row">
+    <div class="col">
+     <label for="exampleInputEmail1">Apellido Paterno</label>
+                    <input type="text" class="form-control" id="apellidoMaterno" value="<?php echo $row->apellidoPaterno;?>"readonly>
+    </div>
+    <div class="col">
+      <label for="exampleInputEmail1">Apellido Materno</label>
+                    <input type="text" class="form-control" id="apellidoPaterno" value="<?php echo $row->apellidoMaterno;?>"readonly>
+    </div>
+                   </div>
+
+
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Email</label>
+                    <input type="email" class="form-control" id="email" value="<?php echo $row->email;?>"readonly>
+                  </div>
+
+
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Fecha Nacimiento</label>
+                    <input type="date" class="form-control" value="<?php echo $row->fechaNacimiento;?>"readonly>
+                  </div>
+
+                </div>
+                <!-- /.card-body -->
+
+      
+              </form>
+
+
+
+          </div>
+
 <?php 
 echo form_close(); 
 }
 ?>
 
 
-
-          <div class="col-md-9">
-            <div class="card">
-              <div class="card-header p-2">
-                <ul class="nav nav-pills">
-                  <li class="nav-item"><a class="nav-link active"  href="#activity" data-toggle="tab">Notificaciones</a></li>
-                  <li class="nav-item">
+      </div><!-- /.container-fluid -->
 
 
-                    <a type="hidden" class="nav-link" href="#settings" data-toggle="tab">Configuracion</a>
 
 
-                  </li>
-                  
-                </ul>
-              </div><!-- /.card-header -->
-              <div class="card-body">
-                <div class="tab-content">
-                  <div class="active tab-pane" id="activity">
-                    <!-- Post -->
-                   
-   
 
 
-                    <!-- /.post -->
 
-                    <!-- Post -->
 
-                    <!-- /.post -->
 
-                    <!-- Post -->
-                   
-                    <!-- /.post -->
-                  </div>
-                 
-                  <div class="tab-pane" id="settings">
-                    <form class="form-horizontal">
-                      <div class="form-group row">
-                        <label for="inputName" class="col-sm-2 col-form-label">Nombre</label>
-                        <div class="col-sm-10">
-                          <input type="text" class="form-control" id="inputName" placeholder="Nombre">
-                        </div>
-                      </div>
-                      <div class="form-group row">
-                        <label for="inputName" class="col-sm-2 col-form-label">Apellido Paterno</label>
-                        <div class="col-sm-10">
-                          <input type="text" class="form-control" id="inputName" placeholder="Primer Apellido">
-                        </div>
-                      </div>
-                      <div class="form-group row">
-                        <label for="inputEmail" class="col-sm-2 col-form-label">Email</label>
-                        <div class="col-sm-10">
-                          <input type="email" class="form-control" id="inputEmail" placeholder="Email">
-                        </div>
-                      </div>
-                      <div class="form-group row">
-                        <label for="inputName2" class="col-sm-2 col-form-label">Usuario</label>
-                        <div class="col-sm-10">
-                          <input type="text" class="form-control" id="inputName2" placeholder="Usuario">
-                        </div>
-                      </div>
-                      <div class="form-group row">
-                        <label for="inputName2" class="col-sm-2 col-form-label">Contraseña</label>
-                        <div class="col-sm-10">
-                          <input type="password" class="form-control" id="inputName2" placeholder="Contraseña">
-                        </div>
-                      </div>
-                       <div class="form-group row">
-                        <label for="inputName2" class="col-sm-2 col-form-label">Fecha de Nacimiento</label>
-                        <div class="col-sm-10">
-                          <input type="date" class="form-control" id="inputName2" placeholder="fecha de nacimiento">
-                        </div>
-                      </div>
-                       <div class="form-group row">
-                        <label for="inputName2" class="col-sm-2 col-form-label">Carnet de Identidad</label>
-                        <div class="col-sm-10">
-                          <input type="number" class="form-control" id="inputName2" placeholder="Carnet">
-                        </div>
-                      </div>
-                      <div class="form-group row">
-                        <label for="inputSkills" class="col-sm-2 col-form-label">Numero de Referencia</label>
-                        <div class="col-sm-10">
-                          <input type="number" class="form-control" id="inputSkills" placeholder="Telefono/Celular">
-                        </div>
-                      </div>
-                      <div class="form-group row">
-                        <div class="offset-sm-2 col-sm-10">
-                          <div class="checkbox">
-                            <label>
-                              <input type="checkbox"> I agree to the <a href="#">terms and conditions</a>
-                            </label>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="form-group row">
-                        <div class="offset-sm-2 col-sm-10">
-                          <button type="submit" class="btn btn-danger">Submit</button>
-                        </div>
-                      </div>
-                    </form>
-                  </div>
-                  <!-- /.tab-pane -->
-                </div>
-                <!-- /.tab-content -->
-              </div><!-- /.card-body -->
-            </div>
-            <!-- /.card -->
-          </div>
-          <!-- /.col -->
+
+
         </div>
         <!-- /.row -->
       </div><!-- /.container-fluid -->

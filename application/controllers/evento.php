@@ -63,9 +63,9 @@ public function opciones()
 
 	public function listaEventosEntr()
 	{
-		//en este caso test es nuestra ventana principal
+		$rol=$_SESSION['rol_idrol'];
 		
-		$lista=$this->evento_model->lista();
+		$lista=$this->evento_model->listaEntrenador($rol);
 		$data['todoevento']=$lista;
 
 

@@ -311,15 +311,15 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="../UI/general.html" class="nav-link">
+                <a href="<?php echo base_url();?>index.php/cancha/opcionesCancha" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>General</p>
+                  <p>Gestion de Canchas</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="../UI/icons.html" class="nav-link">
+                <a href="<?php echo base_url();?>index.php/torneo/reporteTorneo" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Icons</p>
+                  <p>Calendario de Reservas</p>
                 </a>
               </li>
 

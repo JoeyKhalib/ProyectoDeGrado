@@ -14,6 +14,15 @@ class Padre_model extends CI_Model {
 		return $this->db->get();
 	}
 
+	public function recuperarJugadores($padre)
+	{
+		$this->db->select('*');
+		$this->db->from('jugador J');
+		$this->db->join('usuario U','J.usuario_idusuario=U.idusuario');
+		$this->db->where('J.usuario_idusuario',$padre);
+		return $this->db->get();
+	}
+
 
 
 }

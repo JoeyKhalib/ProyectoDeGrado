@@ -10,16 +10,7 @@
 <br>
 
 
- <div class="card-header">
 
-                <div class="card-tools">
-                      <?php 
-                echo form_open_multipart('cursos/listaJugcurso');
-                 ?>
-  <button class="btn btn-success btn-block">Lista de Jugadores</button>
-
-                </div>
-              </div>
 
 
     
@@ -38,7 +29,7 @@
 
 <?php 
 $indice=1;
-foreach ($todinscritos->result() as $row) {
+foreach ($jugadorsitos->result() as $row) {
  ?>
 
             <div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch flex-column">
@@ -80,10 +71,48 @@ foreach ($todinscritos->result() as $row) {
                   </div>
                 </div>
                 <div class="card-footer">
-                  <div class="text-right">
-                    <a href="#" class="btn btn-sm bg-teal">
-                      <i class="fas fa-comments"></i>
-                    </a>
+
+                        <?php
+                        $inscripcion=$row->inscripcion;
+                        if ($inscripcion==0) {
+                          //mostrar una imagen por defecto
+                           ?> 
+                           <span class="badge badge-danger">NO INSCRITO</span>
+                           <div class="text-right">   
+                           <?php
+                        }
+                        else {
+                          //mostrar la foto del usuario
+                            ?> 
+                            <span class="badge badge-success">INSCRITO</span>
+                            <div class="text-right">
+
+
+                  
+                              
+                               <?php     
+                         echo form_open_multipart('jugador/formulariopdf');
+                       ?>
+                         <input type="hidden" name="idjugador" value="<?php echo $row->idjugador;?>">
+                        <button type="submit" class="btn-sm btn-info">
+                          </a>
+                        <i class="fas fa-file-pdf"></i>
+                         Reporte Inscripcion</button>
+                      <?php 
+                        echo form_close();
+                       ?>  
+
+
+
+                     
+
+
+
+                            <?php
+
+                        }
+                      ?> 
+
                     <a href="#" class="btn btn-sm btn-primary">
                       <i class="fas fa-user"></i> Ver Perfil
                     </a>
@@ -93,7 +122,6 @@ foreach ($todinscritos->result() as $row) {
             </div>
 
 
- <input type="hidden" name="idcursos" value="<?php echo $row->idcursos;?>">
       
         <?php
 $indice++;
