@@ -36,13 +36,38 @@ foreach ($infojugador->result() as $row)
  ?>
 
 
- <div class="row">
-                  <div class="col-md-4">
-                    <label for="exampleInputEmail1">Nombre del Jugador:</label>
-                    <input type="text" class="form-control" name="nombres" value="<?php echo $row->nombresJugador;?> <?php echo $row->apellidoPaternoJugador;?> <?php echo $row->apellidoMaternoJugador;?>" disabled>
-                  </div>
 
- </div>
+
+
+  <div class="form-row">
+    <div class="col">
+      <label for="">Nombre Completo:</label>
+       <input type="text" class="form-control" name="nombres" value="<?php echo $row->nombresJugador;?> <?php echo $row->apellidoPaternoJugador;?> <?php echo $row->apellidoMaternoJugador;?>" disabled>
+    </div>
+     <div class="col">
+
+       <?php
+          $fotoJugador=$row->fotoJugador;
+             if ($fotoJugador=="") {
+                //mostrar una imagen por defecto
+                   ?> 
+                   <img src="<?php echo base_url(); ?>uploads/jugadores/perfil.jpg" class="img-fluid img-thumbnail rounded float-center" style="height:180px;">  
+                   <?php
+                    }
+              else {
+                          //mostrar la foto del usuario
+                   ?> 
+                  <img src="<?php echo base_url(); ?>uploads/jugadores/<?php echo $fotoJugador;?>" class="img-fluid img-thumbnail rounded float-center" style="height:180px;">     
+                     <?php
+                   }
+                ?> 
+
+
+
+       
+    </div>
+
+  </div>
 
 
                   <div class="form-row">

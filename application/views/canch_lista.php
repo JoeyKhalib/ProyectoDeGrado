@@ -139,7 +139,7 @@ foreach ($todoscanchas->result() as $row) {
 
 
           <?php 
-  echo form_open_multipart('cancha/listaJInscritos');
+  echo form_open_multipart('cancha/listaReservas');
  ?>
         <input type="hidden" name="idcanchas" value="<?php echo $row->idcanchas;?>">
   <button class="btn btn-success btn-sm" type="submit"> <i class="far fa-address-book">

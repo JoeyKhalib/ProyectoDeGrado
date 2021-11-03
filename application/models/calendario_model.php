@@ -52,5 +52,16 @@ class Calendario_model extends CI_Model {
 		return $this->db->get()->result();
 	}
 
+		public function listaRe($idcanchas)
+	{
+		$this->db->select('*');
+		$this->db->from('reserva R');
+		$this->db->join('usuario U','R.usuario_idusuario=U.idusuario');
+		$this->db->join('canchas C','C.idcanchas=R.canchas_idcanchas');
+		$this->db->where('idcanchas',$idcanchas);
+		return $this->db->get()->result();
+	}
+
+
 
 }

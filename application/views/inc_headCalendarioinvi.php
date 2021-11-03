@@ -54,7 +54,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
       defaultView: 'listWeek',
       defaultDate: new Date(),
-      events: '<?php echo site_url("invitado/getRerserva");?>',
+      events: '<?php echo site_url("invitado/getEventos");?>',
     });
 
   });

@@ -563,9 +563,18 @@ public function opciones()
 		$data['idRegistro']=$registro;
 
 
+		$data3['fechaInscripcionI']=$_POST['fechaInicial'];
+		$data3['fechaInscripcionF']=$_POST['fechaFinal'];
+		$data3['costoDeInscripcion']=$_POST['pago'];
+		$data3['idcursos']=$_POST['curso'];
+		$data3['jugador_idjugador']=$_POST['idjugador'];
+		$data3['jugador_usuario_idusuario']=$_POST['idtutor'];
+
+
 		$idjuga=$_POST['idinscrip'];
 		$data2['inscripcion']=$_POST['desabilitar'];
 		$lista=$this->curso_model->inscripcion($data);
+		$lista=$this->jugador_model->agregaHistorial($data3);
 		$lista=$this->jugador_model->modificarJugador($idjuga,$data2);
 		if ($_SESSION['idusuario']==1) {
 			redirect('jugador/listaInscripcion','refresh');
@@ -603,6 +612,32 @@ public function opciones()
 		$this->load->view('inc_head.php'); //archivos cabecera
 		$this->load->view('inc_menu.php'); 
 		$this->load->view('jug_modificarPrin',$data); //contenido
+		$this->load->view('inc_footer.php'); //archivos del footer
+
+	}
+
+	public function reportesJugadores()
+	{
+
+		$fechainicio = $this->input->post("fechainicio");
+		$fechafin = $this->input->post("fechafin");
+
+		if ($this->input->post("buscar")) {
+			$historial = $this->jugador_model->getHistorialbyDate($fechainicio,$fechafin);
+		}
+		else{
+			$historial = $this->jugador_model->getHistorial();
+		}
+
+		$data = array(
+			"historial" => $historial,
+			"fechainicio" => $fechainicio,
+			"fechafin" => $fechafin
+		);
+
+		$this->load->view('inc_head.php'); //archivos cabecera
+		$this->load->view('inc_menu.php'); 
+		$this->load->view('jug_reporte',$data); //contenido 
 		$this->load->view('inc_footer.php'); //archivos del footer
 
 	}

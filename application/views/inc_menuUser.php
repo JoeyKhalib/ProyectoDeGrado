@@ -123,7 +123,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="../forms/advanced.html" class="nav-link">
+                <a href="<?php echo base_url();?>index.php/invitado/misReservas" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Mis Reservas</p>
                 </a>
@@ -146,6 +146,12 @@
                 <a href="<?php echo base_url();?>index.php/invitado/eventosInvitado" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Mis Eventos</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="<?php echo base_url();?>index.php/invitado/invitadoCalendario" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Eventos Calendario</p>
                 </a>
               </li>
 

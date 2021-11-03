@@ -40,17 +40,24 @@ public function test()
 
 
 
+
 	public function reservasVista()
 	{
 
 
-		$data['registroCanchitas']=$this->calendario_model->listandoReserv();
 
 		$this->load->view('inc_headCalendarioReserv.php'); 
 		$this->load->view('inc_menuUser.php'); 
-		$this->load->view('reserva_calendario',$data); //contenido
+		$this->load->view('reserva_calendario'); //contenido
 		$this->load->view('inc_footerCalendario.php'); //archivos del footer
 	}
+
+	 public function getRerserva()
+  	{
+
+    $lista=$this->invitado_model->listandoReserva();
+    echo json_encode($lista);
+ 	 }
 
 
 
@@ -139,7 +146,35 @@ public function test()
 	}
 
 
+	public function misReservas()
+	{
+		$idusuario=$_SESSION['idusuario'];
+		$lista=$this->invitado_model->listaReser($idusuario);
+		$data['reservas']=$lista;
 
+		$this->load->view('inc_head.php'); 
+		$this->load->view('inc_menuUser.php'); 
+		$this->load->view('inv_reservas',$data); //contenido
+		$this->load->view('inc_footer.php'); //archivos del footer
+	}
+
+
+
+	public function invitadoCalendario()
+	{
+	$this->load->view('inc_headCalendarioinvi');
+	$this->load->view('inc_menuUser');
+	$this->load->view('v_calendario');
+	$this->load->view('inc_footerCalendario');
+	}
+
+    public function getEventos()
+  	{
+  	$rol=$_SESSION['rol_idrol'];	
+    $lista=$this->invitado_model->listandoEventosInvi($rol);
+    echo json_encode($lista);
+
+  	}
 
 
 

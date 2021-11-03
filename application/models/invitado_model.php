@@ -50,16 +50,38 @@ class Invitado_model extends CI_Model {
 
 		return $this->db->get();
 }
-public function eliminarUsuariol($idusuario)
+
+	public function eliminarUsuariol($idusuario)
 		{
 	    $this->db->where('idusuario',$idusuario);
 		$this->db->update('usuario',$data);
 		}
 
-//		$query="SELECT * FROM personas WHERE login='".$login."' AND password='".$password."'"
-//		return $this->db->query($query);
-	
+		public function listandoReserva()
+	{
+		$this->db->select('idreserva id , CONCAT(fechaReserva ,"T", horaInicial) start, CONCAT(fechaReserva ,"T", horaFinal) end');
+		$this->db->from('reserva');
+		return $this->db->get()->result();
+	}
 
+
+	public function listaReser($idusuario)
+	{
+		$this->db->select('*');
+		$this->db->from('reserva R');
+		$this->db->join('usuario U','R.usuario_idusuario=U.idusuario');
+		$this->db->join('canchas C','C.idcanchas=R.canchas_idcanchas');
+		$this->db->where('U.idusuario',$idusuario);
+		return $this->db->get();
+	}
+
+	public function listandoEventosInvi($rol)
+	{
+		$this->db->select('idevento id , fecha start , nombreEvento title');
+		$this->db->from('evento');
+		$this->db->where('rol_idrol',$rol);
+		return $this->db->get()->result();
+	}
 
 
 }

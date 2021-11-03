@@ -77,6 +77,11 @@ class Jugador_model extends CI_Model {
 	{
 		$this->db->insert('jugador',$data);
 	}
+
+	public function agregaHistorial($data)
+	{
+		$this->db->insert('historial',$data);
+	}
 	
 	public function eliminarJugador($idjugador)
 	{
@@ -158,7 +163,34 @@ class Jugador_model extends CI_Model {
 
 	
 
-
+		public function getHistorial(){
+		$this->db->select("*");
+		$this->db->from("historial H");
+		$this->db->join("jugador J","H.jugador_idjugador = J.idjugador");
+		$this->db->join("cursos C","H.idcursos = C.idcursos");
+		$resultados = $this->db->get();
+		if ($resultados->num_rows() > 0) {
+			return $resultados->result();
+		}else
+		{
+			return false;
+		}
+	}
+		public function getHistorialbyDate($fechainicio,$fechafin){
+		$this->db->select("*");
+		$this->db->from("historial H");
+		$this->db->join("jugador J","H.jugador_idjugador = J.idjugador");
+		$this->db->join("cursos C","H.idcursos = C.idcursos");
+		$this->db->where("H.fechaInscripcionI >=",$fechainicio);
+		$this->db->where("H.fechaInscripcionI <=",$fechafin);
+		$resultados = $this->db->get();
+		if ($resultados->num_rows() > 0) {
+			return $resultados->result();
+		}else
+		{
+			return false;
+		}
+	}
 
 
 

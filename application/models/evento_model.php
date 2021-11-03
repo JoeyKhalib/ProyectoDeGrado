@@ -130,7 +130,32 @@ class Evento_model extends CI_Model {
 
 
 
-
+		public function getHistorial(){
+		$this->db->select("*");
+		$this->db->from("evento E");
+		$this->db->join("rol R","E.rol_idrol= R.idrol");
+		$resultados = $this->db->get();
+		if ($resultados->num_rows() > 0) {
+			return $resultados->result();
+		}else
+		{
+			return false;
+		}
+	}
+		public function getHistorialbyDate($fechainicio,$fechafin){
+		$this->db->select("*");
+		$this->db->from("evento E");
+		$this->db->join("rol R","E.rol_idrol= R.idrol");
+		$this->db->where("E.fecha >=",$fechainicio);
+		$this->db->where("E.fecha <=",$fechafin);
+		$resultados = $this->db->get();
+		if ($resultados->num_rows() > 0) {
+			return $resultados->result();
+		}else
+		{
+			return false;
+		}
+	}
 
 
 }

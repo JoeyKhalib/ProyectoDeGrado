@@ -12,6 +12,17 @@ $fechaformateada=$dia."/".$mes."/".$anio." ".$hora;
 return $fechaformateada;
 }
 
+function formatearHora($hora)
+{
+/*17:43:39*/
+
+$horas=substr($hora, 0,2);
+$minutos=substr($hora, 3,2);
+
+$horaNueva=$horas.":".$minutos;
+return $horaNueva;
+}
+
 
 function generarUsuario($nombres,$ci)
 {

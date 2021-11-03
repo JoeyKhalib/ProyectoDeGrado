@@ -243,4 +243,30 @@ public function imprimirCursos()
 
 
 
+		public function filtrarEvento()
+	{
+
+		$fechainicio = $this->input->post("fechainicio");
+		$fechafin = $this->input->post("fechafin");
+
+		if ($this->input->post("buscar")) {
+			$historial = $this->evento_model->getHistorialbyDate($fechainicio,$fechafin);
+		}
+		else{
+			$historial = $this->evento_model->getHistorial();
+		}
+
+		$data = array(
+			"historial" => $historial,
+			"fechainicio" => $fechainicio,
+			"fechafin" => $fechafin
+		);
+
+		$this->load->view('inc_head.php'); //archivos cabecera
+		$this->load->view('inc_menu.php'); 
+		$this->load->view('evn_reporte',$data); //contenido 
+		$this->load->view('inc_footer.php'); //archivos del footer
+	}
+
+
 }
