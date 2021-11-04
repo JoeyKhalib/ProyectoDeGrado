@@ -64,7 +64,7 @@
                                             <td><?php echo $historia->nombreEvento;?> </td>
                                             <td><?php echo $historia->lugar;?></td>
                                             <td><?php echo $historia->fecha;?></td>
-                                            <td></td>
+                                            <td><?php echo formatearHora($historia->horaEvento);?></td>
                                             <td><?php echo $historia->descripcion;?></td>
                                         </tr>
                                          <?php $indice++;?>

@@ -35,6 +35,7 @@ public function opciones()
 		$registro=$_SESSION['idusuario'];
 		$data['nombreEvento']=$_POST['nombreEvento'];
 		$data['lugar']=$_POST['lugar'];
+		$data['horaEvento']=$_POST['horaEvento'];
 		$data['fecha']=$_POST['fecha'];
 		$data['descripcion']=$_POST['descripcion'];
 		$data['lugar']=$_POST['lugar'];
@@ -95,6 +96,7 @@ public function opciones()
 		$idevento=$_POST['idevento'];
 		$data['nombreEvento']=$_POST['nombreEvento'];
 		$data['lugar']=$_POST['lugar'];
+		$data['horaEvento']=$_POST['horaEvento'];
 		$data['descripcion']=$_POST['descripcion'];
 		$data['fecha']=$_POST['fecha'];
 		$data['rol_idrol']=$_POST['destinatario'];

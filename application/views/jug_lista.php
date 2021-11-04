@@ -42,6 +42,7 @@
 
                   <tr>
                     <th>#</th>
+                    <th>Perfil</th>
                     <th>Nombre Completo</th>
                     <th>Cedula de Identidad</th>
                     <th>Telefono</th>
@@ -60,6 +61,28 @@ foreach ($jugadores->result() as $row) {
 
                   <tr>
                     <td><?php echo $indice;?></td>
+                    <td>
+                      
+                      <?php
+                        $fotoJugador=$row->fotoJugador;
+                        if ($fotoJugador=="") {
+                          //mostrar una imagen por defecto
+                           ?> 
+                           <img width="100" src="<?php echo base_url();?>uploads/jugadores/perfil.jpg">
+                           <?php
+                        }
+                        else {
+                          //mostrar la foto del usuario
+                            ?> 
+                            <img width="100" src="<?php echo base_url();?>uploads/jugadores/<?php echo $fotoJugador;?>">
+                            <?php
+                        }
+
+
+                      ?> 
+
+
+                    </td>
                     <td><?php echo $row->nombresJugador;?> <?php echo $row->apellidoPaternoJugador;?> <?php echo $row->apellidoMaternoJugador;?></td>
                     <td><?php echo $row->ciJugador;?></td>
                     <td><?php echo $row->telefono;?></td>
@@ -82,7 +105,7 @@ foreach ($jugadores->result() as $row) {
         ?>
 
         <input type="hidden" name="idjugador" value="<?php echo $row->idjugador;?>">
-                          <button class="btn btn-info btn-sm" href="#" type="submit" >
+                          <button class="btn-sm btn-info " href="#" type="submit" >
                               <i class="fas fa-pencil-alt">
                               </i>
                               Editar
@@ -97,15 +120,30 @@ foreach ($jugadores->result() as $row) {
         ?>
         <input type="hidden" name="idjugador" value="<?php echo $row->idjugador;?>">
         <input type="hidden" name="desabilitar" value="<?php echo '0';?>">
-                          <button class="btn btn-danger btn-sm" href="#" type="submit" >
+                          <button class="btn-sm btn-danger " href="#" type="submit" >
                               <i class="fas fa-trash">
                               </i>
                               Eliminar
-                          </button>
-                      
+                          </button>                     
    <?php 
           echo form_close();
          ?>
+
+
+           <?php 
+                echo form_open_multipart('jugador/subirfoto');
+                 ?>
+               <input type="hidden" name="idjugador" value="<?php echo $row->idjugador;?>">
+               <button type="submit" class="btn-sm btn-primary ">
+ <i class="far fa-image">
+                              </i>
+
+               Subir</button>
+                      <?php 
+                        echo form_close();
+                       ?>
+
+         
                       </td>
                   </tr>
 
@@ -117,6 +155,7 @@ foreach ($jugadores->result() as $row) {
                   <tfoot class="bg-success">
                   <tr>
                     <th>#</th>
+                    <th>Perfil</th>
                     <th>Nombre Completo</th>
                     <th>Cedula de Identidad</th>
                     <th>Telefono</th>

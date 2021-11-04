@@ -796,7 +796,49 @@ public function listaJugpdf()
 	}
 
 
+	public function subirfoto()
+	{
+		$data['idjugador']=$_POST['idjugador'];
 
+
+		$this->load->view('inc_head.php');
+		$this->load->view('inc_menu.php'); //archivos cabecera
+		$this->load->view('subirformJugador',$data); //contenido
+		$this->load->view('inc_footer.php'); //archivos del footer
+
+	}
+	public function subir()
+	{
+		$idjugador=$_POST['idjugador'];
+		$nombrearchivo=$idjugador.".jpg";
+
+		//ruta donde se guardan los ficheros
+		$config['upload_path']="./uploads/jugadores/";
+		//configurar el nombre del archivo
+		$config['file_name']=$nombrearchivo;
+
+		//remplazar los archivos
+		$direccion="./uploads/jugadores/".$nombrearchivo;
+		unlink($direccion);
+
+		//tipos de archivos
+
+		$config['allowed_types']='jpg';	//'gif|jpg|png'
+		$this->load->library('upload',$config);
+
+		if (!$this->upload->do_upload()) {
+			//si  hay un error se para la vista
+			$data['error']=$this->upload->display_errors();
+		}
+		else {
+			$data['fotoJugador']=$nombrearchivo;
+			$lista=$this->jugador_model->modificarJugador($idjugador,$data);
+			$this->upload->data();
+		}
+
+			redirect('jugador/listaJugador','refresh');
+
+	}
 
 
 

@@ -61,7 +61,7 @@ foreach ($jugadorsitos->result() as $row) {
                         else {
                           //mostrar la foto del usuario
                             ?> 
-                             <img src="<?php echo base_url(); ?>uploads/jugadores/<?php echo $foto;?>" alt="user-avatar" class="img-circle img-fluid">     
+                             <img src="<?php echo base_url(); ?>uploads/jugadores/<?php echo $fotoJugador;?>" alt="user-avatar" class="img-circle img-fluid">     
                             <?php
                         }
                       ?> 

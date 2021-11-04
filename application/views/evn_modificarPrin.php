@@ -25,9 +25,15 @@ foreach ($infoevento->result() as $row)
                 <label for="inputName">Nombre del Evento/Anuncio</label>
                 <input type="text" id="inputName" name="nombreEvento" class="form-control" value="<?php echo $row->nombreEvento;?>">
               </div>
-              <div class="form-group">
+              <div class="form-row">
+                 <div class="col">
                 <label for="inputName">Lugar del Evento</label>
                 <input type="text" id="inputName" name="lugar" class="form-control" value="<?php echo $row->lugar;?>">
+                </div>
+                <div class="col">
+                <label for="inputName">Hora del Evento</label>
+                <input type="time" id="inputName" name="horaEvento" class="form-control" value="<?php echo $row->horaEvento;?>">
+                </div>
               </div>
               <div class="form-group">
                 <label for="inputDescription">Descripcion:</label>
