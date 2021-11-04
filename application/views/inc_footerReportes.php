@@ -151,14 +151,14 @@ $(document).ready(function () {
         buttons: [
             {
                 extend: 'excelHtml5',
-                title: "Listado de Ventas",
+                title: "Listado de Inscripciones",
                 exportOptions: {
                     columns: [ 0, 1,2, 3, 4, 5 ]
                 }
             },
             {
                 extend: 'pdfHtml5',
-                title: "Listado de Ventas",
+                title: "Listado de Inscripciones",
                 exportOptions: {
                     columns: [ 0, 1,2, 3, 4, 5 ]
                 }

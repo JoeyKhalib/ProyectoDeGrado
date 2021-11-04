@@ -91,7 +91,7 @@ foreach ($usuarios->result() as $row) {
           echo form_open_multipart('usuario/modificar');
         ?>
         <input type="hidden" name="idusuario" value="<?php echo $row->idusuario;?>">
-        <button type="submit" class="btn btn-info btn-sm btn-primary ">
+        <button type="submit" class="btn-sm btn-info ">
  <i class="fas fa-pencil-alt">
                               </i>
 
@@ -109,7 +109,7 @@ foreach ($usuarios->result() as $row) {
                         <input type="hidden" name="idusuario" value="<?php echo $row->idusuario;?>">
                         <input type="hidden" name="desabilitar" value="<?php echo '0';?>">
                         
-                        <button type="submit" class="btn btn-danger btn-sm btn-primary ">
+                        <button type="submit" class="btn-sm btn-danger">
 <i class="fas fa-trash">
                               </i>
                          Desabilitar</button>
@@ -126,7 +126,7 @@ foreach ($usuarios->result() as $row) {
                 echo form_open_multipart('usuario/subirfoto');
                  ?>
                <input type="hidden" name="idusuario" value="<?php echo $row->idusuario;?>">
-               <button type="submit" class="btn btn-succes btn-sm btn-primary ">
+               <button type="submit" class="btn-sm btn-primary ">
  <i class="far fa-image">
                               </i>
 

@@ -638,7 +638,7 @@ public function opciones()
 		$this->load->view('inc_head.php'); //archivos cabecera
 		$this->load->view('inc_menu.php'); 
 		$this->load->view('jug_reporte',$data); //contenido 
-		$this->load->view('inc_footer.php'); //archivos del footer
+		$this->load->view('inc_footerReportes.php'); //archivos del footer
 
 	}
 
@@ -663,6 +663,7 @@ public function opciones()
 		$data['apellidoMaternoJugador']=$_POST['apellidoMaterno'];
 		$data['ciJugador']=$_POST['ci'];
 		$data['telefono']=$_POST['telefono'];
+		$data['sexo']=$_POST['sexo'];
 		$data['direc']=$_POST['direc'];
 		$data['fechaNacimiento']=$_POST['fechaNacimiento'];
 		$lista=$this->jugador_model->modificarJugador($idjugador,$data);

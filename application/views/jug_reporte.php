@@ -40,13 +40,13 @@
                     </form>      
                 </div>
                 <hr>
-                <div class="card-footer">
-                 <button type="submit" class="btn btn-success">Imprimir Reporte</button>
-                 </div>
+
+
+
 
                 <div class="row">
                     <div class="col-md-12">
-                        <table id="example2" class="table table-bordered table-hover">
+                        <table id="example" class="table table-bordered table-hover">
                             <thead class="bg-success">
                                 <tr>
                                     <th>#</th>

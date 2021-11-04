@@ -199,7 +199,14 @@ public function opcionesCancha()
 		$this->load->view('inc_footer.php'); //archivos del footer
 	}
 
+	public function reservasVista()
+	{
 
+		$this->load->view('inc_headCalendarioReserv.php'); 
+		$this->load->view('inc_menu.php'); 
+		$this->load->view('canch_calendarioReserva'); //contenido
+		$this->load->view('inc_footerCalendario.php'); //archivos del footer
+	}
 
 
 }

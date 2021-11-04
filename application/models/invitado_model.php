@@ -72,6 +72,7 @@ class Invitado_model extends CI_Model {
 		$this->db->join('usuario U','R.usuario_idusuario=U.idusuario');
 		$this->db->join('canchas C','C.idcanchas=R.canchas_idcanchas');
 		$this->db->where('U.idusuario',$idusuario);
+		$this->db->where('R.estado','1');
 		return $this->db->get();
 	}
 
@@ -81,6 +82,22 @@ class Invitado_model extends CI_Model {
 		$this->db->from('evento');
 		$this->db->where('rol_idrol',$rol);
 		return $this->db->get()->result();
+	}
+
+	public function recuperarReserva($idreserva)
+	{
+		$this->db->select('*');
+		$this->db->from('reserva R');
+		$this->db->join('canchas C','C.idcanchas=R.canchas_idcanchas');
+		$this->db->where('idreserva',$idreserva);
+		return $this->db->get();
+	}
+
+	public function modificarReserva($idreserva,$data)
+	{
+		
+		$this->db->where('idreserva',$idreserva);
+		$this->db->update('reserva',$data);
 	}
 
 

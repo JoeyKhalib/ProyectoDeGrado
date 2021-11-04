@@ -38,8 +38,8 @@ foreach ($cursos->result() as $row) {
   </div>
    </div>
                   <div class="form-group">
-                    <label for="exampleInputPassword1">Pago del Curso:</label>
-                    <input type="number" class="form-control" name="pago"  >
+                    <label for="exampleInputPassword1">Pago del Curso:</label>    
+                    <input type="number" class="form-control" name="pago"  value="150">
                   </div>
 
 

@@ -468,7 +468,8 @@ public function imprimir()
 		$data['idusuario']=$_POST['idusuario'];
 
 
-		$this->load->view('inc_head.php'); //archivos cabecera
+		$this->load->view('inc_head.php');
+		$this->load->view('inc_menu.php'); //archivos cabecera
 		$this->load->view('subirform',$data); //contenido
 		$this->load->view('inc_footer.php'); //archivos del footer
 

@@ -51,16 +51,73 @@ foreach ($infousuario->result() as $row)
                <input type="email"class="form-control" name="email"  aria-describedby="helpId" value="<?php echo $row->email;?>">
                   </div>
 
-  <div class="form-group">
+
+<?php 
+
+$rol=$row->rol_idrol;
+ ?>
+<?php if ($rol==1): ?>
+  
+    <div class="form-group">
     <label for="rol_idrol">Seleccione el Rol</label>
     <select class="form-control" name="rol_idrol">
-    <option value="1">Administrador</option>
+    <option selected="true" value="1">Administrador</option>
     <option value="2">Entrenador</option>
     <option value="3">Invitado</option>
     <option value="4">Padre</option>
     </select>
 
   </div>
+
+<?php endif ?>
+
+<?php if ($rol==2): ?>
+  
+    <div class="form-group">
+    <label for="rol_idrol">Seleccione el Rol</label>
+    <select class="form-control" name="rol_idrol">
+    <option value="1">Administrador</option>
+    <option selected="true" value="2">Entrenador</option>
+    <option value="3">Invitado</option>
+    <option value="4">Padre</option>
+    </select>
+
+  </div>
+
+<?php endif ?>
+
+<?php if ($rol==3): ?>
+  
+    <div class="form-group">
+    <label for="rol_idrol">Seleccione el Rol</label>
+    <select class="form-control" name="rol_idrol">
+    <option value="1">Administrador</option>
+    <option value="2">Entrenador</option>
+    <option selected="true" value="3">Invitado</option>
+    <option value="4">Padre</option>
+    </select>
+
+  </div>
+
+<?php endif ?>
+
+<?php if ($rol==4): ?>
+  
+    <div class="form-group">
+    <label for="rol_idrol">Seleccione el Rol</label>
+    <select class="form-control" name="rol_idrol">
+    <option selected="true" value="1">Administrador</option>
+    <option value="2">Entrenador</option>
+    <option value="3">Invitado</option>
+    <option selected="true" value="4">Padre</option>
+    </select>
+
+  </div>
+
+<?php endif ?>
+
+
+  
 
 
               <div class="form-group">

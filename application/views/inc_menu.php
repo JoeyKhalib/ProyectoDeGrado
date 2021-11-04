@@ -70,7 +70,7 @@
       <!-- Sidebar user (optional) -->
       <div class="form-inline">
         <div class="image">
-          <a title="Los Tejos" href="http://www.lostejos.com"><img src="<?php echo base_url();?>imagenes/principal.png" class="img-fluid" alt="Responsive image" /></a>
+          <a title="Los Tejos" href="#"><img src="<?php echo base_url();?>imagenes/principal.png" class="img-fluid" alt="Responsive image" /></a>
         </div>
          <div class="info">
           <a href="http://www.lostejos.com" class="d-block"><h4 class="text-center">Sistema de Gestion de Escuela De Futbol</h4></a>
@@ -329,7 +329,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="<?php echo base_url();?>index.php/torneo/reporteTorneo" class="nav-link">
+                <a href="<?php echo base_url();?>index.php/cancha/reservasVista" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Calendario de Reservas</p>
                 </a>

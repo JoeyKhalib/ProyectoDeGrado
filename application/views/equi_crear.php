@@ -9,33 +9,7 @@
               </div>
 
 
-               <div class="card-body">
-            <div class="row">
-              <div class="col-12">
-                <div class="form-group">
-                  <label>LISTA DE JUGADORES DISPONIBLES PARA EL EQUIPO:</label>
 
-
-
-                  <select class="duallistbox" multiple="multiple"  name="juga">
-<?php 
-foreach ($jugadores->result() as $row) {
- ?>
-
-
-        <option value="<?php echo $row->idjugador;?>"><?php echo $row->nombresJugador;?>  <?php echo $row->apellidoPaternoJugador;?> <?php echo $row->apellidoMaternoJugador;?> <?php echo edad($row->fechaNacimiento);?>;</option>
-
- <?php
-}
- ?>
-                  </select>
-                </div>
-                <!-- /.form-group -->
-              </div>
-              <!-- /.col -->
-            </div>
-            <!-- /.row -->
-          </div>
 
 
 

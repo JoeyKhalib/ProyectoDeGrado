@@ -44,8 +44,6 @@ public function test()
 	public function reservasVista()
 	{
 
-
-
 		$this->load->view('inc_headCalendarioReserv.php'); 
 		$this->load->view('inc_menuUser.php'); 
 		$this->load->view('reserva_calendario'); //contenido
@@ -157,6 +155,41 @@ public function test()
 		$this->load->view('inv_reservas',$data); //contenido
 		$this->load->view('inc_footer.php'); //archivos del footer
 	}
+
+	public function modificarReserva()
+	{
+		$idreserva=$_POST['idreserva'];
+		$data['inforeserva']=$this->invitado_model->recuperarReserva($idreserva);
+
+		$this->load->view('inc_head.php'); //archivos cabecera
+		$this->load->view('inc_menuUser.php'); 
+		$this->load->view('reser_modificar',$data); //contenido
+		$this->load->view('inc_footer.php'); //archivos del footer
+	}
+
+
+		public function modificandoReserva()
+	{
+		$idreserva=$_POST['idreserva'];
+
+		$data['fechaReserva']=$_POST['fechaReserva'];
+		$data['totalJugadores']=$_POST['totalJugadores'];
+		$data['horaInicial']=$_POST['horaInicial'];
+		$data['horaFinal']=$_POST['horaFinal'];
+		$data['canchas_idcanchas']=$_POST['idcanchas'];
+		$lista=$this->invitado_model->modificarReserva($idreserva,$data);
+		 redirect('invitado/test','refresh');    	
+	}
+
+
+	public function modificarResDoH()
+	{
+		$idreserva=$_POST['idreserva'];
+		$data['estado']=$_POST['desabilitar'];
+		$lista=$this->invitado_model->modificarReserva($idreserva,$data);
+		redirect('invitado/test','refresh'); 
+	}
+
 
 
 

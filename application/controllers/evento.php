@@ -265,7 +265,7 @@ public function imprimirCursos()
 		$this->load->view('inc_head.php'); //archivos cabecera
 		$this->load->view('inc_menu.php'); 
 		$this->load->view('evn_reporte',$data); //contenido 
-		$this->load->view('inc_footer.php'); //archivos del footer
+		$this->load->view('inc_footerReportes.php'); //archivos del footer
 	}
 
 

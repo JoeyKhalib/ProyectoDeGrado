@@ -45,6 +45,22 @@ foreach ($infojugador->result() as $row)
       <input type="tel" class="form-control" name="telefono" value="<?php echo $row->telefono;?>">
     </div>
   </div>
+
+
+  <br>
+     <div class="form-check">
+                    <label for="">Sexo:</label>
+                    <br>
+                    <label class="form-check-label">
+                    <input type="radio" class="form-check-input" name="sexo" id="sexo" value="H" checked>
+                  Hombre
+                  <br>
+                  <input type="radio" class="form-check-input" name="sexo" id="sexo" value="M" checked>
+                  Mujer
+                  </label>
+                </div>
+
+<br>
              
 
 
